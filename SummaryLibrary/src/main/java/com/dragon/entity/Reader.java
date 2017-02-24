@@ -21,6 +21,9 @@ public class Reader {
     /** 电子邮箱 */
     private String email;
 
+    /**  密码 */
+    private String password;
+
 
     public String getEmail() {
         return email;
@@ -68,6 +71,7 @@ public class Reader {
                 ", readerName='" + readerName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

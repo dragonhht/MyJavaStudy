@@ -38,7 +38,7 @@
             <span class="login_bottom_pwd"><a href="#" class="login_bottom_font"> 忘记密码? </a></span>
 
             <!--注册按钮-->
-            <span class="login_bottom_regists"><a href="#" class="login_bottom_font"> 去注册 </a></span>
+            <span class="login_bottom_regists"><a href="/regist.action" class="login_bottom_font"> 去注册 </a></span>
 
             <!--登录-->
             <input type="submit" value="登录" class="login_bottom_button" />

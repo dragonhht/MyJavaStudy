@@ -23,9 +23,25 @@ public class IndexAction {
         return "index";
     }
 
+    /**
+     * 跳转登录页面
+     *
+     * @return 登录页面
+     */
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
+
+    /**
+     * 跳转注册页面
+     *
+     * @return 注册页面
+     */
+    @RequestMapping("/regist")
+    public String regist() {
+        return "regist";
+    }
 }
+
 
