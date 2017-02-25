@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，对Sql进行分类化管理 ,namespace等于mapper接口的地址-->
+<mapper namespace="com.dragon.mapper.ReaderMapper">
+
+    <!--获取最新的读者编号-->
+    <select id="getLastReaderId" resultType="long">
+        select readerId from Reader order by readerId desc limit 1
+    </select>
+
+    <!--用户注册-->
+    <insert id="readerRegist" parameterType="ReaderExtend">
+        INSERT into Reader (readerId, readerName, phone, email, password) VALUES (#{readerId}, #{readerName}, #{phone}, #{email}, #{password})
+    </insert>
+
+    <!--用户修改密码-->
+    <update id="updatePassword" parameterType="ReaderExtend">
+        update Reader set password=#{password} where readerId=#{readerId}
+    </update>
+
+</mapper>

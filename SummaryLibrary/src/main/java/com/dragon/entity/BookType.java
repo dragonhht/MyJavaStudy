@@ -10,16 +10,16 @@ package com.dragon.entity;
 public class BookType {
 
     /** 图书类型编号 */
-    private String typeId;
+    private long typeId;
 
     /** 图书类型名称 */
     private String typeName;
 
-    public String getTypeId() {
+    public long getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(String typeId) {
+    public void setTypeId(long typeId) {
         this.typeId = typeId;
     }
 

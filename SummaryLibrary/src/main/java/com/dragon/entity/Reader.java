@@ -1,5 +1,9 @@
 package com.dragon.entity;
 
+import org.hibernate.validator.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * 读者实体类
  * <p>
@@ -10,18 +14,22 @@ package com.dragon.entity;
 public class Reader {
 
     /** 读者编号 */
-    private String readerID;
+    private long readerId;
 
     /** 读者姓名 */
+    @Size(min = 1, max = 20, message = "{reader.readername.length.error}")
     private String readerName;
 
     /** 手机号码 */
     private String phone;
 
     /** 电子邮箱 */
+    @Email(message = "{reader.email.error}")
+    @Size(min = 1, message = "{reader.email.error}")
     private String email;
 
     /**  密码 */
+    @Size(min = 1, message = "{reader.password.not-null.error}")
     private String password;
 
 
@@ -45,15 +53,22 @@ public class Reader {
     }
 
 
-    public String getReaderID() {
-        return readerID;
+    public long getReaderId() {
+        return readerId;
+    }
+
+    public void setReaderId(long readerId) {
+        this.readerId = readerId;
     }
 
 
-    public void setReaderID(String readerID) {
-        this.readerID = readerID;
+    public String getPassword() {
+        return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getReaderName() {
         return readerName;
@@ -67,7 +82,7 @@ public class Reader {
     @Override
     public String toString() {
         return "Reader{" +
-                "readerID='" + readerID + '\'' +
+                "readerId=" + readerId +
                 ", readerName='" + readerName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +

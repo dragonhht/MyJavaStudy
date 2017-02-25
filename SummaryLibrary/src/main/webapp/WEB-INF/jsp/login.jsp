@@ -30,7 +30,7 @@
         <input class="login_input login_accout" type="text" placeholder="请输入用户名" >
 
         <!--密码-->
-        <input class="login_input login_pwd" type="text" placeholder="请输入密码" >
+        <input class="login_input login_pwd" type="password" placeholder="请输入密码" >
 
         <div  class="login_bottom" align="left">
 

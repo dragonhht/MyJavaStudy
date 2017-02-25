@@ -10,7 +10,7 @@ package com.dragon.entity;
 public class Book {
 
     /** 图书编号 */
-    private String bookId;
+    private long bookId;
 
     /** 图书名 */
     private String bookName;
@@ -33,11 +33,11 @@ public class Book {
     /** 图书类型 */
     private String type;
 
-    public String getBookId() {
+    public long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(long bookId) {
         this.bookId = bookId;
     }
 

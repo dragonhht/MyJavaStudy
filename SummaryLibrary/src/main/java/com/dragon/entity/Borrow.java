@@ -10,10 +10,10 @@ package com.dragon.entity;
 public class Borrow {
 
     /** 读者编号 */
-    private String readId;
+    private long readId;
 
     /** 图书编号 */
-    private String bookId;
+    private long bookId;
 
     /** 借阅时间 */
     private String borrowDate;
@@ -21,19 +21,19 @@ public class Borrow {
     /** 应还时间 */
     private String returnDate;
 
-    public String getReadId() {
+    public long getReadId() {
         return readId;
     }
 
-    public void setReadId(String readId) {
+    public void setReadId(long readId) {
         this.readId = readId;
     }
 
-    public String getBookId() {
+    public long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(long bookId) {
         this.bookId = bookId;
     }
 

@@ -64,7 +64,7 @@
     </tx:advice>
     <!-- 	将事务的增强和切点做绑定  -->
     <aop:config>
-        <aop:pointcut expression="execution(* com.dragon.service..*.*(..))"
+        <aop:pointcut expression="execution(* com.dragon.service..*(..))"
                       id="servicesDao" />
         <aop:advisor advice-ref="txAdvice" pointcut-ref="servicesDao" />
     </aop:config>

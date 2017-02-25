@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,33 +23,38 @@
 
     <div class="regist_center">
 
+        <%--校验信息提示****** --%>
+        ${error}
+        ${pwdError}
+
         <div class="center_form">
 
-            <form action="" method="post">
+            <form action="/reader/regist.action" method="post">
 
                 <div class="form_div first_div">
                     <span>姓名:</span>
-                    <input type="text" class="form_text form_text_first" placeholder="请输入姓名">
+                    <input type="text" name="readerName" class="form_text form_text_first" placeholder="请输入姓名">
+
                 </div>
 
                 <div class="form_div">
                     <span>手机号码:</span>
-                    <input type="text" class="form_text" placeholder="请输入手机号码">
+                    <input type="text" name="phone" class="form_text" placeholder="请输入手机号码">
                 </div>
 
                 <div class="form_div">
                     <span>电子邮箱:</span>
-                    <input type="text" class="form_text" placeholder="请输入电子邮箱">
+                    <input type="text" name="email" class="form_text" placeholder="请输入电子邮箱">
                 </div>
 
                 <div class="form_div">
                     <span>登录密码:</span>
-                    <input type="text" class="form_text" placeholder="输入密码">
+                    <input type="password" name="password" class="form_text" placeholder="输入密码">
                 </div>
 
                 <div class="form_div">
                     <span>确认密码:</span>
-                    <input type="text" class="form_text" placeholder="确定密码">
+                    <input type="password" name="repassword" class="form_text" placeholder="确定密码">
                 </div>
 
                 <div class="form_bottom">
