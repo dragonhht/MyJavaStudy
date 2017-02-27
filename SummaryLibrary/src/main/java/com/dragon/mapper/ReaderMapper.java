@@ -12,11 +12,21 @@ import com.dragon.entity.ReaderExtend;
 public interface ReaderMapper {
 
     /**
+     * 读者登录
+     *
+     * @param reader
+     *
+     * @return 数据库查询到的读者信息
+     *
+     * @throws Exception
+     */
+    ReaderExtend readerLogin(ReaderExtend reader) throws Exception;
+
+    /**
      * 读者注册
      *
      * @param reader 含读者信息的实体类
      *
-     * @return 读者编号
      *
      * @throws Exception
      */

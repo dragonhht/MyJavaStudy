@@ -42,7 +42,8 @@
 
             <div class="right_image"></div>
 
-            <span class="center_message"><a href="/login.action"> 注册成功,前去登录 </a> </span>
+            <span class="center_message">注册成功,您的账号为: ${registSuccess}  </span>
+            <span class="center_to_login"><a href="/login.action"> 前去登录</a></span>
 
         </div>
 

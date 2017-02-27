@@ -21,11 +21,24 @@ public class ReaderServiceImpl implements ReaderService {
     private ReaderMapper readerMapper;
 
 
-    public boolean readerRegist(ReaderExtend reader) {
-        //成功判断变量
-        boolean ok = false;
+    public ReaderExtend readerLogin(ReaderExtend reader) {
+        ReaderExtend readerExtend = null;
+
+        try {
+           readerExtend = readerMapper.readerLogin(reader);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return readerExtend;
+    }
+
+    public long readerRegist(ReaderExtend reader) {
         //新的编号
         long newReaderId=0l;
+        //注册成功后的账号
+        long successId = 0l;
 
         try {
             newReaderId = getNewReaderId();
@@ -33,12 +46,11 @@ public class ReaderServiceImpl implements ReaderService {
             reader.setReaderId(newReaderId);
 
             readerMapper.readerRegist(reader);
-            ok = true;
+            successId = newReaderId;
         } catch (Exception e) {
             e.printStackTrace();
         }
-System.out.println("注册情况 ++"+ok);
-        return ok;
+        return successId;
     }
 
 

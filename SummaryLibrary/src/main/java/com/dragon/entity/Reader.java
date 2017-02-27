@@ -1,6 +1,7 @@
 package com.dragon.entity;
 
 import org.hibernate.validator.constraints.Email;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -14,6 +15,7 @@ import javax.validation.constraints.Size;
 public class Reader {
 
     /** 读者编号 */
+    @NotNull(message = "{reader.readerId.not-null.error }")
     private long readerId;
 
     /** 读者姓名 */

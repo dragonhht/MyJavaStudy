@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
     .top_menu{
     //border: 1px solid gray;
@@ -33,6 +33,16 @@
         <li><a href="#"> 留言 </a></li>
         <li><a href="/index.action"> 查找 </a></li>
         <li><a href="#"> 分类目录 </a></li>
-        <li><a href="/login.action"> 登录 </a> </li>
+
+        <c:choose>
+            <c:when test="${sessionScope.readerName != null}">
+                <li><a href="#"> ${sessionScope.readerName} </a> </li>
+            </c:when>
+
+            <c:otherwise>
+                <li><a href="/login.action"> 登录 </a> </li>
+            </c:otherwise>
+        </c:choose>
+
     </ul>
 </div>

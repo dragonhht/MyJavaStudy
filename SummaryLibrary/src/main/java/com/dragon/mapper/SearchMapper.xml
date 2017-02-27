@@ -4,6 +4,19 @@
 <!-- namespace命名空间，对Sql进行分类化管理 ,namespace等于mapper接口的地址-->
 <mapper namespace="com.dragon.mapper.SearchMapper">
 
+    <!--通过图书名查询图书-->
+    <select id="searchBookByName" parameterType="string" resultType="BookExtend">
+        select * from Book where bookName like #{value}
+    </select>
 
+    <!--通过出版社查询图书-->
+    <select id="searchBookByPublish" parameterType="string" resultType="BookExtend">
+        select * from Book where publish like #{value}
+    </select>
+
+    <!--通过作者查询图书-->
+    <select id="searchBookByAuthor" parameterType="string" resultType="BookExtend">
+        select * from Book where author like #{value}
+    </select>
 
 </mapper>

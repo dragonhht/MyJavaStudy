@@ -33,6 +33,9 @@ public class Book {
     /** 图书类型 */
     private String type;
 
+    /** 图书图片 */
+    private String img;
+
     public long getBookId() {
         return bookId;
     }
@@ -95,6 +98,29 @@ public class Book {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", bookName='" + bookName + '\'' +
+                ", price=" + price +
+                ", author='" + author + '\'' +
+                ", buyDate='" + buyDate + '\'' +
+                ", publish='" + publish + '\'' +
+                ", bookLend=" + bookLend +
+                ", type='" + type + '\'' +
+                ", img='" + img + '\'' +
+                '}';
     }
 }
 

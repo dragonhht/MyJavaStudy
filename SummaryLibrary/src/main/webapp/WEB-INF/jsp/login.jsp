@@ -25,12 +25,15 @@
 <!--登录框-->
 <div class="login_div">
 
-    <form action="" method="post">
+    <form action="/reader/login.action" method="post">
         <!--账号-->
-        <input class="login_input login_accout" type="text" placeholder="请输入用户名" >
+        <input class="login_input login_accout" name="readerId" type="text" placeholder="请输入用户名" >
 
         <!--密码-->
-        <input class="login_input login_pwd" type="password" placeholder="请输入密码" >
+        <input class="login_input login_pwd" name="password" type="password" placeholder="请输入密码" ><br/>
+
+        <%--提示信息--%>
+        <span style="color: red">${loginError}</span>
 
         <div  class="login_bottom" align="left">
 

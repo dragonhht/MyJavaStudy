@@ -19,4 +19,9 @@
         update Reader set password=#{password} where readerId=#{readerId}
     </update>
 
+    <!--读者登录-->
+    <select id="readerLogin" parameterType="ReaderExtend" resultType="ReaderExtend">
+        select * from Reader where readerId = #{readerId} and password = #{password}
+    </select>
+
 </mapper>

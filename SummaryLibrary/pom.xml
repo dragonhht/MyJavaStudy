@@ -24,6 +24,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!--配置mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -197,6 +204,7 @@
             <scope>compile</scope>
         </dependency>
 
+
         <!--hibernate-validator校验框架-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -209,5 +217,18 @@
     <build>
         <finalName>Summary-Library</finalName>
     </build>
+
+    <!--配置远程仓库-->
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://mvnrepository.com/</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>

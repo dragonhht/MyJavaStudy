@@ -12,13 +12,22 @@ import com.dragon.entity.ReaderExtend;
 public interface ReaderService {
 
     /**
+     * 读者登录
+     *
+     * @param reader
+     *
+     * @return 读者数据
+     */
+    ReaderExtend readerLogin(ReaderExtend reader);
+
+    /**
      * 读者注册
      *
      * @param reader 含读者信息的实体类
      *
-     * @return 注册结果
+     * @return 注册成功后的账号
      */
-    boolean readerRegist(ReaderExtend reader);
+    long readerRegist(ReaderExtend reader);
 
     /**
      * 修改密码
@@ -28,6 +37,5 @@ public interface ReaderService {
      * @return 修改结果
      */
     boolean updatePassword(ReaderExtend reader);
-
 }
 
