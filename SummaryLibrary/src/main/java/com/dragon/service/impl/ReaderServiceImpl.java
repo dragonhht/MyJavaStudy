@@ -68,6 +68,18 @@ public class ReaderServiceImpl implements ReaderService {
         return ok;
     }
 
+    public ReaderExtend getReaderById(long readerId) {
+        ReaderExtend reader = null;
+
+        try {
+            reader = readerMapper.getReaderById(readerId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return reader;
+    }
+
 
     /**
      * 获取一个新的读者编号

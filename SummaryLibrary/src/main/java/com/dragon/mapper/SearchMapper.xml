@@ -5,18 +5,36 @@
 <mapper namespace="com.dragon.mapper.SearchMapper">
 
     <!--通过图书名查询图书-->
-    <select id="searchBookByName" parameterType="string" resultType="BookExtend">
-        select * from Book where bookName like #{value}
+    <select id="searchBookByName" parameterType="string" resultType="BookInType">
+        select b.*,t.*
+        from Book b,BookType t,BookInType i
+        where b.bookName like #{value} and b.bookId = i.bookId and i.typeId = t.typeId
     </select>
 
     <!--通过出版社查询图书-->
-    <select id="searchBookByPublish" parameterType="string" resultType="BookExtend">
-        select * from Book where publish like #{value}
+    <select id="searchBookByPublish" parameterType="string" resultType="BookInType">
+        select b.*,t.*
+        from Book b,BookType t,BookInType i
+        where b.publish like #{value} and b.bookId = i.bookId and i.typeId = t.typeId
     </select>
 
     <!--通过作者查询图书-->
-    <select id="searchBookByAuthor" parameterType="string" resultType="BookExtend">
-        select * from Book where author like #{value}
+    <select id="searchBookByAuthor" parameterType="string" resultType="BookInType">
+        select b.*,t.*
+        from Book b,BookType t,BookInType i
+        where b.author like #{value} and b.bookId = i.bookId and i.typeId = t.typeId
+    </select>
+
+    <!--根据图书编号查询图书-->
+    <select id="searchBookById" parameterType="long" resultType="BookInType">
+        select * from Book where bookId = #{value}
+    </select>
+
+    <!--根据图书类型查询图书-->
+    <select id="searchBookByType" parameterType="long" resultType="BookInType">
+        select b.*,t.*
+        from Book b,BookType t,BookInType i
+        where i.typeId = #{value} and b.bookId = i.bookId and i.typeId = t.typeId
     </select>
 
 </mapper>

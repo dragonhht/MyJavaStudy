@@ -113,10 +113,19 @@ public class ReaderAction {
     }
 
     /**
-     * MethodDescription
+     * 跳转个人中心主页
      *
-     * @param readerService
+     * @return 个人中心主页
      */
+    @RequestMapping("reader")
+    public String reader(long readerId, Model model) {
+        ReaderExtend reader = null;
+        reader = readerService.getReaderById(readerId);
+        model.addAttribute("readerMessage", reader);
+
+        return "Reader";
+    }
+
     public void setReaderService(ReaderService readerService) {
         this.readerService = readerService;
     }

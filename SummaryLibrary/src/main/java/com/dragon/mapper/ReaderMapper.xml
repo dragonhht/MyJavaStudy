@@ -24,4 +24,9 @@
         select * from Reader where readerId = #{readerId} and password = #{password}
     </select>
 
+    <!--通过编号查询读者信息-->
+    <select id="getReaderById" parameterType="long" resultType="ReaderExtend">
+        select * from Reader where readerId = #{value}
+    </select>
+
 </mapper>

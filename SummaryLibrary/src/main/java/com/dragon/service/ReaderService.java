@@ -37,5 +37,14 @@ public interface ReaderService {
      * @return 修改结果
      */
     boolean updatePassword(ReaderExtend reader);
+
+    /**
+     * 通过编号获取读者信息
+     *
+     * @param readerId 读者编号
+     *
+     * @return 读者信息
+     */
+    ReaderExtend getReaderById(long readerId);
 }
 

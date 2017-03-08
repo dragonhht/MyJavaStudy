@@ -7,5 +7,17 @@ package com.dragon.entity;
  * Date : 17-2-24
  * Time : 上午11:14
  */
-public class BookExtend extends Book{
+public class BookExtend extends Book {
+
+    /** 借阅状态 */
+    private String lend = "不可借";
+
+    public String getLend() {
+        return lend;
+    }
+
+    public void setLend(String lend) {
+        this.lend = lend;
+    }
 }
+

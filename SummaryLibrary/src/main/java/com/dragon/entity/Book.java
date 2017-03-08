@@ -30,11 +30,14 @@ public class Book {
     /** 借阅状态 */
     private int bookLend;
 
-    /** 图书类型 */
-    private String type;
-
     /** 图书图片 */
     private String img;
+
+    /** 图书简述 */
+    private String bookSketch;
+
+    /** 收藏地点 */
+    private String place;
 
     public long getBookId() {
         return bookId;
@@ -92,20 +95,28 @@ public class Book {
         this.bookLend = bookLend;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getImg() {
         return img;
     }
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getBookSketch() {
+        return bookSketch;
+    }
+
+    public void setBookSketch(String bookSketch) {
+        this.bookSketch = bookSketch;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     @Override
@@ -118,8 +129,9 @@ public class Book {
                 ", buyDate='" + buyDate + '\'' +
                 ", publish='" + publish + '\'' +
                 ", bookLend=" + bookLend +
-                ", type='" + type + '\'' +
                 ", img='" + img + '\'' +
+                ", bookSketch='" + bookSketch + '\'' +
+                ", place='" + place + '\'' +
                 '}';
     }
 }

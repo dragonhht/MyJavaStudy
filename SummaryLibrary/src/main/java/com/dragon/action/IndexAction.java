@@ -33,6 +33,8 @@ public class IndexAction {
         return "login";
     }
 
+
+
     /**
      * 跳转注册页面
      *
@@ -43,5 +45,4 @@ public class IndexAction {
         return "regist";
     }
 }
-
 

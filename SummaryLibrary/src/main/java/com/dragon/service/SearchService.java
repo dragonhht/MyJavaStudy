@@ -3,6 +3,7 @@ package com.dragon.service;
 import java.util.List;
 
 import com.dragon.entity.BookExtend;
+import com.dragon.entity.BookInType;
 
 /**
  * 图书查找类接口
@@ -21,6 +22,24 @@ public interface SearchService {
      *
      * @return 图书信息
      */
-    List<BookExtend> searchBook(String selectWay, String bookMessage);
+    List<BookInType> searchBook(String selectWay, String bookMessage);
+
+    /**
+     * 通过图书编号查询图书
+     *
+     * @param bookId 图书编号
+     *
+     * @return
+     */
+    BookInType searchBookById(long bookId);
+
+    /**
+     * 通过图书类型查询图书
+     *
+     * @param typeId 图书类型编号
+     *
+     * @return 查询结果
+     */
+    List<BookInType> searchBookByType(long typeId);
 }
 

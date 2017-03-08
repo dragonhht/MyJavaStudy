@@ -1,6 +1,7 @@
 package com.dragon.service.impl;
 
 import com.dragon.entity.BookExtend;
+import com.dragon.entity.BookInType;
 import com.dragon.mapper.SearchMapper;
 import com.dragon.service.SearchService;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,9 @@ public class SearchServiceImpl implements SearchService{
     SearchMapper searchMapper;
 
 
-    public List<BookExtend> searchBook(String selectWay, String bookMessage) {
+    public List<BookInType> searchBook(String selectWay, String bookMessage) {
         //结果信息
-        List<BookExtend> resultBooks=null;
+        List<BookInType> resultBooks=null;
 
         //按书名查找
         if ("0".equals(selectWay)) {
@@ -53,6 +54,31 @@ public class SearchServiceImpl implements SearchService{
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+
+        return resultBooks;
+    }
+
+    public BookInType searchBookById(long bookId) {
+
+        BookInType resultBook = null;
+
+        try {
+            resultBook = searchMapper.searchBookById(bookId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultBook;
+    }
+
+    public List<BookInType> searchBookByType(long typeId) {
+        List<BookInType> resultBooks = null;
+
+        try {
+            resultBooks = searchMapper.searchBookByType(typeId);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return resultBooks;

@@ -36,7 +36,7 @@
 
         <c:choose>
             <c:when test="${sessionScope.readerName != null}">
-                <li><a href="#"> ${sessionScope.readerName} </a> </li>
+                <li><a href="/reader/reader.action?readerId=${sessionScope.readerId}"> ${sessionScope.readerName} </a> </li>
             </c:when>
 
             <c:otherwise>

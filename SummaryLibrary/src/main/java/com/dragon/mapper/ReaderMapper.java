@@ -49,5 +49,16 @@ public interface ReaderMapper {
      * @throws Exception
      */
     long getLastReaderId() throws Exception;
+
+    /**
+     * 通过编号查询读者
+     *
+     * @param readerId 读者编号
+     *
+     * @return 读者信息
+     *
+     * @throws Exception
+     */
+    ReaderExtend getReaderById(long readerId) throws Exception;
 }
 
