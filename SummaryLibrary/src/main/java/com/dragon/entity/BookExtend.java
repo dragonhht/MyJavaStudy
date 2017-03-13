@@ -12,6 +12,8 @@ public class BookExtend extends Book {
     /** 借阅状态 */
     private String lend = "不可借";
 
+
+
     public String getLend() {
         return lend;
     }

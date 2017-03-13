@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dragon.entity.BookExtend;
 import com.dragon.entity.BookInType;
+import com.dragon.parame.PageParam;
 
 /**
  * 图书查找类接口
@@ -17,12 +18,11 @@ public interface SearchService {
     /**
      * 多种方式查找图书
      *
-     * @param selectWay
-     * @param bookMessage
+     * @param pageParam
      *
      * @return 图书信息
      */
-    List<BookInType> searchBook(String selectWay, String bookMessage);
+    List<BookInType> searchBook(PageParam pageParam);
 
     /**
      * 通过图书编号查询图书

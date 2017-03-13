@@ -10,6 +10,7 @@ a{
 //border: 1px solid red;
     width: 1200px;
     margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .top_menu{
@@ -34,6 +35,7 @@ a{
     //border: 1px solid red;
     width: 1000px;
     margin: 10px auto;
+    position: relative;
 }
 
 .result_left_category{
@@ -42,6 +44,7 @@ a{
     background-color: #F6F6F6;
     min-height: 700px;
     float: left;
+    margin-bottom: 20px;
 }
 
 .center_result_book{
@@ -49,7 +52,7 @@ a{
     margin-left: 250px;
     width: 750px;
     padding-left: 20px;
-    min-height: 700px;
+    min-height: 200px;
 }
 
 .result_one_book{
@@ -104,4 +107,25 @@ a{
     bottom: 5px;
     left: 20px;
     font-size: 14px;
+}
+
+.select_page{
+    //border: 1px solid red;
+    width: 700px;
+    min-height: 30px;
+    position: absolute;
+    right: 0;
+    padding-right: 20px;
+}
+
+.select_page a{
+    float: right;
+    width: 30px;
+    height: 20px;
+    border: 1px solid green;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    background-color: #008EAD;
+    border-radius: 5px;
 }

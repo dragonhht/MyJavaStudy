@@ -3,6 +3,7 @@ package com.dragon.service.impl;
 import com.dragon.entity.BookExtend;
 import com.dragon.entity.BookInType;
 import com.dragon.mapper.SearchMapper;
+import com.dragon.parame.PageParam;
 import com.dragon.service.SearchService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -22,15 +23,37 @@ public class SearchServiceImpl implements SearchService{
     SearchMapper searchMapper;
 
 
-    public List<BookInType> searchBook(String selectWay, String bookMessage) {
+    public List<BookInType> searchBook(PageParam pageParam) {
         //结果信息
         List<BookInType> resultBooks=null;
+        //查找方式
+        String selectWay = pageParam.getSelectWay();
+        //查找信息
+        String bookMessage = pageParam.getBookMessage();
+        //查询到的数量
+        int count;
 
+System.out.println("PageParame参数:"+pageParam);
         //按书名查找
         if ("0".equals(selectWay)) {
             try {
                 bookMessage = "%" + bookMessage + "%";
-                resultBooks = searchMapper.searchBookByName(bookMessage);
+                pageParam.setBookMessage(bookMessage);
+                int pageCount = (pageParam.getPageCount() - 1)  * pageParam.getPageSize();
+                pageParam.setPageCount(pageCount);
+
+                resultBooks = searchMapper.searchBookByName(pageParam);
+                count = searchMapper.getResultSumByName(bookMessage);
+                if (count % 10 != 0) {
+                    count = count + pageParam.getPageSize();
+                }
+
+                count = count / pageParam.getPageSize();
+
+                if (resultBooks !=null && resultBooks.size()>0) {
+                    resultBooks.get(0).setCount(count);
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -40,7 +63,23 @@ public class SearchServiceImpl implements SearchService{
         if ("1".equals(selectWay)) {
             try {
                 bookMessage = "%" + bookMessage + "%";
-                resultBooks = searchMapper.searchBookByAuthor(bookMessage);
+                pageParam.setBookMessage(bookMessage);
+                int pageCount = (pageParam.getPageCount() - 1) * pageParam.getPageSize();
+                pageParam.setPageCount(pageCount);
+
+                resultBooks = searchMapper.searchBookByAuthor(pageParam);
+                count = searchMapper.getResultSumByAuthor(bookMessage);
+
+                if (count % 10 != 0) {
+                    count = count + pageParam.getPageSize();
+                }
+
+                count = count / pageParam.getPageSize();
+
+                if (resultBooks !=null && resultBooks.size()>0) {
+                    resultBooks.get(0).setCount(count);
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -50,7 +89,23 @@ public class SearchServiceImpl implements SearchService{
         if ("2".equals(selectWay)) {
             try {
                 bookMessage = "%" + bookMessage + "%";
-                resultBooks = searchMapper.searchBookByPublish(bookMessage);
+                pageParam.setBookMessage(bookMessage);
+                int pageCount = (pageParam.getPageCount() - 1) * pageParam.getPageSize();
+                pageParam.setPageCount(pageCount);
+
+                resultBooks = searchMapper.searchBookByPublish(pageParam);
+                count = searchMapper.getResultSumByPublish(bookMessage);
+
+                if (count % 10 != 0) {
+                    count = count + pageParam.getPageSize();
+                }
+
+                count = count / pageParam.getPageSize();
+
+                if (resultBooks !=null && resultBooks.size()>0) {
+                    resultBooks.get(0).setCount(count);
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -54,6 +54,18 @@
 
         </div>
 
+            <div class="select_page" align="right">
+
+                <ul>
+
+                    <c:forEach var="item" varStatus="status" begin="1" end="${pageCount}">
+                        <li><a href="/search/searchBook.action?pageCount=${ status.index}&bookMessage=${bookMessage}&selectWay=${selectWay}"> ${ status.index} </a> </li>
+                    </c:forEach>
+
+                </ul>
+
+            </div>
+
     </div>
 
 </div>

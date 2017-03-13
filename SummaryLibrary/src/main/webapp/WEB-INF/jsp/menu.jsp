@@ -30,6 +30,11 @@
 <!--顶部菜单-->
 <div class="top_menu">
     <ul>
+
+        <c:if test="${sessionScope.readerName != null}">
+            <li><a href="/reader/login_out.action"> 退出 </a> </li>
+        </c:if>
+
         <li><a href="#"> 留言 </a></li>
         <li><a href="/index.action"> 查找 </a></li>
         <li><a href="#"> 分类目录 </a></li>

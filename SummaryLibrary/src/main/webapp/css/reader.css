@@ -1,0 +1,108 @@
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.bg{
+//border: 1px solid red;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.reader_center{
+    position: relative;
+    width:1200px;
+    height: 400px;
+    background-color: aliceblue;
+    padding-top: 100px;
+}
+
+.message_title{
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    top: 50px;
+    left: 350px;
+}
+
+.reader_center_message{
+    border-collapse: collapse;
+    background-color: white;
+    margin-left: 50px;
+}
+
+.reader_center_message td{
+    border: 1px solid rgb(204, 204, 204);
+    height: 40px;
+}
+
+.table_one{
+    width: 100px;
+}
+
+.table_two{
+    width: 200px;
+}
+
+.reader_center_message textarea{
+    resize: none;
+    height: 100px;
+    width: 610px;
+}
+
+.select_label{
+    position: absolute;
+    //border:1px solid red;
+    width: 300px;
+    height: 200px;
+    right:30px;
+    top: 80px;
+    padding-top: 40px;
+}
+
+.reader_basic_message{
+    margin: 0 auto;
+    width: 200px;
+    height: 30px;
+    background-color: #EEEEEE;
+    display: block;
+    padding-left: 30px;
+    line-height: 30px;
+    border: 1px solid black;
+}
+
+.reader_update_password{
+    margin: 5px auto;
+    width: 200px;
+    height: 30px;
+    background-color: #EEEEEE;
+    display: block;
+    padding-left: 30px;
+    line-height: 30px;
+    border: 1px solid black;
+}
+
+.reader_lend_book{
+    margin: 0 auto;
+    width: 200px;
+    height: 30px;
+    background-color: #EEEEEE;
+    display: block;
+    padding-left: 30px;
+    line-height: 30px;
+    border: 1px solid black;
+}
+
+.reader_histoty_book{
+    margin: 5px auto;
+    width: 200px;
+    height: 30px;
+    background-color: #EEEEEE;
+    display: block;
+    padding-left: 30px;
+    line-height: 30px;
+    border: 1px solid black;
+}

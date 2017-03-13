@@ -126,6 +126,14 @@ public class ReaderAction {
         return "Reader";
     }
 
+    @RequestMapping("/login_out")
+    public String login_out(HttpSession session) {
+
+        session.invalidate();
+
+        return "index";
+    }
+
     public void setReaderService(ReaderService readerService) {
         this.readerService = readerService;
     }

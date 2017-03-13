@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.dragon.parame.PageParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,17 +58,18 @@ public class searchAction {
     /**
      * 多方式查找
      *
-     * @param selectWay 查询方式
-     * @param bookMessage 查询的信息
+     * @param pageParam 查询信息
      * @param model
      *
      * @return
      */
     @RequestMapping("/searchBook")
-    public String searchBook(String selectWay, String bookMessage, Model model) {
+    public String searchBook(PageParam pageParam, Model model) {
         List<BookInType> resultBooks = null;
+        int pageSum = 0;
+        String message = pageParam.getBookMessage();
 
-        resultBooks = searchService.searchBook(selectWay, bookMessage);
+        resultBooks = searchService.searchBook(pageParam);
 
         // 简述处理
         for (BookInType book : resultBooks) {
@@ -85,6 +87,15 @@ public class searchAction {
         }
 
         model.addAttribute("resultBooks", resultBooks);
+
+        if (resultBooks !=null && resultBooks.size()>0) {
+            pageSum = resultBooks.get(0).getCount();
+        }
+
+System.out.println(pageParam);
+        model.addAttribute("pageCount", pageSum);
+        model.addAttribute("bookMessage", message);
+        model.addAttribute("selectWay", pageParam.getSelectWay());
 
         return "result";
     }

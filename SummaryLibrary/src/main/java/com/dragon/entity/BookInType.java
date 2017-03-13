@@ -15,6 +15,9 @@ public class BookInType extends BookExtend{
     /** 图书类型名称 */
     private String typeName;
 
+    /** 查询到的数量 */
+    private int count;
+
     public long getTypeId() {
         return typeId;
     }
@@ -31,5 +34,12 @@ public class BookInType extends BookExtend{
         this.typeName = typeName;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }
 
