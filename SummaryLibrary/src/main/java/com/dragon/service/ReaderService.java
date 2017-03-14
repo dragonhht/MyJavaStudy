@@ -1,6 +1,9 @@
 package com.dragon.service;
 
+import com.dragon.entity.BorrowExtend;
 import com.dragon.entity.ReaderExtend;
+
+import java.util.List;
 
 /**
  * 读者Service类
@@ -37,6 +40,15 @@ public interface ReaderService {
      * @return 修改结果
      */
     boolean updatePassword(ReaderExtend reader);
+
+    /**
+     * 通过读者编号查找当前借阅的图书
+     *
+     * @param readerId 读者编号
+     *
+     * @return
+     */
+    List<BorrowExtend> getNowBorrowCord(long readerId);
 
     /**
      * 通过编号获取读者信息

@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>查询结果</title>
-    <link href="../../css/reader.css" rel="stylesheet" type="text/css">
+    <link href="../../css/readerLend.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="bg" >
@@ -22,21 +22,19 @@
 
     <div class="reader_center">
 
-        <span class="message_title">基本信息</span>
+        <span class="message_title">当前借阅信息</span>
 
         <table class="reader_center_message">
             <tr>
-                <td class="table_one">姓名:</td><td class="table_two">${readerMessage.readerName}</td>
-                <td class="table_one">编号:</td><td class="table_two">${readerMessage.readerId}</td>
-                <td rowspan="3" style="width:130px;"><img src="${readerMessage.readerName}"></td>
+                <td >图书编号</td><td>图书名</td><td >借阅日期</td><td>应还日期</td>
             </tr>
 
-            <tr>
-                <td >电子邮件:</td><td>${readerMessage.email}</td><td>联系方式:</td><td>${readerMessage.phone}</td>
-            </tr>
-            <tr>
-                <td colspan="4" style="height: 100px;"><textarea placeholder="个人格言:"></textarea></td>
-            </tr>
+            <c:forEach items="${borrowCord}" var="borrow">
+                <tr>
+                    <td>${borrow.bookId}</td><td>${borrow.bookName}</td><td>${borrow.borrowDate}</td><td>${borrow.returnDate}</td>
+                </tr>
+            </c:forEach>
+
         </table>
 
         <%--标签选择--%>

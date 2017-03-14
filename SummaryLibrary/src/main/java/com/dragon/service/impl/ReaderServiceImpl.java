@@ -1,10 +1,14 @@
 package com.dragon.service.impl;
 
 import javax.annotation.Resource;
+
+import com.dragon.entity.BorrowExtend;
 import org.springframework.stereotype.Service;
 import com.dragon.entity.ReaderExtend;
 import com.dragon.mapper.ReaderMapper;
 import com.dragon.service.ReaderService;
+
+import java.util.List;
 
 /**
  * 读者Service实现类
@@ -66,6 +70,18 @@ public class ReaderServiceImpl implements ReaderService {
         }
 
         return ok;
+    }
+
+    public List<BorrowExtend> getNowBorrowCord(long readerId) {
+        List<BorrowExtend> borrowCord = null;
+
+        try {
+            borrowCord = readerMapper.getNowBorrowCord(readerId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return borrowCord;
     }
 
     public ReaderExtend getReaderById(long readerId) {

@@ -29,4 +29,11 @@
         select * from Reader where readerId = #{value}
     </select>
 
+    <!--通过读者编号查找当前借阅的图书-->
+    <select id="getNowBorrowCord" parameterType="long" resultType="BorrowExtend">
+        select br.*,bo.bookName
+        from Borrow br, Book bo
+        where br.readerId = #{value} and br.bookId = bo.bookId
+    </select>
+
 </mapper>

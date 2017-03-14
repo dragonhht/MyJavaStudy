@@ -3,8 +3,10 @@ package com.dragon.action;
 import java.util.List;
 
 import javax.annotation.Resource;
+
 import javax.servlet.http.HttpSession;
 
+import com.dragon.entity.BorrowExtend;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,31 +38,81 @@ public class ReaderAction {
      * @param model
      * @param reader
      * @param bindingResult
+     * @param session
      *
      * @return 结果页面
      */
     @RequestMapping("/login")
     public String login(Model model, @Validated ReaderExtend reader, BindingResult bindingResult, HttpSession session) {
-
         ReaderExtend readerExtend = null;
 
-        //数据校验
+        // 数据校验
         if (bindingResult.hasErrors()) {
             model.addAttribute("loginError", "您有信息未填写");
+
             return "login";
         }
 
         readerExtend = readerService.readerLogin(reader);
-        if (readerExtend !=null) {
+
+        if (readerExtend != null) {
             session.setAttribute("readerName", readerExtend.getReaderName());
             session.setAttribute("readerId", readerExtend.getReaderId());
+
             return "index";
         } else {
             model.addAttribute("loginError", "账号或密码错误");
+
             return "login";
         }
+    }
 
+    /**
+     * 账号注销
+     *
+     * @param session
+     *
+     * @return
+     */
+    @RequestMapping("/login_out")
+    public String login_out(HttpSession session) {
+        session.invalidate();
 
+        return "index";
+    }
+
+    /**
+     * 跳转个人中心主页
+     *
+     *
+     * @param readerId
+     * @param model
+     * @return 个人中心主页
+     */
+    @RequestMapping("reader")
+    public String reader(long readerId, Model model) {
+        ReaderExtend reader = null;
+
+        reader = readerService.getReaderById(readerId);
+        model.addAttribute("readerMessage", reader);
+
+        return "Reader";
+    }
+
+    /**
+     * 跳转至读者当前借阅记录
+     *
+     * @return 页面
+     */
+    @RequestMapping("/readerLend")
+    public String readerLend(long readerId, Model model) {
+        List<BorrowExtend> borrowCord = null;
+
+        borrowCord = readerService.getNowBorrowCord(readerId);
+
+        model.addAttribute("borrowCord", borrowCord);
+
+        return "readerLend";
     }
 
     /**
@@ -74,7 +126,8 @@ public class ReaderAction {
      */
     @RequestMapping("/regist")
     public String regist(Model model, @Validated ReaderExtend reader, BindingResult bindingResult) {
-        //注册成功后的ID
+
+        // 注册成功后的ID
         long successId = 0l;
 
         // 获取校验错误信息
@@ -102,6 +155,7 @@ public class ReaderAction {
 
             // 注册成功跳转成功提示界面
             model.addAttribute("registSuccess", successId);
+
             return "msg";
         } else {
 
@@ -112,27 +166,6 @@ public class ReaderAction {
         }
     }
 
-    /**
-     * 跳转个人中心主页
-     *
-     * @return 个人中心主页
-     */
-    @RequestMapping("reader")
-    public String reader(long readerId, Model model) {
-        ReaderExtend reader = null;
-        reader = readerService.getReaderById(readerId);
-        model.addAttribute("readerMessage", reader);
-
-        return "Reader";
-    }
-
-    @RequestMapping("/login_out")
-    public String login_out(HttpSession session) {
-
-        session.invalidate();
-
-        return "index";
-    }
 
     public void setReaderService(ReaderService readerService) {
         this.readerService = readerService;

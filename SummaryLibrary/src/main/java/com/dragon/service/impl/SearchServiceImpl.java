@@ -33,7 +33,7 @@ public class SearchServiceImpl implements SearchService{
         //查询到的数量
         int count;
 
-System.out.println("PageParame参数:"+pageParam);
+System.out.println("处理前PageParame参数:"+pageParam);
         //按书名查找
         if ("0".equals(selectWay)) {
             try {
@@ -41,6 +41,8 @@ System.out.println("PageParame参数:"+pageParam);
                 pageParam.setBookMessage(bookMessage);
                 int pageCount = (pageParam.getPageCount() - 1)  * pageParam.getPageSize();
                 pageParam.setPageCount(pageCount);
+
+
 
                 resultBooks = searchMapper.searchBookByName(pageParam);
                 count = searchMapper.getResultSumByName(bookMessage);
@@ -66,7 +68,7 @@ System.out.println("PageParame参数:"+pageParam);
                 pageParam.setBookMessage(bookMessage);
                 int pageCount = (pageParam.getPageCount() - 1) * pageParam.getPageSize();
                 pageParam.setPageCount(pageCount);
-
+System.out.println("处理后PageParame参数:"+pageParam);
                 resultBooks = searchMapper.searchBookByAuthor(pageParam);
                 count = searchMapper.getResultSumByAuthor(bookMessage);
 

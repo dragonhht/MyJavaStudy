@@ -1,6 +1,9 @@
 package com.dragon.mapper;
 
+import com.dragon.entity.BorrowExtend;
 import com.dragon.entity.ReaderExtend;
+
+import java.util.List;
 
 /**
  * 读者操作mapper接口
@@ -49,6 +52,17 @@ public interface ReaderMapper {
      * @throws Exception
      */
     long getLastReaderId() throws Exception;
+
+    /**
+     * 通过读者编号查找当前借阅的图书
+     *
+     * @param readerId 读者编号
+     *
+     * @return
+     *
+     * @throws Exception
+     */
+    List<BorrowExtend> getNowBorrowCord(long readerId) throws Exception;
 
     /**
      * 通过编号查询读者

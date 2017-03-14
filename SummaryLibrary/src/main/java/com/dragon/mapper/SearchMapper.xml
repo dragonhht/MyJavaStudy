@@ -13,7 +13,7 @@
     </select>
 
     <!--通过出版社查询图书-->
-    <select id="searchBookByPublish" parameterType="string" resultType="BookInType">
+    <select id="searchBookByPublish" parameterType="PageParam" resultType="BookInType">
         select b.*,t.*
         from Book b,BookType t,BookInType i
         where b.publish like #{bookMessage} and b.bookId = i.bookId and i.typeId = t.typeId
@@ -21,7 +21,7 @@
     </select>
 
     <!--通过作者查询图书-->
-    <select id="searchBookByAuthor" parameterType="string" resultType="BookInType">
+    <select id="searchBookByAuthor" parameterType="PageParam" resultType="BookInType">
         select b.*,t.*
         from Book b,BookType t,BookInType i
         where b.author like #{bookMessage} and b.bookId = i.bookId and i.typeId = t.typeId
