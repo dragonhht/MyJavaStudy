@@ -1,6 +1,7 @@
 package com.dragon.mapper;
 
 import com.dragon.entity.BorrowExtend;
+import com.dragon.entity.MessageExtend;
 import com.dragon.entity.ReaderExtend;
 
 import java.util.List;
@@ -74,5 +75,15 @@ public interface ReaderMapper {
      * @throws Exception
      */
     ReaderExtend getReaderById(long readerId) throws Exception;
+
+    /**
+     * 添加留言
+     *
+     * @param message 留言相关信息
+     *
+     *
+     * @throws Exception
+     */
+    void addMessage(MessageExtend message) throws Exception;
 }
 

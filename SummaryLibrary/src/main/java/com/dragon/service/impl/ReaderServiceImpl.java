@@ -3,6 +3,7 @@ package com.dragon.service.impl;
 import javax.annotation.Resource;
 
 import com.dragon.entity.BorrowExtend;
+import com.dragon.entity.MessageExtend;
 import org.springframework.stereotype.Service;
 import com.dragon.entity.ReaderExtend;
 import com.dragon.mapper.ReaderMapper;
@@ -94,6 +95,18 @@ public class ReaderServiceImpl implements ReaderService {
         }
 
         return reader;
+    }
+
+    public boolean addMessage(MessageExtend message) {
+        boolean ok = false;
+
+        try {
+            readerMapper.addMessage(message);
+            ok = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ok;
     }
 
 

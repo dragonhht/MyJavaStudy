@@ -1,12 +1,17 @@
 package com.dragon.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dragon.entity.BorrowExtend;
+import com.dragon.entity.MessageExtend;
+import com.dragon.utils.getDate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -166,6 +171,34 @@ public class ReaderAction {
         }
     }
 
+
+    /**
+     * 添加留言
+     *
+     * @param message 留言信息
+     * @param response
+     *
+     */
+    @RequestMapping("/addMessage")
+    public void addMessage(MessageExtend message, HttpServletResponse response, HttpSession session) {
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = null;
+
+        long readerId =Integer.parseInt(String.valueOf(session.getAttribute("readerId")));
+        message.setReaderId(readerId);
+        String date = getDate.getDate();
+        message.setMessageDate(date);
+
+        try {
+            out = response.getWriter();
+            readerService.addMessage(message);
+            out.println("提交成功!");
+        } catch (IOException e) {
+            out.println("提交失败!");
+            e.printStackTrace();
+        }
+
+    }
 
     public void setReaderService(ReaderService readerService) {
         this.readerService = readerService;

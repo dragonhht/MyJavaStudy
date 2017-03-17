@@ -36,4 +36,9 @@
         where br.readerId = #{value} and br.bookId = bo.bookId
     </select>
 
+    <!--添加留言-->
+    <insert id="addMessage" parameterType="MessageExtend">
+        insert into Message(messageDate, readerId, message) VALUES (#{messageDate}, #{readerId}, #{message});
+    </insert>
+
 </mapper>

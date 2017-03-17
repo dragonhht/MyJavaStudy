@@ -1,6 +1,7 @@
 package com.dragon.service;
 
 import com.dragon.entity.BorrowExtend;
+import com.dragon.entity.MessageExtend;
 import com.dragon.entity.ReaderExtend;
 
 import java.util.List;
@@ -58,5 +59,14 @@ public interface ReaderService {
      * @return 读者信息
      */
     ReaderExtend getReaderById(long readerId);
+
+    /**
+     * 添加留言
+     *
+     * @param message 留言相关信息
+     *
+     * @return 是否添加成功
+     */
+    boolean addMessage(MessageExtend message);
 }
 

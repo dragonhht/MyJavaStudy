@@ -33,7 +33,15 @@ public class IndexAction {
         return "login";
     }
 
-
+    /**
+     * 跳转至留言板
+     *
+     * @return 留言界面
+     */
+    @RequestMapping("/messageBorad")
+    public String messageBorad() {
+        return "messageBorad";
+    }
 
     /**
      * 跳转注册页面
@@ -46,3 +54,5 @@ public class IndexAction {
     }
 }
 
+
+//~ Formatted by Jindent --- http://www.jindent.com
