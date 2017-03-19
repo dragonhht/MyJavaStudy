@@ -3,12 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- mybatis全局文件 -->
 <configuration>
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
 
     <!-- 自定义别名 -->
     <typeAliases>
         <package name="com.dragon.entity"/>
         <package name="com.dragon.parame"/>
     </typeAliases>
+
+
 
 
     <!-- 加载映射文件 -->

@@ -34,6 +34,9 @@ public class Reader {
     @Size(min = 1, message = "{reader.password.not-null.error}")
     private String password;
 
+    /** 个人格言 */
+    private String motto;
+
 
     public String getEmail() {
         return email;
@@ -81,6 +84,14 @@ public class Reader {
         this.readerName = readerName;
     }
 
+    public String getMotto() {
+        return motto;
+    }
+
+    public void setMotto(String motto) {
+        this.motto = motto;
+    }
+
     @Override
     public String toString() {
         return "Reader{" +
@@ -89,6 +100,7 @@ public class Reader {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", motto='" + motto + '\'' +
                 '}';
     }
 }

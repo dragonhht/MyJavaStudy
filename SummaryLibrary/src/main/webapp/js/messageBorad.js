@@ -8,6 +8,11 @@ function addMessage() {
     var message = document.getElementById('message_text');
     var messageText = message.value;
 
+    if (messageText.length > 255) {
+        document.getElementById('submit_result').innerHTML = "留言过长!";
+        return;
+    }
+
     xmlhttprequest = new XMLHttpRequest();
     if (xmlhttprequest.overrideMimeType) {
         xmlhttprequest.overrideMimeType("text/xml");

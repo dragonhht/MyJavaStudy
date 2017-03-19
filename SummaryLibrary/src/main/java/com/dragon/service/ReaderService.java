@@ -68,5 +68,14 @@ public interface ReaderService {
      * @return 是否添加成功
      */
     boolean addMessage(MessageExtend message);
+
+    /**
+     * 修改读者信息
+     *
+     * @param reader 读者信息
+     *
+     * @return 是否修改成功
+     */
+    boolean updateMessage(ReaderExtend reader);
 }
 

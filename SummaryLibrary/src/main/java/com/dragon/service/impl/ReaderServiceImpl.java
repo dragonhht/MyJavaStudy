@@ -109,6 +109,18 @@ public class ReaderServiceImpl implements ReaderService {
         return ok;
     }
 
+    public boolean updateMessage(ReaderExtend reader) {
+        boolean ok = false;
+
+        try {
+            readerMapper.updateMessage(reader);
+            ok = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ok;
+    }
+
 
     /**
      * 获取一个新的读者编号

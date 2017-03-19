@@ -95,11 +95,20 @@ public class ReaderAction {
      * @return 个人中心主页
      */
     @RequestMapping("reader")
-    public String reader(long readerId, Model model) {
+    public String reader(long readerId, Model model, String flag, String result) {
         ReaderExtend reader = null;
 
         reader = readerService.getReaderById(readerId);
         model.addAttribute("readerMessage", reader);
+
+        //修改信息
+        if ("update".equals(flag)) {
+            model.addAttribute("updateFlage", 1);
+        }
+
+        if (result != null) {
+            model.addAttribute("updateResult", false);
+        }
 
         return "Reader";
     }
@@ -183,14 +192,20 @@ public class ReaderAction {
     public void addMessage(MessageExtend message, HttpServletResponse response, HttpSession session) {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = null;
+        long readerId = 0l;
 
-        long readerId =Integer.parseInt(String.valueOf(session.getAttribute("readerId")));
+        String readerIdString =String.valueOf(session.getAttribute("readerId"));
+
+        if (readerIdString !=null && readerIdString != "" && readerIdString != "null") {
+            readerId = Integer.parseInt(readerIdString);
+        }
         message.setReaderId(readerId);
         String date = getDate.getDate();
         message.setMessageDate(date);
 
         try {
             out = response.getWriter();
+
             readerService.addMessage(message);
             out.println("提交成功!");
         } catch (IOException e) {
@@ -199,6 +214,37 @@ public class ReaderAction {
         }
 
     }
+
+
+    /**
+     * 修改读者信息
+     *
+     * @param reader 读者信息
+     *
+     * @return 结果页面
+     */
+    @RequestMapping("/updateMessage")
+    public String updateMessage(ReaderExtend reader, HttpSession session) {
+        String readerIdString =String.valueOf(session.getAttribute("readerId"));
+        long readerId = 0;
+        boolean ok = false;
+
+        if (readerIdString !=null && readerIdString != "" && readerIdString != "null") {
+            readerId = Integer.parseInt(readerIdString);
+            reader.setReaderId(readerId);
+        }
+System.out.print(reader);
+
+        ok = readerService.updateMessage(reader);
+
+        if (ok) {
+            return "redirect:/reader/reader.action?readerId="+readerId;
+        }
+
+        return "redirect:/reader/reader.action?readerId="+readerId+"&flag=update&result=false";
+
+    }
+
 
     public void setReaderService(ReaderService readerService) {
         this.readerService = readerService;

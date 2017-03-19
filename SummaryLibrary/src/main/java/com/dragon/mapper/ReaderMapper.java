@@ -85,5 +85,15 @@ public interface ReaderMapper {
      * @throws Exception
      */
     void addMessage(MessageExtend message) throws Exception;
+
+    /**
+     * 修改读者信息
+     *
+     * @param reader 读者信息
+     *
+     *
+     * @throws Exception
+     */
+    void updateMessage(ReaderExtend reader) throws Exception;
 }
 

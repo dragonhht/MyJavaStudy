@@ -41,4 +41,10 @@
         insert into Message(messageDate, readerId, message) VALUES (#{messageDate}, #{readerId}, #{message});
     </insert>
 
+    <!--修改读者信息-->
+    <update id="updateMessage" parameterType="ReaderExtend">
+        update Reader set readerName = #{readerName} ,phone = #{phone}, email = #{email}, motto = #{motto}
+        where readerId = #{readerId}
+    </update>
+
 </mapper>

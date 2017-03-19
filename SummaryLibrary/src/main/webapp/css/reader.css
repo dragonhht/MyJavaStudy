@@ -32,11 +32,17 @@ a{
     border-collapse: collapse;
     background-color: white;
     margin-left: 50px;
+    margin-bottom: 100px;
 }
 
 .reader_center_message td{
     border: 1px solid rgb(204, 204, 204);
     height: 40px;
+}
+
+.reader_message_input{
+    height: 40px;
+    width: 200px;
 }
 
 .table_one{
@@ -51,6 +57,33 @@ a{
     resize: none;
     height: 100px;
     width: 610px;
+}
+
+.center_button{
+    //border:1px solid red;
+    height: 30px;
+    width: 200px;
+    margin-left: 300px;
+}
+
+.update_button{
+    height: 30px;
+    width: 65px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: #EEEEEE;
+}
+
+.save_button{
+    margin-left: 30px;
+    height: 30px;
+    width: 65px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: #EEEEEE;
+}
+
+.update_reuslt{
+    color: red;
+
 }
 
 .select_label{
