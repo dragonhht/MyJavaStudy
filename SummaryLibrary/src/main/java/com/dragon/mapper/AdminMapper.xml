@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，对Sql进行分类化管理 ,namespace等于mapper接口的地址-->
+<mapper namespace="com.dragon.mapper.AdminMapper">
+
+    <!--添加图书信息-->
+    <insert id="addBook" parameterType="BookExtend">
+        insert into Book(bookId, bookName, price, author, buyDate, publish, bookLend, img, bookSketch, place)
+        VALUES (#{bookId}, #{bookName}, #{price}, #{author}, #{buyDate}, #{publish}, #{bookLend}, #{img}, #{bookSketch}, #{place})
+    </insert>
+
+    <!--删除图书信息-->
+    <delete id="delBook" parameterType="long">
+        DELETE from Book where bookId = #{value}
+    </delete>
+
+    <!--修改图书信息-->
+    <update id="updateBook" parameterType="BookExtend">
+        update Book set bookName =#{bookName}, price = #{price}, author = #{author}, buyDate = #{buyDate}, publish = #{publish}, bookLend = #{bookLend}, img = #{img}, bookSketch = #{bookSketch}, place = #{place}
+        where bookId = #{bookId}
+    </update>
+
+    <!--读者借阅图书-->
+    <insert id="borrowBook" parameterType="BorrowExtend">
+        insert into Borrow (readId, bookId, borrowDate, returnDate) VALUES (#{readId}, #{bookId}, #{borrowDate}, #{returnDate})
+    </insert>
+
+    <!--读者归还图书-->
+    <delete id="returnBook" parameterType="BorrowExtend" >
+        DELETE from Borrow where readId = #{readId} and bookId = #{bookId}
+    </delete>
+
+</mapper>

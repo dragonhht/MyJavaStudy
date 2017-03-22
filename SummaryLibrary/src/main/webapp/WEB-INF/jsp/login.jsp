@@ -32,8 +32,12 @@
         <!--密码-->
         <input class="login_input login_pwd" name="password" type="password" placeholder="请输入密码" ><br/>
 
+        <label class="avarage_reader"><input type="radio" name="status" value="0" checked="checked">普通读者</label>
+
         <%--提示信息--%>
         <span style="color: red">${loginError}</span>
+
+        <label class="admin_reader"><input type="radio" name="status" value="1" >管理员</label>
 
         <div  class="login_bottom" align="left">
 

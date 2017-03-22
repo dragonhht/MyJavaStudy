@@ -51,6 +51,8 @@ public class ReaderAction {
     public String login(Model model, @Validated ReaderExtend reader, BindingResult bindingResult, HttpSession session) {
         ReaderExtend readerExtend = null;
 
+System.out.println(reader);
+
         // 数据校验
         if (bindingResult.hasErrors()) {
             model.addAttribute("loginError", "您有信息未填写");

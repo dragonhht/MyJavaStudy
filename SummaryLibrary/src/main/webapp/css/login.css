@@ -65,3 +65,15 @@ a{
     border: 1px solid rgb(204, 204, 204);
     height: 30px;
 }
+
+.avarage_reader{
+    position:absolute;
+    left: 10px;
+    top: 115px;
+}
+
+.admin_reader{
+    position: absolute;
+    right: 10px;
+    top:115px;
+}

@@ -21,7 +21,7 @@
 
     <!--读者登录-->
     <select id="readerLogin" parameterType="ReaderExtend" resultType="ReaderExtend">
-        select * from Reader where readerId = #{readerId} and password = #{password}
+        select * from Reader where readerId = #{readerId} and password = #{password} and status = #{status}
     </select>
 
     <!--通过编号查询读者信息-->
@@ -43,8 +43,7 @@
 
     <!--修改读者信息-->
     <update id="updateMessage" parameterType="ReaderExtend">
-        update Reader set readerName = #{readerName} ,phone = #{phone}, email = #{email}, motto = #{motto}
-        where readerId = #{readerId}
+        update Reader set readerName=#{readerName},phone=#{phone},email=#{email},motto=#{motto} where readerId=#{readerId}
     </update>
 
 </mapper>

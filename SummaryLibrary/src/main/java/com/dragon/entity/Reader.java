@@ -37,6 +37,9 @@ public class Reader {
     /** 个人格言 */
     private String motto;
 
+    /** 身份状态 */
+    private int status;
+
 
     public String getEmail() {
         return email;
@@ -92,6 +95,14 @@ public class Reader {
         this.motto = motto;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Reader{" +
@@ -101,6 +112,7 @@ public class Reader {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", motto='" + motto + '\'' +
+                ", status=" + status +
                 '}';
     }
 }
