@@ -65,6 +65,7 @@ System.out.println(reader);
         if (readerExtend != null) {
             session.setAttribute("readerName", readerExtend.getReaderName());
             session.setAttribute("readerId", readerExtend.getReaderId());
+            session.setAttribute("status",readerExtend.getStatus());
 
             return "index";
         } else {

@@ -23,12 +23,12 @@
 
     <!--读者借阅图书-->
     <insert id="borrowBook" parameterType="BorrowExtend">
-        insert into Borrow (readId, bookId, borrowDate, returnDate) VALUES (#{readId}, #{bookId}, #{borrowDate}, #{returnDate})
+        insert into Borrow (readerId, bookId, borrowDate, returnDate) VALUES (#{readerId}, #{bookId}, #{borrowDate}, #{returnDate})
     </insert>
 
     <!--读者归还图书-->
     <delete id="returnBook" parameterType="BorrowExtend" >
-        DELETE from Borrow where readId = #{readId} and bookId = #{bookId}
+        DELETE from Borrow where readerId = #{readerId} and bookId = #{bookId}
     </delete>
 
 </mapper>

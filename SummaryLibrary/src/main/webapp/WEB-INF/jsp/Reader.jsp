@@ -84,7 +84,7 @@
             <span  class="reader_basic_message"><a href="/reader/reader.action?readerId=${sessionScope.readerId}"> 基本信息 </a></span>
             <span  class="reader_update_password"> <a href="#">修改密码 </a></span>
             <span  class="reader_lend_book"><a href="/reader/readerLend.action?readerId=${sessionScope.readerId}">当前借阅记录 </a></span>
-
+            <span  class="admin_function"> <a href="/admin/admin.action">管理员功能 </a></span>
         </div>
 
     </div>
