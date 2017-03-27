@@ -1,0 +1,90 @@
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.bg{
+//border: 1px solid red;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.reader_center{
+    position: relative;
+    width:1200px;
+    height: 400px;
+    background-color: aliceblue;
+    padding-top: 140px;
+}
+
+.message_title{
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    top: 50px;
+    left: 350px;
+}
+
+.reader_center_message{
+    position: absolute;
+    border-collapse: collapse;
+    background-color: white;
+    right: 320px;
+
+}
+
+.reader_center_message td{
+    border: 1px solid rgb(204, 204, 204);
+}
+
+.croOne {
+
+    height: 40px;
+    width: 200px;
+}
+
+.croTwo{
+    border: 1px solid rgb(204, 204, 204);
+    height: 40px;
+    width: 100px;
+}
+
+.borrow_input{
+    width: 200px;
+    height: 40px;
+    border: none;
+}
+
+.grant_submit{
+    width: 70px;
+    height: 30px;
+}
+
+.submit_result{
+    position: absolute;
+    color: red;
+    left: 600px;
+    top:380px;
+}
+
+.admin_table_div{
+    border: 1px solid rgb(204, 204, 204);
+    width: 480px;
+    height: 300px;
+    margin-left: 30px;
+    background-color: #FFFFFF;
+    overflow-y:scroll;
+}
+
+.admin_table{
+    border-collapse: collapse;
+}
+
+.admin_table td{
+    width: 200px;
+    height: 35px;
+    border: 1px solid rgb(204, 204, 204);
+}

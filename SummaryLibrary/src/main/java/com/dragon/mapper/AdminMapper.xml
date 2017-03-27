@@ -31,4 +31,19 @@
         DELETE from Borrow where readerId = #{readerId} and bookId = #{bookId}
     </delete>
 
+    <!--授权管理员-->
+    <update id="grantReader" parameterType="long">
+        update Reader set status = 1 where readerId = #{value}
+    </update>
+
+    <!--获取所有的管理员-->
+    <select id="getAdmin" resultType="ReaderExtend">
+        SELECT * from Reader where status = 1;
+    </select>
+
+    <!--撤销管理员-->
+    <update id="delAdmin" parameterType="long">
+        update Reader set status = 0 where readerId = #{value}
+    </update>
+
 </mapper>

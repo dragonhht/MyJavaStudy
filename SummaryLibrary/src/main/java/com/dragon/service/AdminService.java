@@ -2,6 +2,9 @@ package com.dragon.service;
 
 import com.dragon.entity.BookExtend;
 import com.dragon.entity.BorrowExtend;
+import com.dragon.entity.ReaderExtend;
+
+import java.util.List;
 
 /**
  * ClassDescription
@@ -17,7 +20,6 @@ public interface AdminService {
      *
      * @param book  图书信息
      *
-     * @throws Exception
      */
     public boolean addBook(BookExtend book);
 
@@ -26,7 +28,6 @@ public interface AdminService {
      *
      * @param bookId  图书编号
      *
-     * @throws Exception
      */
     public boolean delBook(long bookId);
 
@@ -35,7 +36,6 @@ public interface AdminService {
      *
      * @param book  图书信息
      *
-     * @throws Exception
      */
     public boolean updateBook(BookExtend book);
 
@@ -44,7 +44,6 @@ public interface AdminService {
      *
      * @param borrow  借阅信息
      *
-     * @throws Exception
      */
     public boolean borrowBook(BorrowExtend borrow);
 
@@ -53,7 +52,28 @@ public interface AdminService {
      *
      * @param borrow  借阅信息
      *
-     * @throws Exception
      */
     public boolean returnBook(BorrowExtend borrow);
+
+    /**
+     * 授权管理员
+     *
+     * @param readerId  读者编号
+     *
+     */
+    public boolean grantReader(long readerId);
+
+    /**
+     * 获取所有的管理员信息
+     *
+     * @return 管理员列表
+     */
+    public List<ReaderExtend> getAdmin();
+
+    /**
+     * 撤销管理员
+     *
+     * @return 结果
+     */
+    public boolean delAdmin(long readerId);
 }

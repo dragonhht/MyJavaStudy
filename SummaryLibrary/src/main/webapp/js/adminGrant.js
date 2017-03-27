@@ -1,11 +1,9 @@
 /**
- * Created by root on 17-3-23.
+ * Created by root on 17-3-27.
  */
-
 //使用ajax提交信息
 var xmlhttprequest;
-function borrowBook() {
-    var bookId = document.getElementById('bookId').value.trim();
+function grantReader() {
     var readerId = document.getElementById('readerId').value.trim();
 
     xmlhttprequest = new XMLHttpRequest();
@@ -14,7 +12,7 @@ function borrowBook() {
     }
     xmlhttprequest.onreadystatechange = callback;
     //get请求
-    xmlhttprequest.open("GET", "/admin/readerReturnBook.action?readerId="+readerId+"&bookId="+bookId, true);
+    xmlhttprequest.open("GET", "/admin/grantReader.action?readerId="+readerId, true);
     xmlhttprequest.send(null);
 }
 
@@ -36,6 +34,3 @@ function callback() {
         }
     }
 }
-/**
- * Created by root on 17-3-23.
- */

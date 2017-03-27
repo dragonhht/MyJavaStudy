@@ -2,6 +2,9 @@ package com.dragon.mapper;
 
 import com.dragon.entity.BookExtend;
 import com.dragon.entity.BorrowExtend;
+import com.dragon.entity.ReaderExtend;
+
+import java.util.List;
 
 /**
  * ClassDescription
@@ -58,4 +61,31 @@ public interface AdminMapper {
      * @throws Exception
      */
     public void returnBook(BorrowExtend borrow) throws Exception;
+
+    /**
+     * 授权管理员
+     *
+     * @param readerId  读者编号
+     *
+     * @throws Exception
+     */
+    public void grantReader(long readerId) throws Exception;
+
+    /**
+     * 获取所有的管理员
+     *
+     * @return 管理员信息
+     *
+     * @throws Exception
+     */
+    public List<ReaderExtend> getAdmin() throws Exception;
+
+    /**
+     * 撤销管理员
+     *
+     * @param readerId 读者编号
+     *
+     * @throws Exception
+     */
+    public void delAdmin(long readerId) throws Exception;
 }
