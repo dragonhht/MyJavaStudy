@@ -69,7 +69,7 @@
     <span  class="reader_basic_message"><a href="/admin/admin.action"> 图书借阅 </a></span>
     <span  class="reader_update_password"> <a href="/admin/returnbook.action">图书归还 </a></span>
     <span  class="reader_lend_book"><a href="/admin/grant.action">管理员授权 </a></span>
-    <span  class="admin_function"> <a href="#">新增图书 </a></span>
+    <span  class="admin_function"> <a href="/admin/addBook.action">新增图书 </a></span>
     <span  class="admin_function"> <a href="#">修改图书 </a></span>
     <span  class="admin_function"> <a href="#">删除图书 </a></span>
 </div>

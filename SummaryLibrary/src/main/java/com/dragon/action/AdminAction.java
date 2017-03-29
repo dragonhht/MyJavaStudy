@@ -1,5 +1,6 @@
 package com.dragon.action;
 
+import com.dragon.entity.BookExtend;
 import com.dragon.entity.BorrowExtend;
 import com.dragon.entity.ReaderExtend;
 import com.dragon.service.AdminService;
@@ -179,6 +180,22 @@ System.out.println(borrow);
         }else {
             return "";
         }
+
+    }
+
+    /**
+     * 跳转新增图书界面
+     *
+     * @return 结果页面
+     */
+    @RequestMapping("/addBook")
+    public String addBook() {
+        return "addBook";
+    }
+
+
+    @RequestMapping("/addBookMessage")
+    public void addBookMessage(BookExtend book) {
 
     }
 

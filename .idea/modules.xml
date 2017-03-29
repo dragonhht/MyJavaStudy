@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/MyJavaStudy.iml" filepath="$PROJECT_DIR$/.idea/MyJavaStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring_source/Spring_source.iml" filepath="$PROJECT_DIR$/Spring_source/Spring_source.iml" />
       <module fileurl="file://$PROJECT_DIR$/SummaryLibrary/SummaryLibrary.iml" filepath="$PROJECT_DIR$/SummaryLibrary/SummaryLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestHtml/TestHtml.iml" filepath="$PROJECT_DIR$/TestHtml/TestHtml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/设计模式/设计模式.iml" filepath="$PROJECT_DIR$/设计模式/设计模式.iml" />
     </modules>
   </component>
 </project>
