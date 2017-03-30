@@ -1,7 +1,7 @@
 package generator;
 
 /**
- * ClassDescription
+ * 生成器模式测试类
  * <p>
  * User : Dragon_hht
  * Date : 17-3-30
@@ -9,8 +9,8 @@ package generator;
  */
 public class Test {
     public static void main(String[] arg) {
-        CarBuilder lowPriceCarBuilder = new LowPriceCarBuilder();
-        MechaincalEngineer engineer = new MechaincalEngineer(lowPriceCarBuilder);
+        CarBuilder height = new HightEndCarBuilder();
+        MechaincalEngineer engineer = new MechaincalEngineer(height);
         engineer.buildCar();
         Car car = engineer.getCar();
         System.out.println("Builder Constructed Car:"+car);

@@ -1,7 +1,8 @@
 package generator;
 
 /**
- * ClassDescription
+ * 生成器的第二个实现
+ * 具体生成器
  * <p>
  * User : Dragon_hht
  * Date : 17-3-30
