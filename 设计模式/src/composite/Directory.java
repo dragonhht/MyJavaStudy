@@ -2,6 +2,7 @@ package composite;
 
 /**
  * 分支节点
+ * 目录
  * <p>
  * User : Dragon_hht
  * Date : 17-4-2
