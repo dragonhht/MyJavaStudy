@@ -9,3 +9,4 @@
 7.  composite           组合模式
 8.  decorator           装饰器模式
 9.  facade              门面模式
+10. proxy               代理模式
