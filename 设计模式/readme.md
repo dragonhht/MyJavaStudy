@@ -10,3 +10,4 @@
 8.  decorator           装饰器模式
 9.  facade              门面模式
 10. proxy               代理模式
+11. handler             责任链模式
