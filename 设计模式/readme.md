@@ -11,3 +11,4 @@
 9.  facade              门面模式
 10. proxy               代理模式
 11. handler             责任链模式
+12. command             命令模式
