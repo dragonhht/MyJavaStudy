@@ -13,3 +13,4 @@
 11. handler             责任链模式
 12. command             命令模式
 13. expression          解释器模式
+14. iterator            迭代器模式
