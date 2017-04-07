@@ -15,3 +15,4 @@
 13. expression          解释器模式
 14. iterator            迭代器模式
 15. mediator            中介者模式
+16. memento             备忘录模式
