@@ -19,3 +19,4 @@
 17. observer            观察者模式
 18. state               状态模式
 19. strategy            策略模式
+20. templateMethod      模板方法模式
