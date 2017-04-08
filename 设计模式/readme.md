@@ -17,3 +17,4 @@
 15. mediator            中介者模式
 16. memento             备忘录模式
 17. observer            观察者模式
+18. state               状态模式
