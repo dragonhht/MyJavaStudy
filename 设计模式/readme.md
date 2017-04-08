@@ -20,3 +20,4 @@
 18. state               状态模式
 19. strategy            策略模式
 20. templateMethod      模板方法模式
+21. visitor             访问者模式
