@@ -1,4 +1,4 @@
-# 设计模式的学习
+# 设计模式的学习_设计模式的简单示例
 
 1.  abstractFactory     抽象工厂模式
 2.  adapter             适配器模式
@@ -18,3 +18,4 @@
 16. memento             备忘录模式
 17. observer            观察者模式
 18. state               状态模式
+19. strategy            策略模式
