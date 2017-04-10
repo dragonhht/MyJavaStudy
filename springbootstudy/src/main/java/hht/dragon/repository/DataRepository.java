@@ -1,5 +1,6 @@
-package hht.dragon;
+package hht.dragon.repository;
 
+import hht.dragon.entity.DataTest;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

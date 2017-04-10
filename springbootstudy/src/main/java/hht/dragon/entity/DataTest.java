@@ -1,8 +1,9 @@
-package hht.dragon;
+package hht.dragon.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 /**
  * 数据库表对应的实体
@@ -19,6 +20,9 @@ public class DataTest {
     @GeneratedValue
     private Integer id;
     private String name;
+
+    //验证age最小为18
+    @Min(value = 18, message = "不得小于18")
     private Integer age;
 
     public DataTest() {

@@ -1,4 +1,4 @@
-package hht.dragon;
+package hht.dragon.entity;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
