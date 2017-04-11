@@ -88,4 +88,11 @@ public interface AdminMapper {
      * @throws Exception
      */
     public void delAdmin(long readerId) throws Exception;
+
+    /**
+     * 获取最新的图书编号
+     *
+     * @throws Exception
+     */
+    public long getNewBookId() throws Exception;
 }

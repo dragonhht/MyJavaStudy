@@ -46,4 +46,9 @@
         update Reader set status = 0 where readerId = #{value}
     </update>
 
+    <!-- 获取最新的图书编号 -->
+    <select id="getNewBookId" resultType="long">
+        SELECT bookId FROM Book order by bookId desc limit 1
+    </select>
+
 </mapper>

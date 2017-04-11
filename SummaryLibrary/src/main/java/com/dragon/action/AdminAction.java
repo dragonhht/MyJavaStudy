@@ -194,9 +194,70 @@ System.out.println(borrow);
     }
 
 
+    /**
+     * 添加图书
+     *
+     * @param book 图书信息
+     *
+     * @return 结果页面
+     */
     @RequestMapping("/addBookMessage")
-    public void addBookMessage(BookExtend book) {
+    public void addBookMessage(BookExtend book, HttpServletResponse response) {
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = null;
+        boolean ok = false;
 
+        ok = adminService.addBook(book);
+
+        try {
+            out = response.getWriter();
+
+            if (ok) {
+                out.println("添加成功");
+            } else {
+                out.println("添加失败");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 跳转删除图书界面
+     *
+     * @return 结果页面
+     */
+    @RequestMapping("/delBookPage")
+    public String delBookPage() {
+        return "delBook";
+    }
+
+    /**
+     * 删除图书
+     *
+     * @param bookId 图书编号
+     *
+     */
+    @RequestMapping("/delBook")
+    public void delBook(long bookId, HttpServletResponse response) {
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = null;
+        boolean ok =false;
+
+        ok = adminService.delBook(bookId);
+
+        try {
+            out = response.getWriter();
+            if (ok) {
+                out.println("编号为: "+ bookId  +" 的图书已成功删除");
+            } else {
+                out.println("删除失败");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

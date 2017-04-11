@@ -5,6 +5,7 @@ import com.dragon.entity.BorrowExtend;
 import com.dragon.entity.ReaderExtend;
 import com.dragon.mapper.AdminMapper;
 import com.dragon.service.AdminService;
+import com.dragon.utils.getDate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,6 +30,11 @@ public class AdminServiceImpl implements AdminService{
 
     public boolean addBook(BookExtend book) {
         boolean ok = false;
+
+        String buyDate = getDate.getDateDay();
+        book.setBuyDate(buyDate);
+        long bookId = getNewBookId();
+        book.setBookId(bookId);
 
         try {
             adminMapper.addBook(book);
@@ -121,5 +127,37 @@ public class AdminServiceImpl implements AdminService{
             e.printStackTrace();
         }
         return ok;
+    }
+
+    /**
+     * 获取一个新的读者编号
+     *
+     * @return 新的读者编号
+     */
+    private long getNewBookId() {
+        long newBookId = 0;
+
+        try {
+
+            try {
+                newBookId = adminMapper.getNewBookId();
+            } catch (Exception e) {
+                newBookId = 0;
+            }
+
+            System.out.println("最新的图书编号:"+newBookId);
+            //判断数据库中是否有数据
+            if (newBookId == 0) {
+                newBookId=1000000001l;
+            } else {
+
+                newBookId = newBookId + 1;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("得到的图书编号:"+newBookId);
+        return newBookId;
     }
 }
