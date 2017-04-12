@@ -1,0 +1,32 @@
+.gb{
+    width: 1000px;
+    min-height: 200px;
+    margin: 20px auto;
+    background-color: #9EA9C0;
+}
+
+.center_text{
+    width: 600px;
+    height: 200px;
+    background-color: aliceblue;
+    margin-left: 150px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.center_text_title{
+    font-size: large;
+    font-weight: bolder;
+}
+
+.center_text_context{
+    border: 1px solid red;
+    width: 598px;
+    height: 135px;
+}
+
+.center_text_foot{
+    width: 598px;
+    height: 30px;
+    border: 1px solid green;
+}
