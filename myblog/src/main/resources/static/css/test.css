@@ -1,8 +1,64 @@
+a{
+    text-decoration: none;
+}
+
+li{
+   list-style: none;
+}
+
+.top{
+    position: fixed;
+    background-color: white;
+    width: 1300px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.top_search{
+    width: 470px;
+    height: 24px;
+    margin-top: 8px;
+    margin-left: 50px;
+}
+
+.top_search_button{
+    width: 65px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid rgb(204, 204, 204);
+
+}
+
+.top_link_div{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+}
+
+.top_link_div li{
+    float: right;
+    margin-left: 20px;
+    color: rgb(204, 204, 204);
+}
+
+.login_regist_one{
+    width: 3px;
+}
+
+.login_regist{
+    width: 40px;
+}
+
+.top_link_div a{
+    color: rgb(204, 204, 204);
+}
+
 .gb{
     width: 1000px;
     min-height: 200px;
-    margin: 20px auto;
+    margin: 0 auto;
     background-color: #9EA9C0;
+    padding-top: 50px;
 }
 
 .center_text{
@@ -26,7 +82,38 @@
 }
 
 .center_text_foot{
+    position: relative;
     width: 598px;
     height: 30px;
     border: 1px solid green;
+}
+
+.center_text_foot img{
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.center_text_foot_name{
+    color: rgb(200, 200, 200);
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.center_text_date{
+    color: rgb(200, 200, 200);
+    font-size: 15px;
+}
+
+.center_text_li{
+    position: absolute;
+    top: -14px;
+    right: 5px;
+}
+
+.center_text_li li{
+    float: right;
+    color: rgb(200, 200, 200);
+    font-size: 15px;
 }

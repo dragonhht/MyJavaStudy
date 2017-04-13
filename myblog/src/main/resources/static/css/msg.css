@@ -1,0 +1,60 @@
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.bg{
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 750px;
+    padding-top: 10px;
+}
+
+.msg_center{
+    margin: 0 auto;
+    width: 850px;
+    height: 620px;
+    background-color: #FFFFFF;
+    box-shadow: 1px 2px rgb(204, 204, 204);
+    border-radius: 2px;
+    padding-top: 45px;
+    padding-left: 45px;
+}
+
+.center_form{
+//border: 1px solid red;
+    width: 760px;
+    height: 510px;
+    padding-top: 60px;
+    padding-left: 45px;
+}
+
+.right_image{
+    border: 1px solid red;
+    width: 200px;
+    height: 200px;
+    margin-top: 150px;
+    float: left;
+}
+
+.center_message{
+    //border: 1px solid red;
+    width: 300px;
+    height: 30px;
+    margin-left: 100px;
+    margin-top: 200px;
+    float: left;
+    color: black;
+}
+
+
+.center_to_login{
+    //border: 1px solid red;
+    width: 200px;
+    height: 100px;
+    margin-left: 150px;
+    float: left;
+}

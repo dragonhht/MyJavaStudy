@@ -1,9 +1,7 @@
 package hht.dragon.controller;
 
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * ClassDescription
@@ -12,12 +10,38 @@ import org.springframework.web.servlet.ModelAndView;
  * Date : 17-4-12
  * Time : 下午8:47
  */
-@RestController
+@Controller
 public class IndexController {
 
+    /**
+     * 访问首页
+     *
+     * @return 首页页面
+     */
     @RequestMapping("/index")
-    public ModelAndView index() {
-        ModelAndView mav = new ModelAndView("index");
-        return mav;
+    public String index() {
+        return "index";
     }
+
+    /**
+     * 访问登录界面
+     *
+     * @return 登录界面
+     */
+    @RequestMapping("/tologin")
+    public String toLogin() {
+        return "login";
+    }
+
+    /**
+     * 跳转注册页面
+     *
+     * @return 注册页面
+     */
+    @RequestMapping("/toregister")
+    public String toRegister() {
+        return "register";
+    }
+
+
 }
