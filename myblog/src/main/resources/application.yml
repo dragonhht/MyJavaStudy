@@ -44,3 +44,8 @@ spring:
       hibernate:
         ddl-auto: update
       show-sql: true
+
+  #配置Mybatis
+#  mybatis:
+#    mapperLocations: classpath:mapper/*.xml
+#    typeAliasesPackage: hht.dragon.entity

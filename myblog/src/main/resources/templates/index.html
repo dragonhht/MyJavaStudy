@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>首页</title>
 
-    <link th:href="@{css/test.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/test.css}" rel="stylesheet" type="text/css" />
     <!--<link href="../static/css/test.css" rel="stylesheet" type="text/css" />-->
 </head>
 <body>
@@ -18,9 +18,12 @@
 
     <div class="top_link_div">
         <ul>
-            <li class="login_regist"><a href="toregister">注册</a></li>
+
+            <li th:if="${login eq 'true'}"  class="login_regist"><a href="#" >注销</a></li>
+            <li th:if="${login eq '' or login eq null}" class="login_regist"><a href="toregister">注册</a></li>
             <li class="login_regist_one">|</li>
-            <li class="login_regist"> <a href="tologin">登录</a></li>
+            <li th:if="${login eq 'true'}" class="login_regist"> <a href="#" th:text="${userName}"></a></li>
+            <li th:if="${login eq '' or login eq null}" class="login_regist"><a href="tologin" >登录</a></li>
             <li> <a href="#">发现</a></li>
             <li> <a href="#">首页</a></li>
         </ul>

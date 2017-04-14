@@ -18,8 +18,20 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
+    /**
+     *
+     * 用户注册
+     *
+     * @param user 用户信息
+     * @return 新增用户的编号
+     */
     public Integer regist(User user) {
         User user1 = userRepository.save(user);
         return user1.getId();
+    }
+
+    public User login(User user) {
+        return userRepository.getByIdAndPassword(user.getId(), user.getPassword());
     }
 }

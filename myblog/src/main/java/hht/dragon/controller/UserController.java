@@ -27,6 +27,14 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    /**
+     * 用户注册
+     *
+     * @param user 用户信息
+     * @param bindingResult
+     * @param repassword
+     * @return 相关结果页面
+     */
     @PostMapping("/regist")
     public ModelAndView regist(@Valid User user, BindingResult bindingResult, String repassword) {
 System.out.println(user);
@@ -60,5 +68,22 @@ System.out.println(user);
         return mav;
     }
 
+    @PostMapping("/login")
+    public ModelAndView login(User user) {
+        boolean ok = false;
+        User user1 = null;
+        ModelAndView mav = new ModelAndView("login");
+        user1 = service.login(user);
+        if (user1 != null) {
+            ok = true;
+        }
+        if (ok) {
+            mav.setViewName("index");
+            mav.addObject("login", "true");
+            mav.addObject("userName", user1.getUserName());
+        }
+
+        return mav;
+    }
 
 }
