@@ -1,10 +1,12 @@
 package hht.dragon.controller;
 
+import hht.dragon.service.imp.TouristServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * ClassDescription
+ * 导航控制器
  * <p>
  * User : Dragon_hht
  * Date : 17-4-12
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class IndexController {
+
 
     /**
      * 访问首页
@@ -112,4 +115,5 @@ public class IndexController {
     public String maintop() {
         return "main_top";
     }
+
 }
