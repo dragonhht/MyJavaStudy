@@ -7,6 +7,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/SummaryLibrary/pom.xml" />
+        <option value="$PROJECT_DIR$/springbootstudy/pom.xml" />
+        <option value="$PROJECT_DIR$/myblog/pom.xml" />
       </list>
     </option>
   </component>
