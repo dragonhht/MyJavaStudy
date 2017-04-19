@@ -23,6 +23,8 @@ public class Article {
     private String article_date;
     //文章内容
     private String article_text;
+    //浏览次数
+    private Integer lookCount;
     //作者编号
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -81,6 +83,14 @@ public class Article {
         this.comments = comments;
     }
 
+    public Integer getLookCount() {
+        return lookCount;
+    }
+
+    public void setLookCount(Integer lookCount) {
+        this.lookCount = lookCount;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -88,6 +98,9 @@ public class Article {
                 ", article_title='" + article_title + '\'' +
                 ", article_date='" + article_date + '\'' +
                 ", article_text='" + article_text + '\'' +
+                ", lookCount=" + lookCount +
+                ", user=" + user +
+                ", comments=" + comments +
                 '}';
     }
 }

@@ -1,5 +1,8 @@
 package hht.dragon.controller;
 
+import hht.dragon.entity.Article;
+import hht.dragon.repository.TouristRepository;
+import hht.dragon.service.TouristService;
 import hht.dragon.service.imp.TouristServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,15 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 
-    /**
-     * 访问首页
-     *
-     * @return 首页页面
-     */
-    @RequestMapping("/index")
-    public String index() {
-        return "index";
-    }
+
 
     /**
      * 访问登录界面
@@ -106,14 +101,12 @@ public class IndexController {
         return "contact";
     }
 
-    @RequestMapping("/single")
-    public String single() {
-        return "single";
-    }
+
 
     @RequestMapping("/maintop")
     public String maintop() {
         return "main_top";
     }
+
 
 }

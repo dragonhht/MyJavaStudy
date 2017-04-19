@@ -5,7 +5,7 @@
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-                <title>Knowledge Base Theme</title>
+                <title>简易博客</title>
 
                 <link rel="shortcut icon" th:href="@{/img/favicon.png}" />
 
@@ -21,7 +21,8 @@
 
         <body>
 
-        <object style="border:0px" type="text/x-scriptlet" data="maintop" width="100%" height="350px"></object>
+        <!--从main_top.html中引入名字为maintop的fragment-->
+        <div th:include="main_top::maintop"></div>
 
                 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" title="模板之家">模板之家</a></div>
 
@@ -38,35 +39,13 @@
                                                         <section class="span4 articles-list">
                                                                 <h3>热搜博文</h3>
                                                                 <ul class="articles">
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">Integrating WordPress with Your Website</a></h4>
-                                                                                <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
+                                                                        <li class="article-entry standard" th:each="hotarticle : ${hotarticles}">
+                                                                                <h4><a th:href="@{/single/{article_id}(article_id=${hotarticle.article_id})}" th:text="${hotarticle.article_title}"></a></h4>
+                                                                                <span class="article-meta" >
+                                                                                        <span th:text="${hotarticle.article_date+' by '}"></span>
+                                                                                        <a href="#" th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}"></a>
+                                                                                </span>
                                                                                 <span class="like-count">66</span>
-                                                                        </li>
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">WordPress Site Maintenance</a></h4>
-                                                                                <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                                                                <span class="like-count">15</span>
-                                                                        </li>
-                                                                        <li class="article-entry video">
-                                                                                <h4><a href="single">Meta Tags in WordPress</a></h4>
-                                                                                <span class="article-meta">23 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                                                                <span class="like-count">8</span>
-                                                                        </li>
-                                                                        <li class="article-entry image">
-                                                                                <h4><a href="single">WordPress in Your Language</a></h4>
-                                                                                <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                                                                                <span class="like-count">6</span>
-                                                                        </li>
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">Know Your Sources</a></h4>
-                                                                                <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                                                                <span class="like-count">2</span>
-                                                                        </li>
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">Validating a Website</a></h4>
-                                                                                <span class="article-meta">21 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                                                                <span class="like-count">3</span>
                                                                         </li>
                                                                 </ul>
                                                         </section>
@@ -75,35 +54,12 @@
                                                         <section class="span4 articles-list">
                                                                 <h3>最新博文</h3>
                                                                 <ul class="articles">
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">Integrating WordPress with Your Website</a></h4>
-                                                                                <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
+                                                                        <li class="article-entry standard" th:each="latstarticle : ${latstarticles}">
+                                                                                <h4><a href="single" th:text="${latstarticle.article_title}"></a></h4>
+                                                                                <span class="article-meta" >
+                                                                                        <span th:text="${latstarticle.article_date+' by '}"></span>
+                                                                                        <a href="#" th:title="${latstarticle.user.userName}" th:text="${latstarticle.user.userName}"></a></span>
                                                                                 <span class="like-count">66</span>
-                                                                        </li>
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">Using Javascript</a></h4>
-                                                                                <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                                                                                <span class="like-count">18</span>
-                                                                        </li>
-                                                                        <li class="article-entry image">
-                                                                                <h4><a href="single">Using Images</a></h4>
-                                                                                <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Designing in WordPress">Designing in WordPress</a></span>
-                                                                                <span class="like-count">7</span>
-                                                                        </li>
-                                                                        <li class="article-entry video">
-                                                                                <h4><a href="single">Using Video</a></h4>
-                                                                                <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in WordPress Plugins">WordPress Plugins</a></span>
-                                                                                <span class="like-count">7</span>
-                                                                        </li>
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">WordPress Site Maintenance</a></h4>
-                                                                                <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                                                                <span class="like-count">15</span>
-                                                                        </li>
-                                                                        <li class="article-entry standard">
-                                                                                <h4><a href="single">WordPress CSS Information and Techniques</a></h4>
-                                                                                <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Theme Development">Theme Development</a></span>
-                                                                                <span class="like-count">1</span>
                                                                         </li>
                                                                 </ul>
                                                         </section>

@@ -7,15 +7,16 @@
 <link rel='stylesheet' id='main-css-css'  th:href='@{/css/main5152.css?ver=1.0}' type='text/css' media='all' />
 <link rel='stylesheet' id='custom-css-css'  th:href='@{/css/custom5152.html?ver=1.0}' type='text/css' media='all' />
 
+<div th:fragment="maintop">
 <!-- Start of Header -->
-<div class="header-wrapper">
+<div class="header-wrapper" th:fragment="navigation">
     <header>
         <div class="container">
 
 
             <div class="logo-container">
                 <!-- Website Logo -->
-                <a href="index_2.html" title="Knowledge Base Theme">
+                <a href="index" title="Knowledge Base Theme">
                     <img th:src="@{/img/logo.png}" alt="Knowledge Base Theme" />
                 </a>
                 <span class="tag-line">Premium WordPress Theme</span>
@@ -26,10 +27,10 @@
             <nav class="main-nav">
                 <div class="menu-top-menu-container">
                     <ul id="menu-top-menu" class="clearfix">
-                        <li class="current-menu-item"><a href="index2">首页</a></li>
+                        <li class="current-menu-item"><a th:href="@{/index}">首页</a></li>
                         <!--<li><a href="home2">Home 2</a></li>-->
                         <!--<li><a href="home3">Home 3</a></li>-->
-                        <li><a href="articles">博客列表</a></li>
+                        <li><a th:href="@{/articles}">博客列表</a></li>
                         <!--<li><a href="faq">FAQs</a></li>-->
                         <!--<li><a href="#">Skins</a>-->
                             <!--<ul class="sub-menu">-->
@@ -46,8 +47,8 @@
                                 <!--<li><a href="page">Sample Page</a></li>-->
                             <!--</ul>-->
                         <!--</li>-->
-                        <li><a href="contact">留言</a></li>
-                        <li><a href="tologin">登录</a> </li>
+                        <li><a th:href="@{/contact}">留言</a></li>
+                        <li><a th:href="@{/tologin}">登录</a> </li>
                     </ul>
                 </div>
             </nav>
@@ -72,4 +73,5 @@
     </div>
 </div>
 <!-- End of Search Wrapper -->
+</div>
 </html>
