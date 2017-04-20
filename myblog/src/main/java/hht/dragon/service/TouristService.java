@@ -1,6 +1,8 @@
 package hht.dragon.service;
 
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import hht.dragon.entity.Article;
+import hht.dragon.entity.User;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -43,8 +45,28 @@ public interface TouristService {
      *
      * @return 文章列表
      */
-     public Page<Article> getArticleList();
+     public Page<Article> getArticleList(Integer pageNum);
 
+    /**
+     * 计算文章分页页数
+     *
+     * @return 分页数量
+     */
+    public int getArticlePageCount();
 
+    /**
+     * 通过用户编号查询用户
+     *
+     * @param user_id 用户编号
+     *
+     * @return 用户信息
+     */
+    public User getUserById(Integer user_id);
 
+    /**
+     * 计算作者首页文章页数
+     * @param user_id 作者编号
+     * @return
+     */
+    public int getUsetArticlePageCount(Integer user_id);
 }

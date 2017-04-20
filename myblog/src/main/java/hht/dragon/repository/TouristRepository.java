@@ -1,6 +1,7 @@
 package hht.dragon.repository;
 
 import hht.dragon.entity.Article;
+import hht.dragon.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,5 +30,13 @@ public interface TouristRepository extends JpaRepository<Article,Integer>{
     //分页查询文章
     @Query("select a from Article a order by article_date desc ")
     public Page<Article> getArticleList(Pageable pageable);
+
+    //查询有多少篇文章
+    @Query("select count(*) from Article")
+    public int getArticleCount();
+
+    //通过用户编号查询用户
+    @Query("select u from User u where u.id = ?1")
+    public User getUserById(Integer user_id);
 
 }

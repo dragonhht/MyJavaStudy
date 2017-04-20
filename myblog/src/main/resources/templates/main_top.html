@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" th:href="@{/css/style.css}"/>
-<link rel='stylesheet' id='bootstrap-css-css'  th:href='@{/css/bootstrap5152.css?ver=1.0}' type='text/css' media='all' />
-<link rel='stylesheet' id='responsive-css-css'  th:href='@{/css/responsive5152.css?ver=1.0}' type='text/css' media='all' />
-<link rel='stylesheet' id='pretty-photo-css-css'  th:href='@{/js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4}' type='text/css' media='all' />
-<link rel='stylesheet' id='main-css-css'  th:href='@{/css/main5152.css?ver=1.0}' type='text/css' media='all' />
-<link rel='stylesheet' id='custom-css-css'  th:href='@{/css/custom5152.html?ver=1.0}' type='text/css' media='all' />
+<!--样式文件-->
+<header th:fragment="mainheader">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel='stylesheet' id='bootstrap-css-css'  th:href='@{/css/bootstrap5152.css}' type='text/css' media='all' />
+    <link rel='stylesheet' id='responsive-css-css'  th:href='@{/css/responsive5152.css}' type='text/css' media='all' />
+    <link rel='stylesheet' id='pretty-photo-css-css'  th:href='@{/js/prettyphoto/prettyPhotoaeb9.css}' type='text/css' media='all' />
+    <link rel='stylesheet' id='main-css-css'  th:href='@{/css/main5152.css}' type='text/css' media='all' />
+    <link rel='stylesheet' id='custom-css-css'  th:href='@{/css/custom5152.html}' type='text/css' media='all' />
+</header>
+
+<!--support-->
+<div th:fragment="mainsupport">
+    <h3 class="title">支持</h3>
+    <p class="intro">需要更多的支持？如果您没有找到答案，请与我们联系以获得更多帮助。</p>
+</div>
 
 <div th:fragment="maintop">
 <!-- Start of Header -->
@@ -28,25 +37,7 @@
                 <div class="menu-top-menu-container">
                     <ul id="menu-top-menu" class="clearfix">
                         <li class="current-menu-item"><a th:href="@{/index}">首页</a></li>
-                        <!--<li><a href="home2">Home 2</a></li>-->
-                        <!--<li><a href="home3">Home 3</a></li>-->
-                        <li><a th:href="@{/articles}">博客列表</a></li>
-                        <!--<li><a href="faq">FAQs</a></li>-->
-                        <!--<li><a href="#">Skins</a>-->
-                            <!--<ul class="sub-menu">-->
-                                <!--<li><a href="blueSkin">Blue Skin</a></li>-->
-                                <!--<li><a href="greenSkin">Green Skin</a></li>-->
-                                <!--<li><a href="redSkin">Red Skin</a></li>-->
-                                <!--<li><a href="index2">Default Skin</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                        <!--<li><a href="#">More</a>-->
-                            <!--<ul class="sub-menu">-->
-                                <!--<li><a href="fullWidth">Full Width</a></li>-->
-                                <!--<li><a href="elements">Elements</a></li>-->
-                                <!--<li><a href="page">Sample Page</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
+                        <li><a th:href="@{/articles/{page_num}(page_num=0)}">博客列表</a></li>
                         <li><a th:href="@{/contact}">留言</a></li>
                         <li><a th:href="@{/tologin}">登录</a> </li>
                     </ul>
@@ -63,7 +54,6 @@
 <div class="search-area-wrapper">
     <div class="search-area container">
         <h3 class="search-header">搜索博客或博主</h3>
-        <!--<p class="search-tag-line">If you have any question you can ask below or enter what you are looking for!</p>-->
 
         <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
             <input class="search-term required" type="text" id="s" name="s" placeholder="请输入您要搜索的博客名或博主名" title="搜索框" />

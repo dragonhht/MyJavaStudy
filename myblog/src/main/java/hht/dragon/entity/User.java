@@ -4,11 +4,9 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 用户实体类
@@ -45,6 +43,10 @@ public class User {
     //密码
     @Length(min = 1, max = 11)
     private String password;
+    //上传的文章
+    @OneToMany
+    @JoinColumn(name = "id")
+    private Set<Article> articles;
 
     public Integer getId() {
         return id;
@@ -126,6 +128,14 @@ public class User {
         this.password = password;
     }
 
+    public Set<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(Set<Article> articles) {
+        this.articles = articles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -133,12 +143,13 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 ", signature='" + signature + '\'' +
                 ", img='" + img + '\'' +
                 ", registDate=" + registDate +
                 ", address='" + address + '\'' +
                 ", password='" + password + '\'' +
+                ", articles=" + articles +
                 '}';
     }
 }

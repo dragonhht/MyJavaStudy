@@ -41,69 +41,12 @@ public class IndexController {
         return "register";
     }
 
-    @RequestMapping("/index2")
-    public String index2() {
-        return "index_2";
-    }
-
-    @RequestMapping("/home2")
-    public String home2() {
-        return "home_categories_description";
-    }
-
-    @RequestMapping("/home3")
-    public String home3() {
-        return "home_categories_articles";
-    }
-
-
-
-    @RequestMapping("/faq")
-    public String faq() {
-        return "faq";
-    }
-
-    @RequestMapping("/blueSkin")
-    public String blueSkin() {
-        return "blue_skin";
-    }
-
-    @RequestMapping("/greenSkin")
-    public String greenSkin() {
-        return "green_skin";
-    }
-
-    @RequestMapping("/redSkin")
-    public String redSkin() {
-        return "red_skin";
-    }
-
-    @RequestMapping("/fullWidth")
-    public String fullWidth() {
-        return "full_width";
-    }
-
-    @RequestMapping("/elements")
-    public String elements() {
-        return "elements";
-    }
-
-    @RequestMapping("/page")
-    public String page() {
-        return "page";
-    }
 
     @RequestMapping("/contact")
     public String contact() {
         return "contact";
     }
 
-
-
-    @RequestMapping("/maintop")
-    public String maintop() {
-        return "main_top";
-    }
 
 
 }
