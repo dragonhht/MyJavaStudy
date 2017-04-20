@@ -56,10 +56,7 @@ public class IndexController {
         return "home_categories_articles";
     }
 
-    @RequestMapping("/articles")
-    public String articles() {
-        return "articles_list";
-    }
+
 
     @RequestMapping("/faq")
     public String faq() {

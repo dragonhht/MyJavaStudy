@@ -11,11 +11,11 @@
 
                 <!-- Style Sheet-->
                 <link rel="stylesheet" th:href="@{/css/style.css}"/>
-                <link rel='stylesheet' id='bootstrap-css-css'  th:href='@{/css/bootstrap5152.css?ver=1.0}' type='text/css' media='all' />
-                <link rel='stylesheet' id='responsive-css-css'  th:href='@{/css/responsive5152.css?ver=1.0}' type='text/css' media='all' />
-                <link rel='stylesheet' id='pretty-photo-css-css'  th:href='@{/js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4}' type='text/css' media='all' />
-                <link rel='stylesheet' id='main-css-css'  th:href='@{/css/main5152.css?ver=1.0}' type='text/css' media='all' />
-                <link rel='stylesheet' id='custom-css-css'  th:href='@{/css/custom5152.html?ver=1.0}' type='text/css' media='all' />
+                <link rel='stylesheet' id='bootstrap-css-css'  th:href='@{/css/bootstrap5152.css}' type='text/css' media='all' />
+                <link rel='stylesheet' id='responsive-css-css'  th:href='@{/css/responsive5152.css}' type='text/css' media='all' />
+                <link rel='stylesheet' id='pretty-photo-css-css'  th:href='@{/js/prettyphoto/prettyPhotoaeb9.css}' type='text/css' media='all' />
+                <link rel='stylesheet' id='main-css-css'  th:href='@{/css/main5152.css}' type='text/css' media='all' />
+                <link rel='stylesheet' id='custom-css-css'  th:href='@{/css/custom5152.html}' type='text/css' media='all' />
 
         </head>
 
@@ -45,7 +45,7 @@
                                                                                         <span th:text="${hotarticle.article_date+' by '}"></span>
                                                                                         <a href="#" th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}"></a>
                                                                                 </span>
-                                                                                <span class="like-count">66</span>
+                                                                                <span class="like-count" th:text="${hotarticle.lookCount}"></span>
                                                                         </li>
                                                                 </ul>
                                                         </section>
@@ -55,11 +55,11 @@
                                                                 <h3>最新博文</h3>
                                                                 <ul class="articles">
                                                                         <li class="article-entry standard" th:each="latstarticle : ${latstarticles}">
-                                                                                <h4><a href="single" th:text="${latstarticle.article_title}"></a></h4>
+                                                                                <h4><a th:href="@{/single/{article_id}(article_id=${latstarticle.article_id})}" th:text="${latstarticle.article_title}"></a></h4>
                                                                                 <span class="article-meta" >
                                                                                         <span th:text="${latstarticle.article_date+' by '}"></span>
                                                                                         <a href="#" th:title="${latstarticle.user.userName}" th:text="${latstarticle.user.userName}"></a></span>
-                                                                                <span class="like-count">66</span>
+                                                                                <span class="like-count" th:text="${latstarticle.lookCount}"></span>
                                                                         </li>
                                                                 </ul>
                                                         </section>

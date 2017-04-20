@@ -38,6 +38,10 @@ public class TouristController {
         hotArticles = touristService.getHotArticle();
         latstArticles = touristService.getLatstArticle();
 
+        for (Article article : hotArticles) {
+            System.out.println(article);
+        }
+
         model.addAttribute("hotarticles", hotArticles);
         model.addAttribute("latstarticles", latstArticles);
         return "index";
@@ -65,6 +69,16 @@ public class TouristController {
         model.addAttribute("article", article);
         model.addAttribute("commentcount", commentCount);
         return "single";
+    }
+
+    /**
+     * 访问博客列表页面
+     *
+     * @return
+     */
+    @RequestMapping("/articles")
+    public String articles() {
+        return "articles_list";
     }
 
 }

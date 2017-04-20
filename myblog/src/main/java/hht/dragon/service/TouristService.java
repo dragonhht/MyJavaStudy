@@ -37,4 +37,14 @@ public interface TouristService {
      */
      public Article getArticleById(Integer article_id);
 
+
+    /**
+     * 获取文章列表
+     *
+     * @return 文章列表
+     */
+     public Page<Article> getArticleList();
+
+
+
 }

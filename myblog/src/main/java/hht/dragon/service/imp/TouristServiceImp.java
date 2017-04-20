@@ -4,6 +4,7 @@ import hht.dragon.entity.Article;
 import hht.dragon.entity.Comment;
 import hht.dragon.repository.TouristRepository;
 import hht.dragon.service.TouristService;
+import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -83,7 +84,63 @@ public class TouristServiceImp implements TouristService{
     @Override
     public Article getArticleById(Integer article_id) {
         Article article = null;
+        Integer lookCount = 0;
         article = touristRepository.findOne(article_id);
+        lookCount = article.getLookCount();
+        lookCount++;
+        article.setLookCount(lookCount);
+        article = touristRepository.save(article);
         return article;
+    }
+
+    @Override
+    public Page<Article> getArticleList() {
+        final Integer PAGE_SIZE = 20;
+        List<Article> articles = touristRepository.findAll();
+        Pageable pageable1 = new Pageable() {
+            @Override
+            public int getPageNumber() {
+                return 0;
+            }
+
+            @Override
+            public int getPageSize() {
+                return PAGE_SIZE;
+            }
+
+            @Override
+            public int getOffset() {
+                return 0;
+            }
+
+            @Override
+            public Sort getSort() {
+                return null;
+            }
+
+            @Override
+            public Pageable next() {
+                return null;
+            }
+
+            @Override
+            public Pageable previousOrFirst() {
+                return null;
+            }
+
+            @Override
+            public Pageable first() {
+                return null;
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                return false;
+            }
+        };
+
+        Page<Article> articlePage = touristRepository.getArticleList(pageable1);
+
+        return articlePage;
     }
 }

@@ -50,7 +50,7 @@
                                                                 <span class="date" th:text="${article.article_date}"></span>
                                                                 <span class="category"><a href="#" th:title="${article.user.userName}" th:text="${article.user.userName}"></a></span>
                                                                 <span class="comments"><a href="#" th:text="${commentcount+' 条评论'}"></a></span>
-                                                                <span class="like-count">66</span>
+                                                                <span class="like-count" th:text="${'浏览 '+article.lookCount+ ' 次'}"></span>
                                                         </div><!-- end of post meta -->
 
                                                         <!--文章内容-->
@@ -61,7 +61,7 @@
                                                 <div class="like-btn">
 
                                                         <form id="like-it-form" action="#" method="post">
-                                                                <span class="like-it ">66</span>
+                                                                <span class="like-it " th:text="${'被赞 '+article.suppot_count + ' 次'}"></span>
                                                                 <input type="hidden" name="post_id" value="99" />
                                                                 <input type="hidden" name="action" value="like_it" />
                                                         </form>

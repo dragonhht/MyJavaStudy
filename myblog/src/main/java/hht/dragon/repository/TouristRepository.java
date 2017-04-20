@@ -26,4 +26,8 @@ public interface TouristRepository extends JpaRepository<Article,Integer>{
     @Query("select a from Article a order by article_date desc ")
     public Page<Article> getLatstArticle(Pageable pageable);
 
+    //分页查询文章
+    @Query("select a from Article a order by article_date desc ")
+    public Page<Article> getArticleList(Pageable pageable);
+
 }
