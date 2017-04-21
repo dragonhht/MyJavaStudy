@@ -32,6 +32,7 @@ public class Article {
     //作者编号
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     //一对多
@@ -103,17 +104,5 @@ public class Article {
         this.suppot_count = suppot_count;
     }
 
-    @Override
-    public String toString() {
-        return "Article{" +
-                "article_id=" + article_id +
-                ", article_title='" + article_title + '\'' +
-                ", article_date='" + article_date + '\'' +
-                ", article_text='" + article_text + '\'' +
-                ", lookCount=" + lookCount +
-                ", suppot_count=" + suppot_count +
-                ", user=" + user +
-                ", comments=" + comments +
-                '}';
-    }
+
 }

@@ -1,44 +1,12 @@
-CREATE TABLE article
-(
-    article_id INT(11) PRIMARY KEY NOT NULL COMMENT '文章编号' AUTO_INCREMENT,
-    article_title VARCHAR(50) NOT NULL COMMENT '文章标题',
-    article_date VARCHAR(10) NOT NULL COMMENT '发表时间',
-    user_id INT(11) NOT NULL COMMENT '发表人编号',
-    article_text TEXT NOT NULL COMMENT '文章内容',
-    lookCount INT(11) DEFAULT '0',
-    look_count INT(11),
-    CONSTRAINT FKbc2qerk3l47javnl2yvn51uoi FOREIGN KEY (user_id) REFERENCES user (id)
-);
-CREATE INDEX FKbc2qerk3l47javnl2yvn51uoi ON article (user_id);
-CREATE TABLE comment
-(
-    user_id INT(11) NOT NULL COMMENT '评论人编号',
-    article_id INT(11) NOT NULL COMMENT '文章编号',
-    comment_date VARCHAR(20) NOT NULL COMMENT '评论时间',
-    comment_text TEXT NOT NULL COMMENT '评论内容',
-    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    CONSTRAINT FK8kcum44fvpupyw6f5baccx25c FOREIGN KEY (user_id) REFERENCES user (id),
-    CONSTRAINT FK5yx0uphgjc6ik6hb82kkw501y FOREIGN KEY (article_id) REFERENCES article (article_id)
-);
-CREATE INDEX FK5yx0uphgjc6ik6hb82kkw501y ON comment (article_id);
-CREATE INDEX FK8kcum44fvpupyw6f5baccx25c ON comment (user_id);
-CREATE TABLE user
-(
-    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    address VARCHAR(255),
-    email VARCHAR(255),
-    img VARCHAR(255),
-    password VARCHAR(255),
-    phone VARCHAR(255),
-    regist_date DATETIME,
-    signature VARCHAR(255),
-    status VARCHAR(255) DEFAULT '0',
-    user_name VARCHAR(255)
-);
+INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, ''1234567890@qq.com'', null, '''', ''1234567890'', null, ''1'', ''1'', ''huang'');
+INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, ''1234567890@qq.com'', null, '''', ''1234567890'', null, null, ''0'', ''huang'');
+INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, ''1234567890@qq.com'', null, '''', ''1234567890'', null, null, ''0'', ''huang'');
+INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, ''1234567890@qq.com'', null, '''', ''1234567890'', null, null, ''0'', ''huang'');
+INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, ''1234567890@qq.com'', null, ''1'', ''1234567890'', null, null, ''0'', ''12'');
+INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, ''1234567890@qq.com'', null, ''1'', ''1234567890'', null, null, ''0'', ''123'');
 
 
-
-INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, lookCount, look_count) VALUES ('Integrating WordPress with Your Website1', '2017-04-18', 1, '<p>Many of us work in an endless stream of tasks, browser tasks, social media, emails, meetings, rushing from one thing to another, never pausing and never ending.&nbsp;Then the day is over, and we are exhausted, and we often have very little to show for it. And we start the next day, ready for a mindless stream of tasks and distractions.</p>
+INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, look_count) VALUES (''Integrating WordPress with Your Website1'', ''2017-04-18'', 1, ''<p>Many of us work in an endless stream of tasks, browser tasks, social media, emails, meetings, rushing from one thing to another, never pausing and never ending.&nbsp;Then the day is over, and we are exhausted, and we often have very little to show for it. And we start the next day, ready for a mindless stream of tasks and distractions.</p>
 
                                                         <p>I am a fan of going against the stream of what most people do, and taking a step back. Is it really worth it? Is this the best way? Are we losing our lives to busy-ness and distraction?</p>
 
@@ -88,8 +56,8 @@ INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, 
                                                                 <li><strong>Reduce distractions</strong>. Consider going on a digital cleanse — take a day or a week off of social media, news, entertainment/gossip sites, the places you usually spend on distractions. What will you do when you feel like some distraction? Meditate, exercise, create.</li>
                                                         </ol>
 
-                                                        <p>Breathe. Enjoy the new space. Savor the beauty of doing less.</p>', 0, null);
-INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, lookCount, look_count) VALUES ('Integrating WordPress with Your Website', '2017-04-18', 1, '<p>Many of us work in an endless stream of tasks, browser tasks, social media, emails, meetings, rushing from one thing to another, never pausing and never ending.&nbsp;Then the day is over, and we are exhausted, and we often have very little to show for it. And we start the next day, ready for a mindless stream of tasks and distractions.</p>
+                                                        <p>Breathe. Enjoy the new space. Savor the beauty of doing less.</p>'', 0);
+INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text,  look_count) VALUES (''Integrating WordPress with Your Website'', ''2017-04-18'', 1, ''<p>Many of us work in an endless stream of tasks, browser tasks, social media, emails, meetings, rushing from one thing to another, never pausing and never ending.&nbsp;Then the day is over, and we are exhausted, and we often have very little to show for it. And we start the next day, ready for a mindless stream of tasks and distractions.</p>
 
                                                         <p>I am a fan of going against the stream of what most people do, and taking a step back. Is it really worth it? Is this the best way? Are we losing our lives to busy-ness and distraction?</p>
 
@@ -139,20 +107,13 @@ INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, 
                                                                 <li><strong>Reduce distractions</strong>. Consider going on a digital cleanse — take a day or a week off of social media, news, entertainment/gossip sites, the places you usually spend on distractions. What will you do when you feel like some distraction? Meditate, exercise, create.</li>
                                                         </ol>
 
-                                                        <p>Breathe. Enjoy the new space. Savor the beauty of doing less.</p>', 0, null);
-INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, lookCount, look_count) VALUES ('WordPress Site Maintenance', '2017-04-19', 6, '1', 0, null);
-INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, lookCount, look_count) VALUES ('Meta Tags in WordPress', '2017-04-19', 2, '2', 0, null);
-INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, lookCount, look_count) VALUES ('WordPress in Your Language', '2017-04-20', 1, '3', 0, null);
-INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, lookCount, look_count) VALUES ('Know Your Sources', '2017-05-12', 1, '4', 0, null);
-INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text, lookCount, look_count) VALUES ('Validating a Website', '2017-05-12', 1, '5', 0, null);
+                                                        <p>Breathe. Enjoy the new space. Savor the beauty of doing less.</p>'', 0);
+INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text,  look_count) VALUES (''WordPress Site Maintenance'', ''2017-04-19'', 6, ''1'', 0);
+INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text,  look_count) VALUES (''Meta Tags in WordPress'', ''2017-04-19'', 2, ''2'', 0);
+INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text,  look_count) VALUES (''WordPress in Your Language'', ''2017-04-20'', 1, ''3'', 0);
+INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text,  look_count) VALUES (''Know Your Sources'', ''2017-05-12'', 1, ''4'', 0);
+INSERT INTO MyBlog.article (article_title, article_date, user_id, article_text,  look_count) VALUES (''Validating a Website'', ''2017-05-12'', 1, ''5'', 0);
 
-INSERT INTO MyBlog.comment (user_id, article_id, comment_date, comment_text) VALUES (1, 2, '2017-04-19', ' <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                                                                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.</p>');
+INSERT INTO MyBlog.comment (user_id, article_id, comment_date, comment_text) VALUES (1, 2, ''2017-04-19'', '' <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                                                                                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.</p>'');
 
-
-INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, '1234567890@qq.com', null, '', '1234567890', null, '1', '1', 'huang');
-INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, '1234567890@qq.com', null, '', '1234567890', null, null, '0', 'huang');
-INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, '1234567890@qq.com', null, '', '1234567890', null, null, '0', 'huang');
-INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, '1234567890@qq.com', null, '', '1234567890', null, null, '0', 'huang');
-INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, '1234567890@qq.com', null, '1', '1234567890', null, null, '0', '12');
-INSERT INTO MyBlog.user (address, email, img, password, phone, regist_date, signature, status, user_name) VALUES (null, '1234567890@qq.com', null, '1', '1234567890', null, null, '0', '123');

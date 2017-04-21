@@ -1,5 +1,6 @@
 package hht.dragon.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,7 +21,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Integer user_id;
     //用户名
     @Length(min = 1, max = 10)
     private String userName;
@@ -45,15 +46,16 @@ public class User {
     private String password;
     //上传的文章
     @OneToMany
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
     private Set<Article> articles;
 
-    public Integer getId() {
-        return id;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public String getUserName() {
@@ -136,20 +138,5 @@ public class User {
         this.articles = articles;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", status=" + status +
-                ", signature='" + signature + '\'' +
-                ", img='" + img + '\'' +
-                ", registDate=" + registDate +
-                ", address='" + address + '\'' +
-                ", password='" + password + '\'' +
-                ", articles=" + articles +
-                '}';
-    }
+
 }

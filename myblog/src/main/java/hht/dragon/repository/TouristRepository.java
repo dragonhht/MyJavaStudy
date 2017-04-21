@@ -36,7 +36,7 @@ public interface TouristRepository extends JpaRepository<Article,Integer>{
     public int getArticleCount();
 
     //通过用户编号查询用户
-    @Query("select u from User u where u.id = ?1")
+    @Query("select u from User u where u.user_id = ?1")
     public User getUserById(Integer user_id);
 
 }

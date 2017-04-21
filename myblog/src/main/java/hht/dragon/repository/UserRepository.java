@@ -2,6 +2,7 @@ package hht.dragon.repository;
 
 import hht.dragon.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * 用户JpaRepository接口
@@ -12,6 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-    public User getByIdAndPassword(Integer id, String password);
+    @Query("select u from User u where u.user_id = ?1 and u.password = ?2")
+    public User getByidAndPassword(Integer user_id, String password);
 
 }

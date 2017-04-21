@@ -28,10 +28,10 @@ public class UserService {
      */
     public Integer regist(User user) {
         User user1 = userRepository.save(user);
-        return user1.getId();
+        return user1.getUser_id();
     }
 
     public User login(User user) {
-        return userRepository.getByIdAndPassword(user.getId(), user.getPassword());
+        return userRepository.getByidAndPassword(user.getUser_id(), user.getPassword());
     }
 }
