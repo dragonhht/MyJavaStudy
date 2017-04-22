@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 游客service实现类
@@ -103,8 +104,23 @@ public class TouristServiceImp implements TouristService{
         Sort sort = new Sort(Sort.Direction.DESC, "article_date");
         Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
         Page<Article> articlePage = touristRepository.getArticleList(pageable1);
-
         return articlePage;
+    }
+
+    /**
+     * 计算分页页数
+     *
+     * @param num 信息总数
+     * @return 分页数目
+     */
+    private int getPageCount(Integer num) {
+        Integer pageNum = 0;
+        if ((num % PAGE_SIZE) != 0) {
+            pageNum = num / PAGE_SIZE + 1;
+        } else {
+            pageNum = num / PAGE_SIZE;
+        }
+        return pageNum;
     }
 
     @Override
@@ -112,11 +128,7 @@ public class TouristServiceImp implements TouristService{
         int pagNum = 0;
         int num = 0;
         num = touristRepository.getArticleCount();
-        if ((num % PAGE_SIZE) != 0) {
-            pagNum = num / PAGE_SIZE + 1;
-        } else {
-            pagNum = num / PAGE_SIZE;
-        }
+        pagNum = getPageCount(num);
         return pagNum;
     }
 
@@ -127,6 +139,8 @@ public class TouristServiceImp implements TouristService{
         return user;
     }
 
+
+
     @Override
     public int getUsetArticlePageCount(Integer user_id) {
         int pagNum = 0;
@@ -136,11 +150,17 @@ public class TouristServiceImp implements TouristService{
         if (user != null) {
             num = user.getArticles().size();
         }
-        if ((num % PAGE_SIZE) != 0) {
-            pagNum = num / PAGE_SIZE + 1;
-        } else {
-            pagNum = num / PAGE_SIZE;
-        }
+        pagNum = getPageCount(num);
         return pagNum;
+    }
+
+    @Override
+    public Page<Article> getUserArticles(Integer user_id, Integer pageNum) {
+        Page<Article> articles = null;
+        //按文章上传日期倒序
+        Sort sort = new Sort(Sort.Direction.DESC, "article_date");
+        Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
+        articles = touristRepository.getArticleByUserId(user_id, pageable1);
+        return articles;
     }
 }

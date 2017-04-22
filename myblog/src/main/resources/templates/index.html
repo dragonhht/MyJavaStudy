@@ -35,7 +35,7 @@
                                                                                 <h4><a th:href="@{/single/{article_id}(article_id=${hotarticle.article_id})}" th:text="${hotarticle.article_title}"></a></h4>
                                                                                 <span class="article-meta" >
                                                                                         <span th:text="${hotarticle.article_date+' by '}"></span>
-                                                                                        <a th:href="@{/visituser/{user_id}(user_id=${hotarticle.user.user_id})}" th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}"></a>
+                                                                                        <a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${hotarticle.user.user_id}, nowpage = 0)}" th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}"></a>
                                                                                 </span>
                                                                                 <span class="like-count" th:text="${hotarticle.lookCount}"></span>
                                                                         </li>
@@ -50,7 +50,7 @@
                                                                                 <h4><a th:href="@{/single/{article_id}(article_id=${latstarticle.article_id})}" th:text="${latstarticle.article_title}"></a></h4>
                                                                                 <span class="article-meta" >
                                                                                         <span th:text="${latstarticle.article_date+' by '}"></span>
-                                                                                        <a th:href="@{/visituser/{user_id}(user_id=${latstarticle.user.user_id})}" th:title="${latstarticle.user.userName}" th:text="${latstarticle.user.userName}"></a></span>
+                                                                                        <a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${latstarticle.user.user_id}, nowpage = 0)}" th:title="${latstarticle.user.userName}" th:text="${latstarticle.user.userName}"></a></span>
                                                                                 <span class="like-count" th:text="${latstarticle.lookCount}"></span>
                                                                         </li>
                                                                 </ul>

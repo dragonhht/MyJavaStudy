@@ -69,4 +69,11 @@ public interface TouristService {
      * @return
      */
     public int getUsetArticlePageCount(Integer user_id);
+
+    /**
+     * 通过用户编号查询文章
+     * @param user_id 用户编号
+     * @return
+     */
+    public Page<Article> getUserArticles(Integer user_id, Integer pageNum);
 }

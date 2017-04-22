@@ -46,7 +46,7 @@
 
                                                                 <div class="post-meta clearfix">
                                                                         <span class="date" th:text="${article.article_date}"></span>
-                                                                        <span class="category"><a th:href="@{/visituser/{user_id}(user_id=${article.user.user_id})}" th:title="${article.user.userName}" th:text="${article.user.userName}"></a></span>
+                                                                        <span class="category"><a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}" th:title="${article.user.userName}" th:text="${article.user.userName}"></a></span>
                                                                         <span class="comments"><a href="#" th:text="${article.lookCount+' 次浏览'}"></a></span>
                                                                         <span class="like-count" th:text="${'被赞 ' +article.suppot_count+' 次'}"></span>
                                                                 </div><!-- end of post meta -->

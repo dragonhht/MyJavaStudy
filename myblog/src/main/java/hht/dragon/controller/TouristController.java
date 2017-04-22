@@ -96,19 +96,22 @@ public class TouristController {
      * @param model
      * @return 作者首页
      */
-    @RequestMapping("/visituser/{user_id}")
-    public String visituser(@PathVariable("user_id") Integer user_id, Model model) {
+    @RequestMapping("/visituser/{user_id}/{nowpage}")
+    public String visituser(@PathVariable("user_id") Integer user_id,@PathVariable("nowpage") Integer nowpage, Model model) {
         User user = null;
+        Page<Article> articles = null;
         int pageNum = 0;
         user = touristService.getUserById(user_id);
         if (user == null) {
             return "";
         }
         pageNum = touristService.getUsetArticlePageCount(user_id);
-System.out.println(user);
-        model.addAttribute("nowpage", 0);
+        articles = touristService.getUserArticles(user_id, nowpage);
+System.out.println(nowpage);
+        model.addAttribute("userId", user_id);
+        model.addAttribute("nowpage", nowpage);
         model.addAttribute("pagecount", pageNum);
-        model.addAttribute("userarticles", user.getArticles());
+        model.addAttribute("userarticles", articles);
         return "myindex";
     }
 
