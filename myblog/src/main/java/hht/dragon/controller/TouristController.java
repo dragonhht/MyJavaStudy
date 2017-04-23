@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -115,4 +116,24 @@ System.out.println(nowpage);
         return "myindex";
     }
 
+    /**
+     * 搜索
+     * @param searchText 搜索的关键字
+     * @return 结果页面
+     */
+    @GetMapping("/search/{nowpage}")
+    public String search(String searchText, @PathVariable("nowpage") Integer nowpage, Model model) {
+        Page<Article> articles = null;
+        Integer pageNum = 0;
+        pageNum = touristService.getSearchArticleCount(searchText);
+        articles = touristService.getSearchArticles(searchText, nowpage);
+        for (Article article : articles) {
+            System.out.println(article.getArticle_id());
+        }
+        model.addAttribute("articles", articles);
+        model.addAttribute("pagecount", pageNum);
+        model.addAttribute("nowpage", nowpage);
+        model.addAttribute("searchText", searchText);
+        return "search";
+    }
 }

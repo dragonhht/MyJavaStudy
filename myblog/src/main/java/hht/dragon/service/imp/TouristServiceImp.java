@@ -163,4 +163,25 @@ public class TouristServiceImp implements TouristService{
         articles = touristRepository.getArticleByUserId(user_id, pageable1);
         return articles;
     }
+
+    @Override
+    public int getSearchArticleCount(String searchText) {
+        int num = 0;
+        int pageNum = 0;
+        searchText = "%" + searchText + "%";
+        num = touristRepository.getSearchArticleCount(searchText, searchText);
+        pageNum = getPageCount(num);
+        return pageNum;
+    }
+
+    @Override
+    public Page<Article> getSearchArticles(String searchText, Integer pageNum) {
+        Page<Article> articles = null;
+        searchText = "%" + searchText + "%";
+        //按文章上传日期倒序
+        Sort sort = new Sort(Sort.Direction.DESC, "article_date");
+        Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
+        articles = touristRepository.getSearchArticles(searchText, searchText, pageable1);
+        return articles;
+    }
 }

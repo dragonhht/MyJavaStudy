@@ -76,4 +76,18 @@ public interface TouristService {
      * @return
      */
     public Page<Article> getUserArticles(Integer user_id, Integer pageNum);
+
+    /**
+     * 计算搜索结果的页数
+     * @param searchText 搜索的关键字
+     * @return
+     */
+    public int getSearchArticleCount(String searchText);
+
+    /**
+     * 查询文章或作者
+     * @param searchText 搜索关键字
+     * @return 搜索到的结果
+     */
+    public Page<Article> getSearchArticles(String searchText, Integer pageNum);
 }

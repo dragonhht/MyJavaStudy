@@ -8,6 +8,9 @@
     <link rel='stylesheet' id='pretty-photo-css-css'  th:href='@{/js/prettyphoto/prettyPhotoaeb9.css}' type='text/css' media='all' />
     <link rel='stylesheet' id='main-css-css'  th:href='@{/css/main5152.css}' type='text/css' media='all' />
     <link rel='stylesheet' id='custom-css-css'  th:href='@{/css/custom5152.html}' type='text/css' media='all' />
+
+    
+    
 </header>
 
 <!--support-->
@@ -55,8 +58,8 @@
     <div class="search-area container">
         <h3 class="search-header">搜索博客或博主</h3>
 
-        <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
-            <input class="search-term required" type="text" id="s" name="s" placeholder="请输入您要搜索的博客名或博主名" title="搜索框" />
+        <form id="search-form" class="search-form clearfix" method="get" th:action="@{/search/{nowpage}(nowpage=0)}" autocomplete="off">
+            <input class="search-term required" type="text" id="s" name="searchText" placeholder="请输入您要搜索的博客名或博主名" title="搜索框" />
             <input class="search-btn" type="submit" value="搜索" />
             <div id="search-error-container"></div>
         </form>

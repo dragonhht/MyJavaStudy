@@ -43,4 +43,12 @@ public interface TouristRepository extends JpaRepository<Article,Integer>{
     @Query("select a from Article a where a.user.user_id = ?1")
     public Page<Article> getArticleByUserId(Integer user_id, Pageable pageable);
 
+    //查询搜索的结果数
+    @Query("select count(*) from Article a where a.user.userName like ?1 or a.article_text like ?2")
+    public int getSearchArticleCount(String userName, String text);
+
+    //查询文章
+    @Query("select a from Article a where a.user.userName like ?1 or a.article_text like ?2")
+    public Page<Article> getSearchArticles(String userName, String text, Pageable pageable);
+
 }
