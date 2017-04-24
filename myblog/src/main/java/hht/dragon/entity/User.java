@@ -50,6 +50,11 @@ public class User {
     @JsonBackReference
     private Set<Article> articles;
 
+    //多对多
+    @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
+    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
+    private Set<Article> support_article;
+
     public Integer getUser_id() {
         return user_id;
     }
@@ -138,5 +143,11 @@ public class User {
         this.articles = articles;
     }
 
+    public Set<Article> getSupport_article() {
+        return support_article;
+    }
 
+    public void setSupport_article(Set<Article> support_article) {
+        this.support_article = support_article;
+    }
 }

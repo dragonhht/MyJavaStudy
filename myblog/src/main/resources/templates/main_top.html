@@ -8,9 +8,19 @@
     <link rel='stylesheet' id='pretty-photo-css-css'  th:href='@{/js/prettyphoto/prettyPhotoaeb9.css}' type='text/css' media='all' />
     <link rel='stylesheet' id='main-css-css'  th:href='@{/css/main5152.css}' type='text/css' media='all' />
     <link rel='stylesheet' id='custom-css-css'  th:href='@{/css/custom5152.html}' type='text/css' media='all' />
+</header>
 
-    
-    
+<!--提示登录-->
+<header th:fragment="logintip">
+    <script>
+        function loginTip() {
+            if (window.confirm("请先登录!")) {
+                alert("去登陆");
+            } else {
+                alert("不去登录");
+            };
+        }
+    </script>
 </header>
 
 <!--support-->
@@ -42,7 +52,14 @@
                         <li class="current-menu-item"><a th:href="@{/index}">首页</a></li>
                         <li><a th:href="@{/articles/{page_num}(page_num=0)}">博客列表</a></li>
                         <li><a th:href="@{/contact}">留言</a></li>
-                        <li><a th:href="@{/tologin}">登录</a> </li>
+
+                        <li th:if="${session.userName eq null}"><a th:href="@{/tologin}">登录</a> </li>
+                        <li th:unless="${session.userName eq null}">
+                            <a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${session.userId}, nowpage = 0)}" th:text="${session.userName}"></a>
+                        </li>
+                        <li th:unless="${session.userName eq null}">
+                            <a th:href="@{/user/loginout}">注销</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

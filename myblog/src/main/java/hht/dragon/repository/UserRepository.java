@@ -1,5 +1,6 @@
 package hht.dragon.repository;
 
+import hht.dragon.entity.Article;
 import hht.dragon.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +14,17 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+    //登录
     @Query("select u from User u where u.user_id = ?1 and u.password = ?2")
     public User getByidAndPassword(Integer user_id, String password);
+
+    //通过用户编号查询用户
+    @Query("select u from User u where u.user_id = ?1")
+    public User getUserById(Integer user_id);
+
+    //通过文章编号查询文章
+    @Query("select a from Article a where a.article_id = ?1")
+    public Article getArticleById(Integer article_id);
+
 
 }

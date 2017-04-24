@@ -40,6 +40,12 @@ public class Article {
     @JoinColumn(name = "article_id")
     private Set<Comment> comments;
 
+    //多对多
+    @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
+    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "article_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private Set<User> support_user;
+
+
     public Integer getArticle_id() {
         return article_id;
     }
@@ -104,5 +110,11 @@ public class Article {
         this.suppot_count = suppot_count;
     }
 
+    public Set<User> getSupport_user() {
+        return support_user;
+    }
 
+    public void setSupport_user(Set<User> support_user) {
+        this.support_user = support_user;
+    }
 }

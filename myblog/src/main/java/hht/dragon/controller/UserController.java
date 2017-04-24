@@ -3,14 +3,19 @@ package hht.dragon.controller;
 import hht.dragon.entity.User;
 import hht.dragon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -20,7 +25,7 @@ import java.util.List;
  * Date : 17-4-13
  * Time : 下午6:42
  */
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
@@ -28,62 +33,42 @@ public class UserController {
     private UserService service;
 
     /**
-     * 用户注册
-     *
+     * 用户登录
      * @param user 用户信息
-     * @param bindingResult
-     * @param repassword
-     * @return 相关结果页面
+     * @return 登录结果页面
      */
-    @PostMapping("/regist")
-    public ModelAndView regist(@Valid User user, BindingResult bindingResult, String repassword) {
-System.out.println(user);
-
-        ModelAndView mav =new ModelAndView();
-        mav.setViewName("register");
-
-        if (bindingResult.hasErrors()) {
-            List<ObjectError> errorss = bindingResult.getAllErrors();
-            mav.addObject("registErrors", errorss);
-
-            return mav;
-        }
-
-        if (!repassword.equals(user.getPassword())) {
-            return mav;
-        }
-
-        boolean ok = false;
-        Integer userId = service.regist(user);
-
-        if (userId != 0) {
-            ok = true;
-        }
-
-        if (ok) {
-            mav.setViewName("msg");
-            mav.addObject("userId", userId);
-        }
-
-        return mav;
-    }
-
     @PostMapping("/login")
-    public ModelAndView login(User user) {
-        boolean ok = false;
+    public String login(User user, HttpSession session) {
         User user1 = null;
-        ModelAndView mav = new ModelAndView("login");
+        String returnString = "redirect:/tologin";
         user1 = service.login(user);
         if (user1 != null) {
-            ok = true;
-        }
-        if (ok) {
-            mav.setViewName("index");
-            mav.addObject("login", "true");
-            mav.addObject("userName", user1.getUserName());
+            Integer id = user.getUser_id();
+            String name = user1.getUserName();
+            session.setAttribute("userId", id);
+            session.setAttribute("userName", name);
+            returnString = "redirect:/visituser/"+ id +"/0";
         }
 
-        return mav;
+        return returnString;
+    }
+
+    /**
+     * 用户注销
+     * @param session
+     * @return
+     */
+    @RequestMapping("/loginout")
+    public String loginout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/index";
+    }
+
+    @RequestMapping("/supportItem/{article_id}")
+    public void supportItem(@PathVariable("article_id") Integer article_id, HttpServletResponse response, HttpSession session) {
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = null;
+
     }
 
 }

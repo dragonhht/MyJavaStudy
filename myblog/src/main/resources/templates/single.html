@@ -10,6 +10,8 @@
                 <!--引入样式文件-->
                 <header th:include="main_top::mainheader"></header>
 
+                <header th:include="main_top::logintip"></header>
+
         </head>
 
         <body>
@@ -50,8 +52,8 @@
                                                 <div class="like-btn">
 
                                                         <form id="like-it-form" action="#" method="post">
-                                                                <span class="like-it " th:text="${'被赞 '+article.suppot_count + ' 次'}"></span>
-                                                                <input type="hidden" name="post_id" value="99" />
+                                                                <span id="supportcount" class="like-it " onclick="loginTip()" th:text="${'被赞 '+article.suppot_count + ' 次'}"></span>
+                                                                <input type="hidden" name="post_id" id="article_id" th:value="${article.article_id}" />
                                                                 <input type="hidden" name="action" value="like_it" />
                                                         </form>
 
@@ -240,6 +242,7 @@
         <script type='text/javascript' th:src='@{/js/jquery.form.js}'></script>
         <script type='text/javascript' th:src='@{/js/jquery.validate.min.js}'></script>
         <script type='text/javascript' th:src='@{/js/custom.js}'></script>
+        <script type="text/javascript" th:src="@{/js/my/single.js}"></script>
 
         </body>
 </html>

@@ -82,6 +82,9 @@ public class TouristController {
         Page<Article> articleList = null;
         articleList = touristService.getArticleList(page_num);
         pageNum = touristService.getArticlePageCount();
+        if (pageNum == 0) {
+            pageNum = 1;
+        }
 //        model.addAttribute("currentpage", "articles");
         model.addAttribute("nowpage", page_num);
         model.addAttribute("pagecount", pageNum);
@@ -107,12 +110,16 @@ public class TouristController {
             return "";
         }
         pageNum = touristService.getUsetArticlePageCount(user_id);
+        if (pageNum == 0) {
+            pageNum = 1;
+        }
         articles = touristService.getUserArticles(user_id, nowpage);
 System.out.println(nowpage);
         model.addAttribute("userId", user_id);
         model.addAttribute("nowpage", nowpage);
         model.addAttribute("pagecount", pageNum);
         model.addAttribute("userarticles", articles);
+        model.addAttribute("userName", user.getUserName());
         return "myindex";
     }
 
@@ -127,8 +134,8 @@ System.out.println(nowpage);
         Integer pageNum = 0;
         pageNum = touristService.getSearchArticleCount(searchText);
         articles = touristService.getSearchArticles(searchText, nowpage);
-        for (Article article : articles) {
-            System.out.println(article.getArticle_id());
+        if (pageNum == 0) {
+            pageNum = 1;
         }
         model.addAttribute("articles", articles);
         model.addAttribute("pagecount", pageNum);
