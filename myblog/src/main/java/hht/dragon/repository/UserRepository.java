@@ -27,4 +27,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
     public Article getArticleById(Integer article_id);
 
 
+    //查询是否已经点赞
+    @Query("select a from Article a join a.support_user u where u.user_id = ?1 and a.article_id = ?2")
+    public Article isSupport(Integer user_id, Integer article_id);
 }

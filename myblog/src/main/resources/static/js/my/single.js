@@ -4,15 +4,18 @@
 
 //使用ajax提交信息
 var xmlhttprequest;
+var s;
 function supportItem() {
     var article_id = document.getElementById("article_id").value;
     xmlhttprequest = new XMLHttpRequest();
+    s = document.getElementById('supportcount').innerHTML;
+    s = '被赞 ' +s.substr(2,3)+ ' 次';
     if (xmlhttprequest.overrideMimeType) {
         xmlhttprequest.overrideMimeType("text/xml");
     }
     xmlhttprequest.onreadystatechange = callback;
     //get请求
-    xmlhttprequest.open("GET", "/user/supportItem/"+article_id, true);
+    xmlhttprequest.open("GET", "../user/supportItem/"+article_id, true);
     xmlhttprequest.send(null);
 }
 
@@ -29,7 +32,13 @@ function callback() {
             var text = xmlhttprequest.responseText;
             //4，将数据显示在页面
             if (text != null && text != undefined && text != "") {
-                document.getElementById('supportcount').innerHTML = text;
+                if (text == 0) {
+                    alert("您已经点过赞了");
+                    document.getElementById('supportcount').innerHTML = s;
+                } else {
+                    document.getElementById('supportcount').innerHTML = '被赞 ' +text+ ' 次';
+                }
+
             }
         }
     }

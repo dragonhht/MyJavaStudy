@@ -47,6 +47,9 @@ public class IndexController {
         return "contact";
     }
 
-
+    @RequestMapping("/post")
+    public String post() {
+        return "post";
+    }
 
 }

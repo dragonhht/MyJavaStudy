@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -64,11 +65,27 @@ public class UserController {
         return "redirect:/index";
     }
 
+    /**
+     * 点赞
+     * @param article_id
+     * @param response
+     * @param session
+     */
     @RequestMapping("/supportItem/{article_id}")
     public void supportItem(@PathVariable("article_id") Integer article_id, HttpServletResponse response, HttpSession session) {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = null;
+        Integer user_id = 0,supportcount;
+        user_id = (Integer) session.getAttribute("userId");
 
+        supportcount = service.supportArticle(user_id,article_id);
+
+        try {
+            out = response.getWriter();
+            out.println(supportcount);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -10,7 +10,22 @@
                 <!--引入样式文件-->
                 <header th:include="main_top::mainheader"></header>
 
-                <header th:include="main_top::logintip"></header>
+
+                <script th:inline="javascript">
+                    function loginTip() {
+                        var user = [[${session.userId}]];
+                        if (user == null) {
+                            if (window.confirm("请先登录!")) {
+                                window.location.replace("../tologin");
+                            } else {
+                                return false;
+                            };
+                        } else {
+                            supportItem();
+                        }
+
+                    }
+                </script>
 
         </head>
 
@@ -52,7 +67,7 @@
                                                 <div class="like-btn">
 
                                                         <form id="like-it-form" action="#" method="post">
-                                                                <span id="supportcount" class="like-it " onclick="loginTip()" th:text="${'被赞 '+article.suppot_count + ' 次'}"></span>
+                                                                <span id="supportcount" class="like-it " onclick="loginTip()" th:text="${'被赞 '+supportcount + ' 次'}"></span>
                                                                 <input type="hidden" name="post_id" id="article_id" th:value="${article.article_id}" />
                                                                 <input type="hidden" name="action" value="like_it" />
                                                         </form>

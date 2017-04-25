@@ -30,11 +30,16 @@ public class UserServiceImp implements UserService{
     @Override
     public Integer supportArticle(Integer user_id, Integer article_id) {
         Integer num = 0;
-        User user = getUserById(user_id);
-        Article article = getArticleById(article_id);
-        num = article.getSuppot_count();
-        num = ++num;
-        article.getSupport_user().add(user);
+        boolean ok = false;
+        ok = isSupport(user_id, article_id);
+        if (ok) {
+            User user = getUserById(user_id);
+            Article article = getArticleById(article_id);
+            num = article.getSuppot_count();
+            num = ++num;
+            user.getSupport_article().add(article);
+            userRepository.save(user);
+        }
         return num;
     }
 
@@ -50,5 +55,16 @@ public class UserServiceImp implements UserService{
         Article article = null;
         article = userRepository.getArticleById(article_id);
         return article;
+    }
+
+    @Override
+    public boolean isSupport(Integer user_id, Integer article_id) {
+        Article article = null;
+        boolean ok = false;
+        article = userRepository.isSupport(user_id, article_id);
+        if (article == null) {
+            ok = true;
+        }
+        return ok;
     }
 }

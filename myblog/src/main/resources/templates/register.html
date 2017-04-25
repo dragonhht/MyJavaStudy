@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <title>注册页面</title>
     <link th:href="@{css/register.css}" rel="stylesheet" type="text/css" />
+    <!--引入样式文件-->
+    <header th:include="main_top::mainheader"></header>
 </head>
 <body>
+<!--从main_top.html中引入名字为maintop的fragment-->
+<div th:include="main_top::maintop"></div>
 
 <div class="bg">
 

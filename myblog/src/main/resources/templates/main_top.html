@@ -16,8 +16,10 @@
         function loginTip() {
             if (window.confirm("请先登录!")) {
                 alert("去登陆");
+                return true;
             } else {
                 alert("不去登录");
+                return false;
             };
         }
     </script>

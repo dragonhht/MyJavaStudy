@@ -59,15 +59,17 @@ public class TouristController {
     @RequestMapping("/single/{article_id}")
     public String single(@PathVariable("article_id") Integer article_id, Model model) {
         Article article = null;
-        int commentCount = 0;
+        int commentCount = 0,supportcount = 0;
         article = touristService.getArticleById(article_id);
         if (article != null) {
             if (article.getComments() != null) {
                 commentCount = article.getComments().size();
             }
+            supportcount = article.getSupport_user().size();
         }
         model.addAttribute("article", article);
         model.addAttribute("commentcount", commentCount);
+        model.addAttribute("supportcount", supportcount);
         return "single";
     }
 

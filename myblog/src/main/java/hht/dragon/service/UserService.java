@@ -45,4 +45,12 @@ public interface UserService {
      */
     public Article getArticleById(Integer article_id);
 
+    /**
+     * 查询是否该用户已经点赞
+     * @param user_id 用户编号
+     * @param article_id 文章编号
+     * @return 结果
+     */
+    public boolean isSupport(Integer user_id, Integer article_id);
+
 }
