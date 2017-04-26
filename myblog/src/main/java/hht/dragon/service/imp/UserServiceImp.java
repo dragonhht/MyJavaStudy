@@ -35,7 +35,7 @@ public class UserServiceImp implements UserService{
         if (ok) {
             User user = getUserById(user_id);
             Article article = getArticleById(article_id);
-            num = article.getSuppot_count();
+            num = article.getSupport_user().size();
             num = ++num;
             user.getSupport_article().add(article);
             userRepository.save(user);
