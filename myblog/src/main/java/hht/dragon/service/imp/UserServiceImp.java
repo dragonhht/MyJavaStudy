@@ -1,9 +1,12 @@
 package hht.dragon.service.imp;
 
 import hht.dragon.entity.Article;
+import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
+import hht.dragon.repository.TouristRepository;
 import hht.dragon.repository.UserRepository;
 import hht.dragon.service.UserService;
+import hht.dragon.utils.getDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,8 @@ public class UserServiceImp implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
     @Override
     public User login(User user) {
@@ -63,6 +68,27 @@ public class UserServiceImp implements UserService{
         boolean ok = false;
         article = userRepository.isSupport(user_id, article_id);
         if (article == null) {
+            ok = true;
+        }
+        return ok;
+    }
+
+    @Override
+    public boolean contactArticle(Integer user_id, Integer article_id, String comment_text) {
+        boolean ok = false;
+        User user = null;
+        Article article = null;
+        String comment_date = null;
+        Comment comment = new Comment();
+        user = userRepository.getUserById(user_id);
+        article = userRepository.getArticleById(article_id);
+        comment_date = getDate.getDate();
+        comment.setArticle(article);
+        comment.setUser(user);
+        comment.setComment_text(comment_text);
+        comment.setComment_date(comment_date);
+        Comment commentTest = commentRepository.save(comment);
+        if (commentTest != null) {
             ok = true;
         }
         return ok;

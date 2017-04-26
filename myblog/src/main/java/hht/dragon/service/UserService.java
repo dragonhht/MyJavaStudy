@@ -53,4 +53,13 @@ public interface UserService {
      */
     public boolean isSupport(Integer user_id, Integer article_id);
 
+    /**
+     * 评论文章
+     * @param user_id 评论的用户编号
+     * @param article_id 文章编号
+     * @param comment_text 评论内容
+     * @return 保存结果
+     */
+    public boolean contactArticle(Integer user_id, Integer article_id, String comment_text);
+
 }

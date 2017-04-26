@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -86,6 +83,15 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @GetMapping("/contactarticle")
+    public String contactArticle(Integer article_id, String comment_text, HttpSession session) {
+        Integer user_id;
+        user_id = (Integer) session.getAttribute("userId");
+        service.contactArticle(user_id, article_id, comment_text);
+        return "redirect:/single/"+article_id;
     }
 
 }

@@ -11,33 +11,6 @@
                 <header th:include="main_top::mainheader"></header>
 
 
-                <script th:inline="javascript">
-                    function loginTip() {
-                        var user = [[${session.userId}]];
-                        if (user == null) {
-                            if (window.confirm("请先登录!")) {
-                                window.location.replace("../tologin");
-                            } else {
-                                return false;
-                            };
-                        } else {
-                            supportItem();
-                        }
-
-                        function MarkdownEditor(input) {
-                            this.update = function () {
-                                $("preview").innerHTML = markdown.toHTML(input);
-                            };
-                            input.editor = this;
-                            this.update();
-                        }
-
-
-                    }
-
-
-                </script>
-
         </head>
 
         <body>
@@ -128,35 +101,35 @@
 
                                                                         <ul class="children">
 
-                                                                                <li class="comment byuser comment-author-saqib-sarwar bypostauthor odd alt depth-2" id="li-comment-3">
-                                                                                        <article id="comment-3">
+                                                                                <!--<li class="comment byuser comment-author-saqib-sarwar bypostauthor odd alt depth-2" id="li-comment-3">-->
+                                                                                        <!--<article id="comment-3">-->
 
-                                                                                                <a href="#">
-                                                                                                        <img alt="" src="http://0.gravatar.com/avatar/2df5eab0988aa5ff219476b1d27df755?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" class="avatar avatar-60 photo" height="60" width="60" />
-                                                                                                </a>
+                                                                                                <!--<a href="#">-->
+                                                                                                        <!--<img alt="" src="http://0.gravatar.com/avatar/2df5eab0988aa5ff219476b1d27df755?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" class="avatar avatar-60 photo" height="60" width="60" />-->
+                                                                                                <!--</a>-->
 
-                                                                                                <div class="comment-meta">
+                                                                                                <!--<div class="comment-meta">-->
 
-                                                                                                        <h5 class="author">
-                                                                                                                <cite class="fn">saqib sarwar</cite>
-                                                                                                                - <a class="comment-reply-link" href="#">Reply</a>
-                                                                                                        </h5>
+                                                                                                        <!--<h5 class="author">-->
+                                                                                                                <!--<cite class="fn">saqib sarwar</cite>-->
+                                                                                                                <!-- - <a class="comment-reply-link" href="#">Reply</a>-->
+                                                                                                        <!--</h5>-->
 
-                                                                                                        <p class="date">
-                                                                                                                <a href="#">
-                                                                                                                        <time datetime="2013-02-26T13:20:14+00:00">February 26, 2013 at 1:20 pm</time>
-                                                                                                                </a>
-                                                                                                        </p>
+                                                                                                        <!--<p class="date">-->
+                                                                                                                <!--<a href="#">-->
+                                                                                                                        <!--<time datetime="2013-02-26T13:20:14+00:00">February 26, 2013 at 1:20 pm</time>-->
+                                                                                                                <!--</a>-->
+                                                                                                        <!--</p>-->
 
-                                                                                                </div><!-- end .comment-meta -->
+                                                                                                <!--</div>&lt;!&ndash; end .comment-meta &ndash;&gt;-->
 
-                                                                                                <div class="comment-body">
-                                                                                                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
-                                                                                                </div><!-- end of comment-body -->
+                                                                                                <!--<div class="comment-body">-->
+                                                                                                        <!--<p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>-->
+                                                                                                <!--</div>&lt;!&ndash; end of comment-body &ndash;&gt;-->
 
-                                                                                        </article><!-- end of comment -->
+                                                                                        <!--</article>&lt;!&ndash; end of comment &ndash;&gt;-->
 
-                                                                                </li>
+                                                                                <!--</li>-->
                                                                         </ul>
                                                                 </li>
 
@@ -171,16 +144,19 @@
                                                                 </div>
 
 
-                                                                <form action="#" method="post" id="commentform">
+                                                                <!--评论-->
+                                                                <form th:action="@{/user/contactarticle}" method="get" id="commentform">
 
                                                                         <div>
-                                                                                <textarea class="span8" name="comment" id="comment" cols="58" rows="10"></textarea>
+                                                                                <textarea class="span8" name="comment_text" id="comment" cols="58" rows="10"></textarea>
                                                                         </div>
 
-                                                                        <p class="allowed-tags">You can use these HTML tags and attributes <small><code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>
+                                                                        <input name="article_id" hidden="hidden" th:value="${article.article_id}" />
+
+                                                                        <!--<p class="allowed-tags">You can use these HTML tags and attributes <small><code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
 
                                                                         <div>
-                                                                                <input class="btn" name="submit" type="submit" id="submit"  value="提交评论" />
+                                                                                <input class="btn" onclick="return contactTip();"  name="submit" type="submit" id="submit"  value="提交评论" />
                                                                         </div>
 
                                                                 </form>
@@ -275,9 +251,37 @@
         <script type="text/javascript" th:src="@{/js/markdown_browser/markdown.js}"></script>
         </body>
 
-        <script>
+        <script th:inline="javascript">
+                //显示文章内容
                 var text = document.getElementById("textvalue").getAttribute("value");
-                //console.log(text);
                 document.getElementById("test").innerHTML = markdown.toHTML(text);
+
+                //点赞判断是否登录
+                function loginTip() {
+                    var user = [[${session.userId}]];
+                    if (user == null) {
+                        if (window.confirm("请先登录!")) {
+                            window.location.replace("../tologin");
+                        } else {
+                            return false;
+                        };
+                    } else {
+                        supportItem();
+                    }
+                }
+
+                //留言判断是否登录
+                function contactTip() {
+                    var user = [[${session.userId}]];
+                    if (user == null) {
+                        if (window.confirm("请先登录!")) {
+                            window.location.replace("../tologin");
+                            return false;
+                        } else {
+                            return false;
+                        };
+                    }
+                    return true;
+                }
         </script>
 </html>
