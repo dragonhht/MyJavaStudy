@@ -67,6 +67,7 @@ public class TouristController {
             }
             supportcount = article.getSupport_user().size();
         }
+        System.out.println(article.getArticle_text());
         model.addAttribute("article", article);
         model.addAttribute("commentcount", commentCount);
         model.addAttribute("supportcount", supportcount);

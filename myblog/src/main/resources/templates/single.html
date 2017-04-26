@@ -71,7 +71,9 @@
                                                         </div><!-- end of post meta -->
 
                                                         <!--文章内容-->
-                                                        <span th:utext="${article.article_text}"></span>
+                                                        <!--<span th:utext="${article.article_text}"></span>-->
+                                                        <span id="textvalue" hidden="hidden" th:value="${article.article_text}"></span>
+                                                        <span id="test"></span>
 
 
                                                 </article>
@@ -270,7 +272,12 @@
         <script type='text/javascript' th:src='@{/js/jquery.validate.min.js}'></script>
         <script type='text/javascript' th:src='@{/js/custom.js}'></script>
         <script type="text/javascript" th:src="@{/js/my/single.js}"></script>
-        <script type="text/javascript" th:src="@{/js/markdown_browser/marked.js}"></script>
-
+        <script type="text/javascript" th:src="@{/js/markdown_browser/markdown.js}"></script>
         </body>
+
+        <script>
+                var text = document.getElementById("textvalue").getAttribute("value");
+                //console.log(text);
+                document.getElementById("test").innerHTML = markdown.toHTML(text);
+        </script>
 </html>
