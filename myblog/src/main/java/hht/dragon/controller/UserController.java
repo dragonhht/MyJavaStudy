@@ -94,4 +94,13 @@ public class UserController {
         return "redirect:/single/"+article_id;
     }
 
+
+    @GetMapping("/contactcomment")
+    public String contactComment(Integer article_id, Integer comment_id, String commentChile_text, HttpSession session) {
+        Integer user_id;
+        user_id = (Integer) session.getAttribute("userId");
+        service.contactComment(user_id, comment_id, commentChile_text);
+        return "redirect:/single/"+article_id;
+    }
+
 }

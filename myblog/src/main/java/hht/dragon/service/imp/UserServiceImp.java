@@ -2,7 +2,9 @@ package hht.dragon.service.imp;
 
 import hht.dragon.entity.Article;
 import hht.dragon.entity.Comment;
+import hht.dragon.entity.CommentChild;
 import hht.dragon.entity.User;
+import hht.dragon.repository.CommentChildReponsitory;
 import hht.dragon.repository.TouristRepository;
 import hht.dragon.repository.UserRepository;
 import hht.dragon.service.UserService;
@@ -24,6 +26,8 @@ public class UserServiceImp implements UserService{
     private UserRepository userRepository;
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    private CommentChildReponsitory commentChildReponsitory;
 
     @Override
     public User login(User user) {
@@ -89,6 +93,27 @@ public class UserServiceImp implements UserService{
         comment.setComment_date(comment_date);
         Comment commentTest = commentRepository.save(comment);
         if (commentTest != null) {
+            ok = true;
+        }
+        return ok;
+    }
+
+    @Override
+    public boolean contactComment(Integer user_id, Integer comment_id, String comment_text) {
+        boolean ok = false;
+        User user = null;
+        Comment comment = null;
+        String commentChild_date = null;
+        CommentChild commentChild = new CommentChild();
+        user = userRepository.getUserById(user_id);
+        comment = commentRepository.getOne(comment_id);
+        commentChild_date = getDate.getDate();
+        commentChild.setComment_date(commentChild_date);
+        commentChild.setComment(comment);
+        commentChild.setComment_text(comment_text);
+        commentChild.setUser(user);
+        CommentChild commentChild1 = commentChildReponsitory.save(commentChild);
+        if (commentChild1 != null) {
             ok = true;
         }
         return ok;

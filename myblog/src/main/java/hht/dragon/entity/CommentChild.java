@@ -1,19 +1,18 @@
 package hht.dragon.entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
- * 评论类
+ * 评论的子评论
  * <p>
  * User : Dragon_hht
- * Date : 17-4-18
- * Time : 下午7:21
+ * Date : 17-4-27
+ * Time : 下午7:29
  */
 @Entity
-@Table(name = "comment")
-public class Comment {
-    //评论编号
+@Table(name = "commentchild")
+public class CommentChild {
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -27,13 +26,8 @@ public class Comment {
     private String comment_text;
     //单向多对一
     @ManyToOne
-    @JoinColumn(name = "article_id")
-    private Article article;
-
-    //一对多
-    @OneToMany
     @JoinColumn(name = "comment_id")
-    private Set<CommentChild> commentChildren;
+    private Comment comment;
 
     public Integer getId() {
         return id;
@@ -67,19 +61,11 @@ public class Comment {
         this.comment_text = comment_text;
     }
 
-    public Article getArticle() {
-        return article;
+    public Comment getComment() {
+        return comment;
     }
 
-    public void setArticle(Article article) {
-        this.article = article;
-    }
-
-    public Set<CommentChild> getCommentChildren() {
-        return commentChildren;
-    }
-
-    public void setCommentChildren(Set<CommentChild> commentChildren) {
-        this.commentChildren = commentChildren;
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 }

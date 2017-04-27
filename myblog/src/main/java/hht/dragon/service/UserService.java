@@ -62,4 +62,13 @@ public interface UserService {
      */
     public boolean contactArticle(Integer user_id, Integer article_id, String comment_text);
 
+    /**
+     * 评论评论
+     * @param user_id 用户编号
+     * @param comment_id 评论编号
+     * @param comment_text 评论内容
+     * @return
+     */
+    public boolean contactComment(Integer user_id, Integer comment_id, String comment_text);
+
 }
