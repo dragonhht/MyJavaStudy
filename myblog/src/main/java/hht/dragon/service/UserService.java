@@ -71,4 +71,12 @@ public interface UserService {
      */
     public boolean contactComment(Integer user_id, Integer comment_id, String comment_text);
 
+    /**
+     * 保存文章
+     * @param article 文章信息
+     * @param user_id 用户编号
+     * @return
+     */
+    public Article saveArticle(Article article, Integer user_id);
+
 }

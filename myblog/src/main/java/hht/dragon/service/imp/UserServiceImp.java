@@ -28,6 +28,8 @@ public class UserServiceImp implements UserService{
     private CommentRepository commentRepository;
     @Autowired
     private CommentChildReponsitory commentChildReponsitory;
+    @Autowired
+    private TouristRepository touristRepository;
 
     @Override
     public User login(User user) {
@@ -117,5 +119,18 @@ public class UserServiceImp implements UserService{
             ok = true;
         }
         return ok;
+    }
+
+    @Override
+    public Article saveArticle(Article article, Integer user_id) {
+        User user = null;
+        String article_date = null;
+        Article articleResult = null;
+        article_date = getDate.getDate();
+        user = userRepository.getUserById(user_id);
+        article.setUser(user);
+        article.setArticle_date(article_date);
+        articleResult = touristRepository.save(article);
+        return articleResult;
     }
 }

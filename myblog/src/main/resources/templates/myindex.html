@@ -106,7 +106,7 @@
                         <h3 class="title" th:text="${session.userName+' 的博客'}">Featured Articles</h3>
                         <ul class="articles">
                             <li class="article-entry standard">
-                                <h4><a href="single.html">写博客</a></h4>
+                                <h4><a th:href="@{/user/writeblog}">写博客</a></h4>
                             </li>
                             <li class="article-entry standard">
                                 <h4><a href="single.html">我的好友</a></h4>

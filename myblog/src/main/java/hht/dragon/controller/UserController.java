@@ -1,5 +1,6 @@
 package hht.dragon.controller;
 
+import hht.dragon.entity.Article;
 import hht.dragon.entity.User;
 import hht.dragon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,13 @@ public class UserController {
     }
 
 
+    /**
+     * 评论文章
+     * @param article_id 文章编号
+     * @param comment_text 评论内容
+     * @param session
+     * @return
+     */
     @GetMapping("/contactarticle")
     public String contactArticle(Integer article_id, String comment_text, HttpSession session) {
         Integer user_id;
@@ -95,12 +103,48 @@ public class UserController {
     }
 
 
+    /**
+     * 评论他人评论
+     * @param article_id 文章编号
+     * @param comment_id 被评论的评论编号
+     * @param commentChile_text 评论内容
+     * @param session
+     * @return
+     */
     @GetMapping("/contactcomment")
     public String contactComment(Integer article_id, Integer comment_id, String commentChile_text, HttpSession session) {
         Integer user_id;
         user_id = (Integer) session.getAttribute("userId");
         service.contactComment(user_id, comment_id, commentChile_text);
         return "redirect:/single/"+article_id;
+    }
+
+    /**
+     * 跳转博客书写界面
+     * @return
+     */
+    @RequestMapping("/writeblog")
+    public String writeBlog() {
+        return "write_blog";
+    }
+
+    /**
+     * 保存文章
+     * @param article 文章信息
+     * @return 结果展示页面
+     */
+    @GetMapping("/saveblog")
+    public String saveBlog(Article article, HttpSession session) {
+        Article article1 = null;
+        Integer user_id;
+        user_id = (Integer) session.getAttribute("userId");
+        article1 = service.saveArticle(article, user_id);
+        if (article != null) {
+            Integer article_id = 0;
+            article_id = article1.getArticle_id();
+            return "redirect:/single/"+article_id;
+        }
+        return null;
     }
 
 }
