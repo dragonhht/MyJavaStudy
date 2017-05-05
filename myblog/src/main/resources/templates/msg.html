@@ -16,8 +16,8 @@
 
             <div class="right_image"></div>
 
-            <span class="center_message">注册成功,您的账号为: <span th:text="${userId}"></span>  </span>
-            <span class="center_to_login"><a href="../tologin"> 前去登录</a></span>
+            <span class="center_message">注册成功,您的账号为: <span th:text="${registId}"></span>  </span>
+            <span class="center_to_login"><a th:href="@{/tologin}"> 前去登录</a></span>
 
         </div>
 

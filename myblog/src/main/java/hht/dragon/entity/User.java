@@ -52,8 +52,15 @@ public class User {
 
     //多对多
     @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
-    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
+    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "article_id")})
     private Set<Article> support_article;
+
+    //多对多
+    @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
+    @JoinTable(name = "userrole", joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private Set<UserRole> roles;
 
     public Integer getUser_id() {
         return user_id;
@@ -149,5 +156,13 @@ public class User {
 
     public void setSupport_article(Set<Article> support_article) {
         this.support_article = support_article;
+    }
+
+    public Set<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
     }
 }

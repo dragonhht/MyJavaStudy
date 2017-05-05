@@ -20,7 +20,7 @@
                 <span th:text="${error.defaultMessage}"></span>
             </span>
 
-            <form action="user/regist" method="post">
+            <form th:action="@{/regist}" method="post">
 
                 <div class="form_div first_div">
                     <span>姓名:</span>

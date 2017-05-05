@@ -4,12 +4,14 @@ package hht.dragon.controller;
 import hht.dragon.entity.Article;
 import hht.dragon.entity.User;
 import hht.dragon.service.TouristService;
+import hht.dragon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -27,6 +29,8 @@ public class TouristController {
 
     @Autowired
     private TouristService touristService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 访问首页
@@ -145,5 +149,19 @@ System.out.println(nowpage);
         model.addAttribute("nowpage", nowpage);
         model.addAttribute("searchText", searchText);
         return "search";
+    }
+
+    /**
+     * 用户注册
+     * @param user 用户信息
+     * @return 结果页面
+     */
+    @PostMapping("/regist")
+    public String regist(User user, Model model) {
+        Integer user_id;
+        user_id = userService.regist(user);
+        model.addAttribute("registId", user_id);
+        return "msg";
+
     }
 }

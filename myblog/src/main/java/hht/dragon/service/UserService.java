@@ -79,4 +79,12 @@ public interface UserService {
      */
     public Article saveArticle(Article article, Integer user_id);
 
+
+    /**
+     * 用户注册
+     * @param user 用户信息
+     * @return 注册成功后的编号
+     */
+    public Integer regist(User user);
+
 }

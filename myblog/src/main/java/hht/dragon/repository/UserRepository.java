@@ -22,6 +22,10 @@ public interface UserRepository extends JpaRepository<User, Integer>{
     @Query("select u from User u where u.user_id = ?1")
     public User getUserById(Integer user_id);
 
+    //通过用户姓名查询用户
+    @Query("select u from User u where u.userName = ?1")
+    public User getUserByUserName(String userName);
+
     //通过文章编号查询文章
     @Query("select a from Article a where a.article_id = ?1")
     public Article getArticleById(Integer article_id);
@@ -30,4 +34,6 @@ public interface UserRepository extends JpaRepository<User, Integer>{
     //查询是否已经点赞
     @Query("select a from Article a join a.support_user u where u.user_id = ?1 and a.article_id = ?2")
     public Article isSupport(Integer user_id, Integer article_id);
+
+
 }

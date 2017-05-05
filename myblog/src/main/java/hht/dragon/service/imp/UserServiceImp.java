@@ -133,4 +133,11 @@ public class UserServiceImp implements UserService{
         articleResult = touristRepository.save(article);
         return articleResult;
     }
+
+    @Override
+    public Integer regist(User user) {
+        User user1 = null;
+        user1 = userRepository.save(user);
+        return user1.getUser_id();
+    }
 }

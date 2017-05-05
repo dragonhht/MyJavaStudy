@@ -49,3 +49,15 @@ spring:
 #  mybatis:
 #    mapperLocations: classpath:mapper/*.xml
 #    typeAliasesPackage: hht.dragon.entity
+
+# 权限管理规则
+#securityconfig:
+#  logoutsuccessurl: /
+#  permitall: /rest/**,/bbs**,/index
+#  deniedpage: /deny
+#  urlroles: /**/new = manage,admin;
+#            /**/edit/** = admin;
+#            /**/delete/** = admin
+#security:
+#  user: user
+#  password: user
