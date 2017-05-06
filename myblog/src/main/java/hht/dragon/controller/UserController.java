@@ -5,6 +5,7 @@ import hht.dragon.entity.User;
 import hht.dragon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
@@ -146,5 +147,40 @@ public class UserController {
         }
         return null;
     }
+
+    /**
+     * 跳转至用户信息修改页面
+     * @return 用户信息修改页面
+     */
+    @RequestMapping("/toupdatemsg")
+    public String toUpdateMsg(Model model,boolean flage, HttpSession session) {
+    	User user = null;
+    	String stutas = "普通用户";
+    	Integer user_id = (Integer) session.getAttribute("userId");
+    	user = service.getUserById(user_id);
+    	if (user.getStatus() == 1) {
+			stutas = "管理员";
+		}
+    	model.addAttribute("usermsg", user);
+    	model.addAttribute("status", stutas);
+    	model.addAttribute("flage", flage);
+        return "update_message";
+    }
+
+	/**
+	 * 修改用户信息
+	 * @param user 用户信息
+	 * @return 显示页面
+	 */
+	@PostMapping("/updatemsg")
+	public String updatemsg(User user) {
+		User userTest = null;
+		boolean ok = false;
+		userTest = service.updateUser(user);
+		if (userTest != null) {
+			ok = true;
+		}
+		return "redirect:/user/toupdatemsg?flage="+ok;
+ 	}
 
 }

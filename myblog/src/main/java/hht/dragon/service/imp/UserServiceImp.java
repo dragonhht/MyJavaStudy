@@ -12,6 +12,8 @@ import hht.dragon.utils.getDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * ClassDescription
  * <p>
@@ -137,7 +139,22 @@ public class UserServiceImp implements UserService{
     @Override
     public Integer regist(User user) {
         User user1 = null;
+        user.setRegistDate(new Date());
         user1 = userRepository.save(user);
         return user1.getUser_id();
     }
+
+	@Override
+	public User updateUser(User user) {
+    	User user1 = null;
+		//数据库中的用户信息
+		User dbUser = null;
+		dbUser = userRepository.getUserById(user.getUser_id());
+		user.setRoles(dbUser.getRoles());
+		user.setSupport_article(dbUser.getSupport_article());
+		user.setArticles(dbUser.getArticles());
+		user.setPassword(dbUser.getPassword());
+    	user1 = userRepository.save(user);
+		return user1;
+	}
 }

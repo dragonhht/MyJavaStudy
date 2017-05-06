@@ -8,6 +8,7 @@
     <title>Knowledge Base Theme</title>
 
     <link rel="shortcut icon" th:href="@{/img/favicon.png}" />
+    <link rel="stylesheet" th:href="@{/css/updatemsg.css}" />
 
 
 
@@ -36,59 +37,62 @@
             <!-- start of page content -->
             <div class="span8 main-listing">
 
-                <article class="format-standard type-post hentry clearfix" th:each="article : ${userarticles}">
+                <form th:action="@{/user/updatemsg}" method="post" >
+                    <table class="updatetable">
+                        <tr>
+                            <td class="col_one">用户编号</td>
+							<td class="col_two">
+								<span th:text="${usermsg.user_id}"></span>
+								<input name="user_id" hidden="hidden" th:value="${usermsg.user_id}" />
+							</td>
+                            <td class="col_one">用户名</td>
+							<td class="col_tre">
+								<input name="userName" class="threinput" th:value="${usermsg.userName}" />
+							</td>
+							<td rowspan="4" class="imgtd">
+								<img th:src="${usermsg.img}" width="120px" height="190px" />
+							</td>
+                        </tr>
+						<tr>
+							<td>用户身份</td>
+							<td>
+								<span th:text="${status}"></span>
+								<input name="status" hidden="hidden" th:value="${usermsg.status}" />
+							</td>
+							<td>注册日期</td>
+							<td>
+								<span th:text="${usermsg.registDate}"></span>
+								<input name="registDate" hidden="hidden" th:value="${usermsg.registDate}" />
+							</td>
+						</tr>
+						<tr>
+							<td>手机号码</td>
+							<td>
+								<input name="phone" class="phoneinput" th:value="${usermsg.phone}" />
+							</td>
+							<td>电子邮箱</td>
+							<td>
+								<input name="email" class="threinput" th:value="${usermsg.email}"/>
+							</td>
+						</tr>
+						<tr>
+							<td>家庭住址</td>
+							<td colspan="3" class="adresstd">
+								<textarea name="address" class="adress" th:text="${usermsg.address}"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>个人格言</td>
+							<td colspan="4" class="signaturetd">
+								<textarea name="signature" class="signature" th:text="${usermsg.signature}"></textarea>
+							</td>
+						</tr>
+                    </table>
 
-                    <header class="clearfix">
+					<button type="submit" class="submitbutton">提交修改</button>
 
-                        <h3 class="post-title">
-                            <a th:href="@{/single/{article_id}(article_id=${article.article_id})}" th:text="${article.article_title}"></a>
-                        </h3>
-
-                        <div class="post-meta clearfix">
-                            <span class="date" th:text="${article.article_date}"></span>
-                            <span class="category"><a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}" th:title="${article.user.userName}" th:text="${article.user.userName}"></a></span>
-                            <span class="comments"><a href="#" th:text="${article.lookCount+' 次浏览'}"></a></span>
-                            <span class="like-count" th:text="${'被赞 ' +article.suppot_count+' 次'}"></span>
-                        </div><!-- end of post meta -->
-
-                    </header>
-
-                    <p>
-                        <span class="article-text" th:text="${article.article_text}"></span>
-                        <a class="readmore-link" th:href="@{/single/{article_id}(article_id=${article.article_id})}">Read more</a>
-                    </p>
-
-                </article>
-
-
-
-                <div id="pagination">
-                    <!--第一页-->
-                    <span th:unless="${1 eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = 0)}">First</a>
-                    </span>
-                    <!--上一页-->
-                    <span th:unless="${1 eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${nowpage-1})}">Previous</a>
-                    </span>
-                    <span  th:each="num : ${#numbers.sequence(1, pagecount)}">
-                        <span th:if="${num eq (nowpage+1)}">
-                            <a  class="btn active" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
-                        </span>
-                        <span th:unless="${num eq (nowpage+1)}">
-                            <a  class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
-                        </span>
-                    </span>
-                    <!--下一页-->
-                    <span th:unless="${pagecount eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${nowpage+1})}">Next</a>
-                    </span>
-                    <!--最后一页-->
-                    <span th:unless="${pagecount eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${pagecount-1})}">Last</a>
-                    </span>
-
-                </div>
+					<span style="color: red" th:if="${flage eq true}"> 修改成功</span>
+                </form>
 
             </div>
             <!-- end of page content -->

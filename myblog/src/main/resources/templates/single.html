@@ -1,319 +1,313 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-        <head>
-                <!-- META TAGS -->
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  	<!-- META TAGS -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title th:text="${article.article_title}"></title>
+	<!--引入样式文件-->
+	<header th:include="main_top::mainheader"></header>
+</head>
 
-                <title th:text="${article.article_title}"></title>
+<body>
 
-                <!--引入样式文件-->
-                <header th:include="main_top::mainheader"></header>
+<!--从main_top.html中引入名字为maintop的fragment-->
+	<div th:include="main_top::maintop"></div>
+
+<!-- Start of Page Container -->
+		<div class="page-container">
+			<div class="container">
+				<div class="row">
+
+					<!-- start of page content -->
+					<div class="span8 page-content">
+
+						<ul class="breadcrumb">
+							<li>
+								<a href="#">
+									Knowledge Base Theme
+								</a>
+								<span class="divider">/</span></li>
+							<li>
+
+								<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}"
+								   th:title="${article.user.userName}" th:text="${article.user.userName}"
+								   target="_blank">
+								</a>
+								<span class="divider">/</span>
+							</li>
+
+							<li class="active" th:text="${article.article_title}"></li>
+						</ul>
+
+						<article class=" type-post format-standard hentry clearfix">
+
+							<h1 class="post-title"><a href="#" th:text="${article.article_title}"></a></h1>
+
+							<div class="post-meta clearfix">
+								<span class="date" th:text="${article.article_date}"></span>
+								<span class="category">
+									<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}"
+									   th:title="${article.user.userName}" th:text="${article.user.userName}" target="_blank">
+									</a>
+								</span>
+								<span class="comments"><a href="#" th:text="${commentcount+' 条评论'}"></a></span>
+								<span class="like-count" th:text="${'浏览 '+article.lookCount+ ' 次'}"></span>
+							</div><!-- end of post meta -->
+
+							<!--文章内容-->
+							<!--<span th:utext="${article.article_text}"></span>-->
+							<span id="textvalue" hidden="hidden" th:value="${article.article_text}"></span>
+							<span id="test"></span>
+
+						</article>
+
+						<div class="like-btn">
+
+							<form id="like-it-form" action="#" method="post">
+								<span id="supportcount" class="like-it " onclick="loginTip()" th:text="${'被赞 '+supportcount + ' 次'}"></span>
+								<input type="hidden" name="post_id" id="article_id" th:value="${article.article_id}" />
+								<input type="hidden" name="action" value="like_it" />
+							</form>
+
+							<span class="tags">
+								<strong>Tags:&nbsp;&nbsp;</strong><a href="#" rel="tag">basic</a>, <a href="#" rel="tag">setting</a>, <a href="http://knowledgebase.inspirythemes.com/tag/website/" rel="tag">website</a>
+							</span>
+
+						</div>
+
+						<section id="comments">
+
+							<h3 id="comments-title" th:text="${'('+commentcount+') 条评论'}"></h3>
+
+							<ol class="commentlist">
+
+								<li class="comment even thread-even depth-1" id="li-comment-2" th:each="comment : ${article.comments}">
+									<article id="comment-2">
 
+										<a href="#">
+											<img alt="" th:src="@{/img/temp/man.png}" class="avatar avatar-60 photo" height="60" width="60" />
+										</a>
 
-        </head>
-
-        <body>
-
-        <!--从main_top.html中引入名字为maintop的fragment-->
-        <div th:include="main_top::maintop"></div>
-
-                <!-- Start of Page Container -->
-                <div class="page-container">
-                        <div class="container">
-                                <div class="row">
-
-                                        <!-- start of page content -->
-                                        <div class="span8 page-content">
-
-                                                <ul class="breadcrumb">
-                                                        <li><a href="#">Knowledge Base Theme</a><span class="divider">/</span></li>
-                                                        <li><a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}" th:title="${article.user.userName}" th:text="${article.user.userName}"></a> <span class="divider">/</span></li>
-                                                        <li class="active" th:text="${article.article_title}"></li>
-                                                </ul>
-
-                                                <article class=" type-post format-standard hentry clearfix">
-
-                                                        <h1 class="post-title"><a href="#" th:text="${article.article_title}"></a></h1>
-
-                                                        <div class="post-meta clearfix">
-                                                                <span class="date" th:text="${article.article_date}"></span>
-                                                                <span class="category"><a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}" th:title="${article.user.userName}" th:text="${article.user.userName}"></a></span>
-                                                                <span class="comments"><a href="#" th:text="${commentcount+' 条评论'}"></a></span>
-                                                                <span class="like-count" th:text="${'浏览 '+article.lookCount+ ' 次'}"></span>
-                                                        </div><!-- end of post meta -->
-
-                                                        <!--文章内容-->
-                                                        <!--<span th:utext="${article.article_text}"></span>-->
-                                                        <span id="textvalue" hidden="hidden" th:value="${article.article_text}"></span>
-                                                        <span id="test"></span>
-
-
-                                                </article>
-
-                                                <div class="like-btn">
-
-                                                        <form id="like-it-form" action="#" method="post">
-                                                                <span id="supportcount" class="like-it " onclick="loginTip()" th:text="${'被赞 '+supportcount + ' 次'}"></span>
-                                                                <input type="hidden" name="post_id" id="article_id" th:value="${article.article_id}" />
-                                                                <input type="hidden" name="action" value="like_it" />
-                                                        </form>
-
-                                                        <span class="tags">
-                                                                <strong>Tags:&nbsp;&nbsp;</strong><a href="#" rel="tag">basic</a>, <a href="#" rel="tag">setting</a>, <a href="http://knowledgebase.inspirythemes.com/tag/website/" rel="tag">website</a>
-                                                        </span>
-
-                                                </div>
-
-                                                <section id="comments">
-
-                                                        <h3 id="comments-title" th:text="${'('+commentcount+') 条评论'}"></h3>
-
-                                                        <ol class="commentlist">
-
-                                                                <li class="comment even thread-even depth-1" id="li-comment-2" th:each="comment : ${article.comments}">
-                                                                        <article id="comment-2">
-
-                                                                                <a href="#">
-                                                                                        <img alt="" src="http://1.gravatar.com/avatar/50a7625001317a58444a20ece817aeca?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" class="avatar avatar-60 photo" height="60" width="60" />
-                                                                                </a>
-
-                                                                                <div class="comment-meta">
-
-                                                                                        <h5 class="author">
-                                                                                                <cite class="fn">
-                                                                                                        <a href="#" rel="external nofollow" class="url" th:text="${comment.user.userName}"></a>
-                                                                                                </cite>
-                                                                                                - <a class="comment-reply-link" th:onclick="'javascript:return contactCommentTip(\''+${comment.id}+'\')'" >回复</a>
-                                                                                        </h5>
-
-                                                                                        <p class="date">
-                                                                                                <a href="#">
-                                                                                                        <time th:datetime="${comment.comment_date}" th:text="${comment.comment_date}"></time>
-                                                                                                </a>
-                                                                                        </p>
-
-                                                                                </div><!-- end .comment-meta -->
-
-                                                                                <div class="comment-body" th:utext="${comment.comment_text}"></div><!-- end of comment-body -->
-
-                                                                        </article><!-- end of comment -->
-
-                                                                        <div th:id="${comment.id}" hidden="hidden">
-                                                                                <form th:action="@{/user/contactcomment}" method="get">
-                                                                                        <input name="article_id" hidden="hidden" th:value="${article.article_id}"/>
-                                                                                        <input name="comment_id" hidden="hidden" th:value="${comment.id}"/>
-                                                                                        <textarea class="span8" name="commentChile_text" cols="30" rows="5"></textarea>
-                                                                                        <input class="btn" type="submit" value="发送"/>
-                                                                                </form>
-                                                                        </div>
-
-                                                                        <ul class="children">
-
-                                                                                <li class="comment byuser comment-author-saqib-sarwar bypostauthor odd alt depth-2" id="li-comment-3" th:each="commentChild : ${comment.commentChildren}">
-                                                                                        <article id="comment-3">
-                                                                                                <a href="#">
-                                                                                                        <img alt="" src="http://0.gravatar.com/avatar/2df5eab0988aa5ff219476b1d27df755?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" class="avatar avatar-60 photo" height="60" width="60" />
-                                                                                                </a>
-
-                                                                                                <div class="comment-meta">
-
-                                                                                                        <h5 class="author">
-                                                                                                                <cite class="fn" th:text="${commentChild.user.userName}"></cite>
-                                                                                                                 <!-- - <a class="comment-reply-link" href="#">Reply</a>-->
-                                                                                                        </h5>
-
-                                                                                                        <p class="date">
-                                                                                                                <a href="#">
-                                                                                                                        <time th:datetime="${commentChild.comment_date}" th:text="${commentChild.comment_date}"></time>
-                                                                                                                </a>
-                                                                                                        </p>
-                                                                                                </div><!-- end .comment-meta -->
-
-                                                                                                <div class="comment-body">
-                                                                                                        <p th:utext="${commentChild.comment_text}"> </p>
-                                                                                                </div><!-- end of comment-body -->
-                                                                                        </article><!-- end of comment -->
-                                                                                </li>
-                                                                        </ul>
-                                                                </li>
-
-                                                        </ol>
-
-                                                        <div id="respond">
-
-                                                                <h3>我要评论</h3>
-
-                                                                <div class="cancel-comment-reply">
-                                                                        <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">取消评论</a>
-                                                                </div>
-
-
-                                                                <!--评论-->
-                                                                <form th:action="@{/user/contactarticle}" method="get" id="commentform">
-
-                                                                        <div>
-                                                                                <textarea class="span8" name="comment_text" id="comment" cols="58" rows="10"></textarea>
-                                                                        </div>
-
-                                                                        <input name="article_id" hidden="hidden" th:value="${article.article_id}" />
-
-                                                                        <!--<p class="allowed-tags">You can use these HTML tags and attributes <small><code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
-
-                                                                        <div>
-                                                                                <input class="btn" onclick="return contactTip();"  name="submit" type="submit" id="submit"  value="提交评论" />
-                                                                        </div>
-
-                                                                </form>
-
-                                                        </div>
-
-                                                </section><!-- end of comments -->
-
-                                        </div>
-                                        <!-- end of page content -->
-
-
-                                        <!-- start of sidebar -->
-                                        <aside class="span4 page-sidebar">
-
-                                                <section class="widget">
-                                                        <div class="support-widget" th:include="main_top::mainsupport"></div>
-                                                </section>
-
-
-                                                <section class="widget">
-                                                        <h3 class="title">Featured Articles</h3>
-                                                        <ul class="articles">
-                                                                <li class="article-entry standard">
-                                                                        <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                                                                        <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                                                                        <span class="like-count">66</span>
-                                                                </li>
-                                                                <li class="article-entry standard">
-                                                                        <h4><a href="single.html">WordPress Site Maintenance</a></h4>
-                                                                        <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                                                        <span class="like-count">15</span>
-                                                                </li>
-                                                                <li class="article-entry video">
-                                                                        <h4><a href="single.html">Meta Tags in WordPress</a></h4>
-                                                                        <span class="article-meta">23 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                                                        <span class="like-count">8</span>
-                                                                </li>
-                                                                <li class="article-entry image">
-                                                                        <h4><a href="single.html">WordPress in Your Language</a></h4>
-                                                                        <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                                                                        <span class="like-count">6</span>
-                                                                </li>
-                                                        </ul>
-                                                </section>
-
-
-
-                                                <section class="widget"><h3 class="title">Categories</h3>
-                                                        <ul>
-                                                                <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
-                                                                <li><a href="#" title="Lorem ipsum dolor sit amet,">Designing in WordPress</a></li>
-                                                                <li><a href="#" title="Lorem ipsum dolor sit amet,">Server &amp; Database</a></li>
-                                                                <li><a href="#" title="Lorem ipsum dolor sit amet, ">Theme Development</a></li>
-                                                                <li><a href="#" title="Lorem ipsum dolor sit amet,">Website Dev</a></li>
-                                                                <li><a href="#" title="Lorem ipsum dolor sit amet,">WordPress for Beginners</a></li>
-                                                                <li><a href="#" title="Lorem ipsum dolor sit amet, ">WordPress Plugins</a></li>
-                                                        </ul>
-                                                </section>
-
-                                                <section class="widget">
-                                                        <h3 class="title">Recent Comments</h3>
-                                                        <ul id="recentcomments">
-                                                                <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-                                                                <li class="recentcomments">saqib sarwar on <a href="#">Integrating WordPress with Your Website</a></li>
-                                                                <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-                                                                <li class="recentcomments"><a href="#" rel="external nofollow" class="url">Mr WordPress</a> on <a href="#">Installing WordPress</a></li>
-                                                        </ul>
-                                                </section>
-
-                                        </aside>
-                                        <!-- end of sidebar -->
-                                </div>
-                        </div>
-                </div>
-                <!-- End of Page Container -->
-
-
-
-                <a href="#top" id="scroll-top"></a>
-
-        <!-- script -->
-        <script type='text/javascript' th:src='@{/js/jquery-1.8.3.min.js}'></script>
-        <script type='text/javascript' th:src='@{/js/jquery.easing.1.3.js}'></script>
-        <script type='text/javascript' th:src='@{/js/prettyphoto/jquery.prettyPhoto.js}'></script>
-        <script type='text/javascript' th:src='@{/js/jflickrfeed.js}'></script>
-        <script type='text/javascript' th:src='@{/js/jquery.liveSearch.js}'></script>
-        <script type='text/javascript' th:src='@{/js/jquery.form.js}'></script>
-        <script type='text/javascript' th:src='@{/js/jquery.validate.min.js}'></script>
-        <script type='text/javascript' th:src='@{/js/custom.js}'></script>
-        <script type="text/javascript" th:src="@{/js/my/single.js}"></script>
-        <script type="text/javascript" th:src="@{/js/markdown_browser/markdown.js}"></script>
-        </body>
-
-        <script th:inline="javascript">
-                //显示文章内容
-                var text = document.getElementById("textvalue").getAttribute("value");
-                document.getElementById("test").innerHTML = markdown.toHTML(text);
-
-                //点赞判断是否登录
-                function loginTip() {
-                    var user = [[${session.userId}]];
-                    if (user == null) {
-                        if (window.confirm("请先登录!")) {
-                            window.location.replace("../tologin");
-                        } else {
-                            return false;
-                        };
-                    } else {
-                        supportItem();
-                    }
-                }
-
-                //留言判断是否登录
-                function contactTip() {
-                    var user = [[${session.userId}]];
-                    if (user == null) {
-                        if (window.confirm("请先登录!")) {
-                            window.location.replace("../tologin");
-                            return false;
-                        } else {
-                            return false;
-                        };
-                    }
-                    return true;
-                }
-
-                //显示评论输入框
-                function showInput(id) {
-                    var div = document.getElementById(id);
-                    if (div.style.display == "block") {
-                        div.style.display = "none";
-                    } else {
-                        div.style.display = "block";
-                    }
-                }
-
-                //回复判断是否登录
-                function contactCommentTip(id) {
-                    var user = [[${session.userId}]];
-                    if (user == null) {
-                        if (window.confirm("请先登录!")) {
-                            window.location.replace("../tologin");
-                            return false;
-                        } else {
-                            return false;
-                        };
-                    } else {
-                        showInput(id);
-                        return true;
-                    }
-
-                }
-        </script>
+										<div class="comment-meta">
+
+											<h5 class="author">
+												<cite class="fn">
+													<a href="#" rel="external nofollow" class="url" th:text="${comment.user.userName}"></a>
+												</cite>
+												- <a class="comment-reply-link" th:onclick="'javascript:return contactCommentTip(\''+${comment.id}+'\')'" >回复</a>
+											</h5>
+
+											<p class="date">
+												<a href="#">
+													<time th:datetime="${comment.comment_date}" th:text="${comment.comment_date}"></time>
+												</a>
+											</p>
+
+										</div><!-- end .comment-meta -->
+
+										<div class="comment-body" th:utext="${comment.comment_text}"></div><!-- end of comment-body -->
+
+									</article><!-- end of comment -->
+
+									<div th:id="${comment.id}" hidden="hidden">
+										<form th:action="@{/user/contactcomment}" method="get">
+											<input name="article_id" hidden="hidden" th:value="${article.article_id}"/>
+											<input name="comment_id" hidden="hidden" th:value="${comment.id}"/>
+											<textarea class="span8" name="commentChile_text" cols="30" rows="5"></textarea>
+											<input class="btn" type="submit" value="发送"/>
+										</form>
+									</div>
+
+									<ul class="children">
+
+										<li class="comment byuser comment-author-saqib-sarwar bypostauthor odd alt depth-2" id="li-comment-3" th:each="commentChild : ${comment.commentChildren}">
+											<article id="comment-3">
+												<a href="#">
+													<img alt="" src="http://0.gravatar.com/avatar/2df5eab0988aa5ff219476b1d27df755?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" class="avatar avatar-60 photo" height="60" width="60" />
+												</a>
+
+												<div class="comment-meta">
+													<h5 class="author">
+														<cite class="fn" th:text="${commentChild.user.userName}"></cite>
+														<!-- - <a class="comment-reply-link" href="#">Reply</a>-->
+													</h5>
+													<p class="date">
+														<a href="#">
+															<time th:datetime="${commentChild.comment_date}" th:text="${commentChild.comment_date}"></time>
+														</a>
+													</p>
+												</div><!-- end .comment-meta -->
+												<div class="comment-body">
+													<p th:utext="${commentChild.comment_text}"> </p>
+												</div><!-- end of comment-body -->
+											</article><!-- end of comment -->
+										</li>
+									</ul>
+								</li>
+
+							</ol>
+
+							<div id="respond">
+
+								<h3>我要评论</h3>
+
+								<div class="cancel-comment-reply">
+									<a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">取消评论</a>
+								</div>
+
+								<!--评论-->
+								<form th:action="@{/user/contactarticle}" method="get" id="commentform">
+
+									<div>
+										<textarea class="span8" name="comment_text" id="comment" cols="58" rows="10"></textarea>
+									</div>
+
+									<input name="article_id" hidden="hidden" th:value="${article.article_id}" />
+
+									<!--<p class="allowed-tags">You can use these HTML tags and attributes <small><code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+									<div>
+										<input class="btn" onclick="return contactTip();"  name="submit" type="submit" id="submit"  value="提交评论" />
+									</div>
+
+								</form>
+
+							</div>
+
+						</section>
+						<!-- end of comments -->
+
+					</div>
+					<!-- end of page content -->
+
+					<!-- start of sidebar -->
+					<aside class="span4 page-sidebar">
+
+						<section class="widget">
+							<div class="support-widget" th:include="main_top::mainsupport"></div>
+						</section>
+
+						<section class="widget">
+							<h3 class="title">热搜博客</h3>
+							<ul class="articles">
+								<li class="article-entry standard" th:each="hotarticle : ${hotarticles}">
+									<h4><a th:href="@{/single/{article_id}(article_id=${hotarticle.article_id})}" th:text="${hotarticle.article_title}" ></a></h4>
+									<span class="article-meta">
+										<span th:text="${hotarticle.article_date+' by '}"></span>
+										<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${hotarticle.user.user_id}, nowpage = 0)}" th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}" target="_blank"></a>
+									</span>
+									<span class="like-count" th:text="${hotarticle.lookCount}"></span>
+								</li>
+							</ul>
+						</section>
+
+
+
+						<section class="widget"><h3 class="title">Categories</h3>
+							<ul>
+								<li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
+								<li><a href="#" title="Lorem ipsum dolor sit amet,">Designing in WordPress</a></li>
+								<li><a href="#" title="Lorem ipsum dolor sit amet,">Server &amp; Database</a></li>
+								<li><a href="#" title="Lorem ipsum dolor sit amet, ">Theme Development</a></li>
+								<li><a href="#" title="Lorem ipsum dolor sit amet,">Website Dev</a></li>
+								<li><a href="#" title="Lorem ipsum dolor sit amet,">WordPress for Beginners</a></li>
+								<li><a href="#" title="Lorem ipsum dolor sit amet, ">WordPress Plugins</a></li>
+							</ul>
+						</section>
+
+						<section class="widget">
+							<h3 class="title">Recent Comments</h3>
+							<ul id="recentcomments">
+								<li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
+								<li class="recentcomments">saqib sarwar on <a href="#">Integrating WordPress with Your Website</a></li>
+								<li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
+								<li class="recentcomments"><a href="#" rel="external nofollow" class="url">Mr WordPress</a> on <a href="#">Installing WordPress</a></li>
+							</ul>
+						</section>
+
+					</aside>
+					<!-- end of sidebar -->
+				</div>
+			</div>
+		</div>
+<!-- End of Page Container -->
+
+
+
+<a href="#top" id="scroll-top"></a>
+
+<!-- script -->
+	<script type='text/javascript' th:src='@{/js/jquery-1.8.3.min.js}'></script>
+	<script type='text/javascript' th:src='@{/js/jquery.easing.1.3.js}'></script>
+     <script type='text/javascript' th:src='@{/js/prettyphoto/jquery.prettyPhoto.js}'></script>
+	<script type='text/javascript' th:src='@{/js/jflickrfeed.js}'></script>
+	<script type='text/javascript' th:src='@{/js/jquery.liveSearch.js}'></script>
+	<script type='text/javascript' th:src='@{/js/jquery.form.js}'></script>
+	<script type='text/javascript' th:src='@{/js/jquery.validate.min.js}'></script>
+	<script type='text/javascript' th:src='@{/js/custom.js}'></script>
+	<script type="text/javascript" th:src="@{/js/my/single.js}"></script>
+	<script type="text/javascript" th:src="@{/js/markdown_browser/markdown.js}"></script>
+</body>
+
+	<script th:inline="javascript">
+		//显示文章内容
+		var text = document.getElementById("textvalue").getAttribute("value");
+		document.getElementById("test").innerHTML = markdown.toHTML(text);
+
+		//点赞判断是否登录
+		function loginTip() {
+			var user = [[${session.userId}]];
+			if (user == null) {
+				if (window.confirm("请先登录!")) {
+					window.location.replace("../tologin");
+				} else {
+					return false;
+				};
+			} else {
+				supportItem();
+			}
+		}
+
+		//留言判断是否登录
+		function contactTip() {
+			var user = [[${session.userId}]];
+			if (user == null) {
+				if (window.confirm("请先登录!")) {
+					window.location.replace("../tologin");
+					return false;
+				} else {
+					return false;
+				};
+			}
+			return true;
+		}
+
+		//显示评论输入框
+		function showInput(id) {
+			var div = document.getElementById(id);
+			if (div.style.display == "block") {
+				div.style.display = "none";
+			} else {
+				div.style.display = "block";
+			}
+		}
+
+		//回复判断是否登录
+		function contactCommentTip(id) {
+			var user = [[${session.userId}]];
+			if (user == null) {
+				if (window.confirm("请先登录!")) {
+					window.location.replace("../tologin");
+					return false;
+				} else {
+					return false;
+				};
+			} else {
+				showInput(id);
+				return true;
+			}
+
+		}
+    </script>
 </html>

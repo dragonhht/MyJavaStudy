@@ -169,7 +169,7 @@ public class TouristServiceImp implements TouristService{
         int num = 0;
         int pageNum = 0;
         searchText = "%" + searchText + "%";
-        num = touristRepository.getSearchArticleCount(searchText, searchText);
+        num = touristRepository.getSearchArticleCount(searchText, searchText,searchText);
         pageNum = getPageCount(num);
         return pageNum;
     }
@@ -181,7 +181,7 @@ public class TouristServiceImp implements TouristService{
         //按文章上传日期倒序
         Sort sort = new Sort(Sort.Direction.DESC, "article_date");
         Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
-        articles = touristRepository.getSearchArticles(searchText, searchText, pageable1);
+        articles = touristRepository.getSearchArticles(searchText, searchText,searchText, pageable1);
         return articles;
     }
 }

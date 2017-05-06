@@ -63,6 +63,7 @@ public class TouristController {
     @RequestMapping("/single/{article_id}")
     public String single(@PathVariable("article_id") Integer article_id, Model model) {
         Article article = null;
+        Page<Article> hotArticles = null;
         int commentCount = 0,supportcount = 0;
         article = touristService.getArticleById(article_id);
         if (article != null) {
@@ -70,11 +71,13 @@ public class TouristController {
                 commentCount = article.getComments().size();
             }
             supportcount = article.getSupport_user().size();
+            hotArticles = touristService.getHotArticle();
         }
         System.out.println(article.getArticle_text());
         model.addAttribute("article", article);
         model.addAttribute("commentcount", commentCount);
         model.addAttribute("supportcount", supportcount);
+        model.addAttribute("hotarticles", hotArticles);
         return "single";
     }
 
@@ -87,16 +90,18 @@ public class TouristController {
     public String articles(Model model, @PathVariable("page_num") Integer page_num) {
         int pageNum = 0;
         Page<Article> articleList = null;
+        Page<Article> hotArticle = null;
         articleList = touristService.getArticleList(page_num);
         pageNum = touristService.getArticlePageCount();
         if (pageNum == 0) {
             pageNum = 1;
         }
+        hotArticle = touristService.getHotArticle();
 //        model.addAttribute("currentpage", "articles");
         model.addAttribute("nowpage", page_num);
         model.addAttribute("pagecount", pageNum);
         model.addAttribute("articlelist", articleList);
-
+        model.addAttribute("hotarticles", hotArticle);
         return "articles_list";
     }
 
@@ -139,15 +144,18 @@ System.out.println(nowpage);
     public String search(String searchText, @PathVariable("nowpage") Integer nowpage, Model model) {
         Page<Article> articles = null;
         Integer pageNum = 0;
+        Page<Article> hotArticle = null;
         pageNum = touristService.getSearchArticleCount(searchText);
         articles = touristService.getSearchArticles(searchText, nowpage);
         if (pageNum == 0) {
             pageNum = 1;
         }
+        hotArticle = touristService.getHotArticle();
         model.addAttribute("articles", articles);
         model.addAttribute("pagecount", pageNum);
         model.addAttribute("nowpage", nowpage);
         model.addAttribute("searchText", searchText);
+        model.addAttribute("hotarticles", hotArticle);
         return "search";
     }
 
@@ -162,6 +170,17 @@ System.out.println(nowpage);
         user_id = userService.regist(user);
         model.addAttribute("registId", user_id);
         return "msg";
+    }
 
+    /**
+     * 访问留言页面
+     * @return 留言页面
+     */
+    @RequestMapping("/contact")
+    public String contact(Model model) {
+        Page<Article> latstArticles = null;
+        latstArticles = touristService.getLatstArticle();
+        model.addAttribute("latstarticles", latstArticles);
+        return "contact";
     }
 }

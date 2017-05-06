@@ -104,27 +104,15 @@
 
 
                 <section class="widget">
-                    <h3 class="title">Featured Articles</h3>
+                    <h3 class="title">热搜博客</h3>
                     <ul class="articles">
-                        <li class="article-entry standard">
-                            <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                            <span class="like-count">66</span>
-                        </li>
-                        <li class="article-entry standard">
-                            <h4><a href="single.html">WordPress Site Maintenance</a></h4>
-                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                            <span class="like-count">15</span>
-                        </li>
-                        <li class="article-entry video">
-                            <h4><a href="single.html">Meta Tags in WordPress</a></h4>
-                            <span class="article-meta">23 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                            <span class="like-count">8</span>
-                        </li>
-                        <li class="article-entry image">
-                            <h4><a href="single.html">WordPress in Your Language</a></h4>
-                            <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                            <span class="like-count">6</span>
+                        <li class="article-entry standard" th:each="hotarticle : ${hotarticles}">
+                            <h4><a th:href="@{/single/{article_id}(article_id=${hotarticle.article_id})}" th:text="${hotarticle.article_title}" ></a></h4>
+                            <span class="article-meta">
+										<span th:text="${hotarticle.article_date+' by '}"></span>
+										<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${hotarticle.user.user_id}, nowpage = 0)}" th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}" target="_blank"></a>
+									</span>
+                            <span class="like-count" th:text="${hotarticle.lookCount}"></span>
                         </li>
                     </ul>
                 </section>

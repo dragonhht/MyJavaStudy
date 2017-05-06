@@ -44,11 +44,11 @@ public interface TouristRepository extends JpaRepository<Article,Integer>{
     public Page<Article> getArticleByUserId(Integer user_id, Pageable pageable);
 
     //查询搜索的结果数
-    @Query("select count(*) from Article a where a.user.userName like ?1 or a.article_text like ?2")
-    public int getSearchArticleCount(String userName, String text);
+    @Query("select count(*) from Article a where a.user.userName like ?1 or a.article_text like ?2 or a.article_title like ?3")
+    public int getSearchArticleCount(String userName, String text, String title);
 
     //查询文章
-    @Query("select a from Article a where a.user.userName like ?1 or a.article_text like ?2")
-    public Page<Article> getSearchArticles(String userName, String text, Pageable pageable);
+    @Query("select a from Article a where a.user.userName like ?1 or a.article_text like ?2 or a.article_title like ?3")
+    public Page<Article> getSearchArticles(String userName, String text,String title, Pageable pageable);
 
 }

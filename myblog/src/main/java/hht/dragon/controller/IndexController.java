@@ -41,12 +41,6 @@ public class IndexController {
         return "register";
     }
 
-
-    @RequestMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
-
     @RequestMapping("/post")
     public String post() {
         return "post";
