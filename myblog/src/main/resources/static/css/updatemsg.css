@@ -71,3 +71,8 @@
 	color: red;
 	margin-left: 300px;
 }
+
+.file{
+	width: 10px;
+	border: 1px solid red;
+}

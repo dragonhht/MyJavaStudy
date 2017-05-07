@@ -9,11 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -182,5 +185,28 @@ public class UserController {
 		}
 		return "redirect:/user/toupdatemsg?flage="+ok;
  	}
+
+ 	@RequestMapping("/upload")
+	public String uploadImg(MultipartFile file) {
+		if (file.isEmpty()) {
+			return "文件为空";
+		}
+		//获取文件名
+		String filename = file.getOriginalFilename();
+System.out.println("文件名:::"+ filename);
+		//文件保存路径
+		String filePath = "/home/huang/image/";
+
+		File newFile = new File(filePath+"测试图片");
+		if (!newFile.getParentFile().exists()) {
+			newFile.getParentFile().mkdirs();
+		}
+		try {
+			file.transferTo(newFile);
+			return "redirect:/user/toupdatemsg";
+		}catch (Exception e) {
+			return "上传失败";
+		}
+	}
 
 }
