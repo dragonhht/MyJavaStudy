@@ -94,4 +94,12 @@ public interface UserService {
 	 */
 	public User updateUser(User user);
 
+	/**
+	 * 保存图片
+	 * @param img 图片路径
+	 * @param user_id 用户编号
+	 * @return
+	 */
+	public boolean saveImg(String img, Integer user_id);
+
 }

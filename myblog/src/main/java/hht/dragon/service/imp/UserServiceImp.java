@@ -157,4 +157,20 @@ public class UserServiceImp implements UserService{
     	user1 = userRepository.save(user);
 		return user1;
 	}
+
+    @Override
+    public boolean saveImg(String img, Integer user_id) {
+    	boolean ok = false;
+    	User user = null;
+    	try {
+			user = userRepository.getUserById(user_id);
+			user.setImg(img);
+			userRepository.save(user);
+			ok = true;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+        return ok;
+    }
 }

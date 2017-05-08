@@ -187,7 +187,7 @@ public class UserController {
  	}
 
  	@RequestMapping("/upload")
-	public String uploadImg(MultipartFile file) {
+	public String uploadImg(MultipartFile file, HttpSession session) {
 		if (file.isEmpty()) {
 			return "文件为空";
 		}
@@ -195,14 +195,17 @@ public class UserController {
 		String filename = file.getOriginalFilename();
 System.out.println("文件名:::"+ filename);
 		//文件保存路径
-		String filePath = "/home/huang/image/";
+		String filePath = "/home/huang/img/temp/user";
 
-		File newFile = new File(filePath+"测试图片");
+		Integer user_id = (Integer) session.getAttribute("userId");
+		String newFilePath = filePath + user_id;
+		File newFile = new File(newFilePath);
 		if (!newFile.getParentFile().exists()) {
 			newFile.getParentFile().mkdirs();
 		}
 		try {
 			file.transferTo(newFile);
+			service.saveImg(newFilePath, user_id);
 			return "redirect:/user/toupdatemsg";
 		}catch (Exception e) {
 			return "上传失败";
