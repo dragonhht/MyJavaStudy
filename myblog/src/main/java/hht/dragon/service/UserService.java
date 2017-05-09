@@ -1,9 +1,12 @@
 package hht.dragon.service;
 
 import hht.dragon.entity.Article;
+import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
 import hht.dragon.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -37,6 +40,13 @@ public interface UserService {
      * @return 用户信息
      */
     public User getUserById(Integer user_id);
+
+	/**
+	 * 通过姓名查询用户
+	 * @param userName 用户姓名
+	 * @return 用户信息
+	 */
+	public User getUserByName(String userName);
 
     /**
      * 通过文章编号查询文章
@@ -101,5 +111,12 @@ public interface UserService {
 	 * @return
 	 */
 	public boolean saveImg(String img, Integer user_id);
+
+	/**
+	 * 获取最新关于作者的评论
+	 * @param user_id 作者编号
+	 * @return 评论信息
+	 */
+	public Page<Comment> getNewComment(Integer user_id);
 
 }

@@ -1,9 +1,14 @@
 package hht.dragon.repository;
 
 import hht.dragon.entity.Article;
+import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * 用户JpaRepository接口
@@ -35,5 +40,8 @@ public interface UserRepository extends JpaRepository<User, Integer>{
     @Query("select a from Article a join a.support_user u where u.user_id = ?1 and a.article_id = ?2")
     public Article isSupport(Integer user_id, Integer article_id);
 
+	//查询我的文章最新的十条评论
+	@Query("select c from Comment c where c.article.user.user_id = ?1")
+	public Page<Comment> getNewComments(Integer user_id, Pageable pageable);
 
 }

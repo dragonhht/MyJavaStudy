@@ -31,11 +31,11 @@ public class User {
     //联系电话
     private String phone;
     //身份
-    private int status;
+    private int status = 0;
     //个性签名
     private String signature;
     //头像
-    private String img;
+    private String img = "../img/temp/man.png";
     //注册时间
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date registDate;

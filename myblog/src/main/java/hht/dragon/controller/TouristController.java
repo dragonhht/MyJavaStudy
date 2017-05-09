@@ -2,6 +2,7 @@ package hht.dragon.controller;
 
 
 import hht.dragon.entity.Article;
+import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
 import hht.dragon.service.TouristService;
 import hht.dragon.service.UserService;
@@ -73,7 +74,6 @@ public class TouristController {
             supportcount = article.getSupport_user().size();
             hotArticles = touristService.getHotArticle();
         }
-        System.out.println(article.getArticle_text());
         model.addAttribute("article", article);
         model.addAttribute("commentcount", commentCount);
         model.addAttribute("supportcount", supportcount);
@@ -116,6 +116,7 @@ public class TouristController {
     public String visituser(@PathVariable("user_id") Integer user_id,@PathVariable("nowpage") Integer nowpage, Model model) {
         User user = null;
         Page<Article> articles = null;
+        Page<Comment> comments = null;
         int pageNum = 0;
         user = touristService.getUserById(user_id);
         if (user == null) {
@@ -126,12 +127,13 @@ public class TouristController {
             pageNum = 1;
         }
         articles = touristService.getUserArticles(user_id, nowpage);
-System.out.println(nowpage);
+        comments = userService.getNewComment(user_id);
         model.addAttribute("userId", user_id);
         model.addAttribute("nowpage", nowpage);
         model.addAttribute("pagecount", pageNum);
         model.addAttribute("userarticles", articles);
         model.addAttribute("userName", user.getUserName());
+        model.addAttribute("newcomments", comments);
         return "myindex";
     }
 

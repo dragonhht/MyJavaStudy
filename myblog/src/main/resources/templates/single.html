@@ -86,14 +86,15 @@
 									<article id="comment-2">
 
 										<a href="#">
-											<img alt="" th:src="@{/img/temp/man.png}" class="avatar avatar-60 photo" height="60" width="60" />
+											<img alt="" th:src="${comment.user.img}" class="avatar avatar-60 photo" height="60" width="60" />
 										</a>
 
 										<div class="comment-meta">
 
 											<h5 class="author">
 												<cite class="fn">
-													<a href="#" rel="external nofollow" class="url" th:text="${comment.user.userName}"></a>
+													<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${comment.user.user_id}, nowpage = 0)}"
+													   rel="external nofollow" class="url" th:text="${comment.user.userName}" target="_blank"></a>
 												</cite>
 												- <a class="comment-reply-link" th:onclick="'javascript:return contactCommentTip(\''+${comment.id}+'\')'" >回复</a>
 											</h5>
@@ -121,15 +122,17 @@
 
 									<ul class="children">
 
-										<li class="comment byuser comment-author-saqib-sarwar bypostauthor odd alt depth-2" id="li-comment-3" th:each="commentChild : ${comment.commentChildren}">
+										<li class="comment byuser comment-author-saqib-sarwar bypostauthor odd alt depth-2" id="li-comment-3"
+											th:each="commentChild : ${comment.commentChildren}">
 											<article id="comment-3">
 												<a href="#">
-													<img alt="" src="http://0.gravatar.com/avatar/2df5eab0988aa5ff219476b1d27df755?s=60&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" class="avatar avatar-60 photo" height="60" width="60" />
+													<img alt="" th:src="${commentChild.user.img}" class="avatar avatar-60 photo" height="60" width="60" />
 												</a>
 
 												<div class="comment-meta">
 													<h5 class="author">
-														<cite class="fn" th:text="${commentChild.user.userName}"></cite>
+														<a   th:href="@{/visituser/{user_id}/{nowpage}(user_id=${commentChild.user.user_id}, nowpage = 0)}"
+																class="fn" th:text="${commentChild.user.userName}" target="_blank"></a>
 														<!-- - <a class="comment-reply-link" href="#">Reply</a>-->
 													</h5>
 													<p class="date">
@@ -216,15 +219,6 @@
 							</ul>
 						</section>
 
-						<section class="widget">
-							<h3 class="title">Recent Comments</h3>
-							<ul id="recentcomments">
-								<li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-								<li class="recentcomments">saqib sarwar on <a href="#">Integrating WordPress with Your Website</a></li>
-								<li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-								<li class="recentcomments"><a href="#" rel="external nofollow" class="url">Mr WordPress</a> on <a href="#">Installing WordPress</a></li>
-							</ul>
-						</section>
 
 					</aside>
 					<!-- end of sidebar -->

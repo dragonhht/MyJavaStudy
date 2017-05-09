@@ -1,9 +1,11 @@
 package hht.dragon.controller;
 
 import hht.dragon.entity.Article;
+import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
 import hht.dragon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -128,8 +130,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("/writeblog")
-    public String writeBlog() {
-        return "write_blog";
+    public String writeBlog(Model model, HttpSession session) {
+		Page<Comment> comments = null;
+		Integer user_id = (Integer) session.getAttribute("userId");
+		comments = service.getNewComment(user_id);
+		model.addAttribute("newcomments", comments);
+    	return "write_blog";
     }
 
     /**
@@ -159,14 +165,17 @@ public class UserController {
     public String toUpdateMsg(Model model,boolean flage, HttpSession session) {
     	User user = null;
     	String stutas = "普通用户";
+		Page<Comment> comments = null;
     	Integer user_id = (Integer) session.getAttribute("userId");
     	user = service.getUserById(user_id);
     	if (user.getStatus() == 1) {
 			stutas = "管理员";
 		}
+		comments = service.getNewComment(user_id);
     	model.addAttribute("usermsg", user);
     	model.addAttribute("status", stutas);
     	model.addAttribute("flage", flage);
+    	model.addAttribute("newcomments", comments);
         return "update_message";
     }
 
@@ -192,20 +201,22 @@ public class UserController {
 			return "文件为空";
 		}
 		//获取文件名
-		String filename = file.getOriginalFilename();
-System.out.println("文件名:::"+ filename);
+//		String filename = file.getOriginalFilename();
+//System.out.println("文件名:::"+ filename);
 		//文件保存路径
-		String filePath = "/home/huang/img/temp/user";
-
+		String filePath = "/home/huang/image/Myblog/";
+		//文件访问路径,使用另一个tomcat
+		String getImg = "http://localhost:8080/pic/";
 		Integer user_id = (Integer) session.getAttribute("userId");
-		String newFilePath = filePath + user_id;
-		File newFile = new File(newFilePath);
+		getImg = getImg + user_id;
+		filePath = filePath + user_id;
+		File newFile = new File(filePath);
 		if (!newFile.getParentFile().exists()) {
 			newFile.getParentFile().mkdirs();
 		}
 		try {
 			file.transferTo(newFile);
-			service.saveImg(newFilePath, user_id);
+			service.saveImg(getImg, user_id);
 			return "redirect:/user/toupdatemsg";
 		}catch (Exception e) {
 			return "上传失败";

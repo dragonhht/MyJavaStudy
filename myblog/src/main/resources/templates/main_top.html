@@ -85,5 +85,85 @@
     </div>
 </div>
 <!-- End of Search Wrapper -->
+
 </div>
+
+
+    <!-- start of sidebar -->
+    <aside class="span4 page-sidebar" th:fragment="myaside">
+
+        <section class="widget">
+            <div class="support-widget" th:include="main_top::mainsupport"></div>
+        </section>
+
+        <span th:unless="${session.userName eq null}">
+                    <section class="widget">
+                        <h3 class="title" th:text="${session.userName+' 的博客'}">Featured Articles</h3>
+                        <ul class="articles">
+                            <li class="article-entry standard">
+                                <h4><a th:href="@{/user/writeblog}">写博客</a></h4>
+                            </li>
+                            <li class="article-entry standard">
+                                <h4><a href="#">好友系统(等待设计...)</a></h4>
+                            </li>
+                            <li class="article-entry video">
+                                <h4><a th:href="@{/user/toupdatemsg}">修改个人信息</a></h4>
+                            </li>
+                            <li class="article-entry image">
+                                <h4><a href="single.html">开发中. . . . . .</a></h4>
+                            </li>
+                        </ul>
+                    </section>
+
+
+                    <!--<section class="widget"><h3 class="title">最近访问的好友</h3>-->
+                    <!--<ul>-->
+                        <!--<li><a href="#" title="Lorem ipsum dolor sit amet,">设计中...</a> </li>-->
+                        <!--<li><a href="#" title="Lorem ipsum dolor sit amet,">设计中...</a></li>-->
+                        <!--<li><a href="#" title="Lorem ipsum dolor sit amet,">设计中...</a></li>-->
+                        <!--<li><a href="#" title="Lorem ipsum dolor sit amet, ">设计中...</a></li>-->
+                        <!--<li><a href="#" title="Lorem ipsum dolor sit amet,">设计中...</a></li>-->
+                        <!--<li><a href="#" title="Lorem ipsum dolor sit amet,">设计中...</a></li>-->
+                        <!--<li><a href="#" title="Lorem ipsum dolor sit amet, ">设计中...</a></li>-->
+                    <!--</ul>-->
+                <!--</section>-->
+
+                <section class="widget">
+                    <h3 class="title">最新的评论</h3>
+                    <ul id="recentcomments">
+                        <li class="recentcomments" th:each="comment : ${newcomments}">
+							<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${comment.user.user_id}, nowpage = 0)}"
+							   rel="external nofollow" class="url" th:text="${comment.user.userName}"></a>
+							on
+							<a th:href="@{/single/{article_id}(article_id=${comment.article.article_id})}"
+							   th:text="${comment.article.article_title}"></a>
+						</li>
+                    </ul>
+                </section>
+
+                </span>
+
+        <span th:if="${session.userName eq null}">
+                    <section class="widget">
+                        <h3 class="title" th:text="${userName +' 的博客'}"></h3>
+                        <ul class="articles">
+                            <li class="article-entry standard">
+                                <h4><a href="#">正在开发...</a></h4>
+                            </li>
+                            <li class="article-entry standard">
+                                <h4><a href="#">正在开发...</a></h4>
+                            </li>
+                            <li class="article-entry video">
+                                <h4><a href="#">正在开发...</a></h4>
+                            </li>
+                            <li class="article-entry image">
+                                <h4><a href="#">正在开发...</a></h4>
+                            </li>
+                        </ul>
+                    </section>
+                </span>
+    </aside>
+    <!-- end of sidebar -->
+
+
 </html>

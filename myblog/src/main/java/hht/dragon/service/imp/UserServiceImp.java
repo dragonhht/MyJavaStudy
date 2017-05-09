@@ -10,6 +10,10 @@ import hht.dragon.repository.UserRepository;
 import hht.dragon.service.UserService;
 import hht.dragon.utils.getDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -60,6 +64,13 @@ public class UserServiceImp implements UserService{
     public User getUserById(Integer user_id) {
         User user = null;
         user = userRepository.getUserById(user_id);
+        return user;
+    }
+
+    @Override
+    public User getUserByName(String userName) {
+        User user = null;
+        user = userRepository.getUserByUserName(userName);
         return user;
     }
 
@@ -154,6 +165,7 @@ public class UserServiceImp implements UserService{
 		user.setSupport_article(dbUser.getSupport_article());
 		user.setArticles(dbUser.getArticles());
 		user.setPassword(dbUser.getPassword());
+		user.setImg(dbUser.getImg());
     	user1 = userRepository.save(user);
 		return user1;
 	}
@@ -173,4 +185,14 @@ public class UserServiceImp implements UserService{
 
         return ok;
     }
+
+	@Override
+	public Page<Comment> getNewComment(Integer user_id) {
+    	Page<Comment> comments = null;
+		//按评论日期倒序
+		Sort sort = new Sort(Sort.Direction.DESC, "comment_date");
+		Pageable pageable = new PageRequest(0, 10, sort);
+		comments = userRepository.getNewComments(user_id, pageable);
+		return comments;
+	}
 }
