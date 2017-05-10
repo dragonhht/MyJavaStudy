@@ -82,8 +82,8 @@
 
 							<ol class="commentlist">
 
-								<li class="comment even thread-even depth-1" id="li-comment-2" th:each="comment : ${article.comments}">
-									<article id="comment-2">
+								<li class="comment even thread-even depth-1" id="li-comment-2"  th:each="comment : ${article.comments}" hidden="hidden">
+									<article id="comment-2" >
 
 										<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${comment.user.user_id}, nowpage = 0)}" target="_blank">
 											<img alt="" th:src="${comment.user.img}" class="avatar avatar-60 photo" height="60" width="60" />
@@ -123,7 +123,7 @@
 									<ul class="children">
 
 										<li class="comment byuser comment-author-saqib-sarwar bypostauthor odd alt depth-2" id="li-comment-3"
-											th:each="commentChild : ${comment.commentChildren}">
+											th:each="commentChild : ${comment.commentChildren}" hidden="hidden">
 											<article id="comment-3">
 												<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${commentChild.user.user_id}, nowpage = 0)}" target="_blank">
 													<img alt="" th:src="${commentChild.user.img}" class="avatar avatar-60 photo" height="60" width="60" />
@@ -146,9 +146,11 @@
 												</div><!-- end of comment-body -->
 											</article><!-- end of comment -->
 										</li>
+										<span class="commentpagenum" hidden="hidden"></span>
+										<div class="showchile" style="width: 200px;height: 30px;background-color: gray;margin: 0 auto;line-height: 30px;font-size: 20px;color: #0e0e0e;cursor:pointer;" align="center" onclick="showChild(this)" hidden="hidden">更多回复...</div>
 									</ul>
-								</li>
-
+								</li><br/>
+<div style="width: 200px;height: 30px;background-color: gray;margin: 0 auto;line-height: 30px;font-size: 20px;color: #0e0e0e;cursor:pointer;" align="center" onclick="showComment()" id="showcommentbtn" >更多评论...</div>
 							</ol>
 
 							<div id="respond">

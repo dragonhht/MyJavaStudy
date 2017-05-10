@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 游客控制器
@@ -65,6 +66,7 @@ public class TouristController {
     public String single(@PathVariable("article_id") Integer article_id, Model model) {
         Article article = null;
         Page<Article> hotArticles = null;
+        Set<Comment> comments = null;
         int commentCount = 0,supportcount = 0;
         article = touristService.getArticleById(article_id);
         if (article != null) {
@@ -74,10 +76,13 @@ public class TouristController {
             supportcount = article.getSupport_user().size();
             hotArticles = touristService.getHotArticle();
         }
+		comments = touristService.getArticleComments(article_id);
+        article.setComments(comments);
         model.addAttribute("article", article);
         model.addAttribute("commentcount", commentCount);
         model.addAttribute("supportcount", supportcount);
         model.addAttribute("hotarticles", hotArticles);
+//        model.addAttribute("comments", comments);
         return "single";
     }
 

@@ -44,4 +44,63 @@ function callback() {
     }
 }
 
+//控制评论的显示的数量
+//当前页数
+var nowPage = 1;
+//每页显示数量
+var pageSize = 10;
 
+var s = document.getElementsByClassName("thread-even");
+var len = s.length;
+if (len < pageSize) {
+	pageSize = len;
+}
+for (var i = 0; i<pageSize; i++) {
+	s[i].style.display = "block";
+}
+
+function showComment() {
+	var i = nowPage * pageSize;
+	var last = i + pageSize;
+	if (last > len) {
+		last = len
+		document.getElementById("showcommentbtn").innerHTML = "已到最后...";
+	}
+	for (; i < last; i++) {
+		s[i].style.display = "block";
+	}
+	nowPage++;
+}
+
+var child = document.getElementsByClassName("children");
+var childLen = child.length;
+for (var i=0; i < childLen; i++) {
+	var node = child[i].getElementsByTagName("li");
+	var nodeLen = node.length;
+	if (nodeLen > 0) {
+		child[i].getElementsByClassName("showchile")[0].style.display = "block";
+		child[i].getElementsByClassName("commentpagenum")[0].innerHTML = 5;
+		for (var j = 0; j < 5; j++) {
+			node[j].style.display = "block";
+		}
+	}
+}
+
+function showChild(e) {
+	var parent = e.parentNode;
+	var lis = parent.getElementsByTagName("li");
+	var pagenum= parent.getElementsByClassName("commentpagenum")[0];
+	var nowpage = parseInt(pagenum.innerHTML);
+	var last = nowpage + 5;
+	var lisLen = lis.length;
+	if (last > lisLen) {
+		e.innerHTML = "没有更多的回复了..."
+		last = lisLen;
+	}
+	pagenum.innerHTML = last;
+	if (nowpage < lisLen) {
+		for (var i = nowpage; i < last; i++) {
+			lis[i].style.display = "block";
+		}
+	}
+}

@@ -46,8 +46,19 @@ public class testUser {
 		Integer user_id = 1;
 		Integer article_id = 1;
 		String text = "评论测试";
-		for (int i=0; i<1000; i++) {
+		for (int i=0; i<100; i++) {
 			userService.contactArticle(user_id, article_id, text);
+		}
+	}
+
+	//添加评论的评论
+	@Test
+	public void testAddCommentChild() {
+		Integer user_id  = 1;
+		Integer comment_id = 2;
+		for (int i = 0; i < 100; i++) {
+			String text = "测试 "+ i;
+			userService.contactComment(user_id, comment_id, text);
 		}
 	}
 }

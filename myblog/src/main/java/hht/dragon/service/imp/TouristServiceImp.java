@@ -184,4 +184,12 @@ public class TouristServiceImp implements TouristService{
         articles = touristRepository.getSearchArticles(searchText, searchText,searchText, pageable1);
         return articles;
     }
+
+	@Override
+	public Set<Comment> getArticleComments(Integer article_id) {
+		final Integer COMMENT_PAGE_SIZE = 10;
+		Set<Comment> comments = null;
+		comments = touristRepository.getArticleComment(article_id);
+		return comments;
+	}
 }

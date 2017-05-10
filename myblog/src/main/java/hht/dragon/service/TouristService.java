@@ -2,10 +2,13 @@ package hht.dragon.service;
 
 import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import hht.dragon.entity.Article;
+import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 游客service接口
@@ -90,4 +93,11 @@ public interface TouristService {
      * @return 搜索到的结果
      */
     public Page<Article> getSearchArticles(String searchText, Integer pageNum);
+
+    /**
+     * 查询文章评论
+     * @param article_id 文章编号
+     * @return 查询到的文章
+     */
+    public Set<Comment> getArticleComments(Integer article_id);
 }

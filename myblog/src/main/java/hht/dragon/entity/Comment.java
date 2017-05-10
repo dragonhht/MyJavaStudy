@@ -82,4 +82,5 @@ public class Comment {
     public void setCommentChildren(Set<CommentChild> commentChildren) {
         this.commentChildren = commentChildren;
     }
+
 }
