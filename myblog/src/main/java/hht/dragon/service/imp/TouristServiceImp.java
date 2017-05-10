@@ -26,7 +26,7 @@ import java.util.Set;
  */
 @Service
 public class TouristServiceImp implements TouristService{
-    static final Integer PAGE_SIZE = 5;
+    static final Integer PAGE_SIZE = 20;
 
     @Autowired
     private TouristRepository touristRepository;
