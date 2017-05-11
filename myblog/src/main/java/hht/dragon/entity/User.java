@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * 用户实体类
+ * 用户实体类.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-13
@@ -19,150 +19,281 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
+    /** 用户编号. */
     @Id
     @GeneratedValue
     private Integer userId;
-    //用户名
+    /**  用户名. */
     @Length(min = 1, max = 10)
     private String userName;
-    //电子邮箱
+    /** 电子邮箱. */
     @Email
     private String email;
-    //联系电话
+    /** 手机号码. */
     private String phone;
-    //身份
+    /** 身份权限. */
     private int status = 0;
-    //个性签名
+    /** 个性签名. */
     private String signature;
-    //头像
+    /**  头像. */
     private String img = "../img/temp/man.png";
-    //注册时间
+    /**  注册时间. */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date registDate;
-    //住址
+    /**  家庭住址. */
     private String address;
-    //密码
+    /** 登录密码. */
     @Length(min = 1, max = 11)
     private String password;
-    //上传的文章
+    /**  上传的文章. */
     @OneToMany
     @JoinColumn(name = "userId")
     @JsonBackReference
     private Set<Article> articles;
 
-    //多对多
+    /**  支持的文章. */
     @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
     @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "articleId")})
     private Set<Article> supportArticle;
 
-    //多对多
+    /**  角色. */
     @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
     @JoinTable(name = "userrole", joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "roleId")})
     private Set<UserRole> roles;
 
-    public Integer getUserId() {
-        return userId;
-    }
+	/**
+	 * Gets user id.
+	 *
+	 * @return the user id
+	 */
+	public Integer getUserId() {
+		return userId;
+	}
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+	/**
+	 * Sets user id.
+	 *
+	 * @param userId the user id
+	 */
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	/**
+	 * Gets user name.
+	 *
+	 * @return the user name
+	 */
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	/**
+	 * Sets user name.
+	 *
+	 * @param userName the user name
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	/**
+	 * Gets email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	/**
+	 * Sets email.
+	 *
+	 * @param email the email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	/**
+	 * Gets phone.
+	 *
+	 * @return the phone
+	 */
+	public String getPhone() {
+		return phone;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	/**
+	 * Sets phone.
+	 *
+	 * @param phone the phone
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public int getStatus() {
-        return status;
-    }
+	/**
+	 * Gets status.
+	 *
+	 * @return the status
+	 */
+	public int getStatus() {
+		return status;
+	}
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+	/**
+	 * Sets status.
+	 *
+	 * @param status the status
+	 */
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public String getSignature() {
-        return signature;
-    }
+	/**
+	 * Gets signature.
+	 *
+	 * @return the signature
+	 */
+	public String getSignature() {
+		return signature;
+	}
 
-    public void setSignature(String signature) {
-        this.signature = signature;
-    }
+	/**
+	 * Sets signature.
+	 *
+	 * @param signature the signature
+	 */
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
 
-    public String getImg() {
-        return img;
-    }
+	/**
+	 * Gets img.
+	 *
+	 * @return the img
+	 */
+	public String getImg() {
+		return img;
+	}
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+	/**
+	 * Sets img.
+	 *
+	 * @param img the img
+	 */
+	public void setImg(String img) {
+		this.img = img;
+	}
 
-    public Date getRegistDate() {
-        return registDate;
-    }
+	/**
+	 * Gets regist date.
+	 *
+	 * @return the regist date
+	 */
+	public Date getRegistDate() {
+		return registDate;
+	}
 
-    public void setRegistDate(Date registDate) {
-        this.registDate = registDate;
-    }
+	/**
+	 * Sets regist date.
+	 *
+	 * @param registDate the regist date
+	 */
+	public void setRegistDate(Date registDate) {
+		this.registDate = registDate;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	/**
+	 * Gets address.
+	 *
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	/**
+	 * Sets address.
+	 *
+	 * @param address the address
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	/**
+	 * Gets password.
+	 *
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	/**
+	 * Sets password.
+	 *
+	 * @param password the password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public Set<Article> getArticles() {
-        return articles;
-    }
+	/**
+	 * Gets articles.
+	 *
+	 * @return the articles
+	 */
+	public Set<Article> getArticles() {
+		return articles;
+	}
 
-    public void setArticles(Set<Article> articles) {
-        this.articles = articles;
-    }
+	/**
+	 * Sets articles.
+	 *
+	 * @param articles the articles
+	 */
+	public void setArticles(Set<Article> articles) {
+		this.articles = articles;
+	}
 
-    public Set<Article> getSupportArticle() {
-        return supportArticle;
-    }
+	/**
+	 * Gets support article.
+	 *
+	 * @return the support article
+	 */
+	public Set<Article> getSupportArticle() {
+		return supportArticle;
+	}
 
-    public void setSupportArticle(Set<Article> supportArticle) {
-        this.supportArticle = supportArticle;
-    }
+	/**
+	 * Sets support article.
+	 *
+	 * @param supportArticle the support article
+	 */
+	public void setSupportArticle(Set<Article> supportArticle) {
+		this.supportArticle = supportArticle;
+	}
 
-    public Set<UserRole> getRoles() {
-        return roles;
-    }
+	/**
+	 * Gets roles.
+	 *
+	 * @return the roles
+	 */
+	public Set<UserRole> getRoles() {
+		return roles;
+	}
 
-    public void setRoles(Set<UserRole> roles) {
-        this.roles = roles;
-    }
+	/**
+	 * Sets roles.
+	 *
+	 * @param roles the roles
+	 */
+	public void setRoles(Set<UserRole> roles) {
+		this.roles = roles;
+	}
 }

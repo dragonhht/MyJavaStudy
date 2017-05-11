@@ -1,17 +1,14 @@
 package hht.dragon.service;
 
-import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
+
 import hht.dragon.entity.Article;
 import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
 import java.util.Set;
 
 /**
- * 游客service接口
+ * 游客service接口.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-18
@@ -20,84 +17,86 @@ import java.util.Set;
 public interface TouristService {
 
     /**
-     * 查询热搜文章
+     * 查询热搜文章.
      *
      * @return 热搜文章信息
      */
-     public Page<Article> getHotArticle();
+     Page<Article> getHotArticle();
 
     /**
-     * 查询最新文章
+     * 查询最新文章.
      *
      * @return 最新文章信息
      */
-     public Page<Article> getLatstArticle();
+     Page<Article> getLatstArticle();
 
     /**
-     * 通过文章编号获取文章详细信息
+     * 通过文章编号获取文章详细信息.
      *
      * @param articleId 文章编号
      *
      * @return 文章信息
      */
-     public Article getArticleById(Integer articleId);
+    Article getArticleById(Integer articleId);
 
 
     /**
-     * 获取文章列表
-     *
+     * 获取文章列表.
+     * @param pageNum 当前页数
      * @return 文章列表
      */
-     public Page<Article> getArticleList(Integer pageNum);
+     Page<Article> getArticleList(Integer pageNum);
 
     /**
-     * 计算文章分页页数
+     * 计算文章分页页数.
      *
      * @return 分页数量
      */
-    public int getArticlePageCount();
+    int getArticlePageCount();
 
     /**
-     * 通过用户编号查询用户
+     * 通过用户编号查询用户.
      *
      * @param userId 用户编号
      *
      * @return 用户信息
      */
-    public User getUserById(Integer userId);
+    User getUserById(Integer userId);
 
     /**
-     * 计算作者首页文章页数
+     * 计算作者首页文章页数.
      * @param userId 作者编号
-     * @return
+     * @return 页数
      */
-    public int getUsetArticlePageCount(Integer userId);
+    int getUsetArticlePageCount(Integer userId);
 
     /**
-     * 通过用户编号查询文章
+     * 通过用户编号查询文章.
      * @param userId 用户编号
-     * @return
+     * @param pageNum 当前页数
+     * @return 文章信息
      */
-    public Page<Article> getUserArticles(Integer userId, Integer pageNum);
+    Page<Article> getUserArticles(Integer userId, Integer pageNum);
 
     /**
-     * 计算搜索结果的页数
+     * 计算搜索结果的页数.
      * @param searchText 搜索的关键字
-     * @return
+     * @return 页面数量
      */
-    public int getSearchArticleCount(String searchText);
+    int getSearchArticleCount(String searchText);
 
     /**
-     * 查询文章或作者
+     * 查询文章或作者.
      * @param searchText 搜索关键字
+     * @param pageNum 当前页数
      * @return 搜索到的结果
      */
-    public Page<Article> getSearchArticles(String searchText, Integer pageNum);
+    Page<Article> getSearchArticles(String searchText, Integer pageNum);
 
     /**
-     * 查询文章评论
+     * 查询文章评论.
      * @param articleId 文章编号
      * @return 查询到的文章
      */
-    public Set<Comment> getArticleComments(Integer articleId);
+    Set<Comment> getArticleComments(Integer articleId);
 }

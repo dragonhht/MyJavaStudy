@@ -4,11 +4,11 @@ import hht.dragon.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * ClassDescription
+ * ClassDescription.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-26
  * Time : 下午8:43
  */
-public interface CommentRepository extends JpaRepository<Comment, Integer>{
+public interface CommentRepository extends JpaRepository<Comment, Integer> {
 }

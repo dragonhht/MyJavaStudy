@@ -4,7 +4,7 @@ import hht.dragon.entity.CommentChild;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * ClassDescription
+ * ClassDescription.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-27

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 /**
- * ClassDescription
+ * 用户service的实现类.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-24
@@ -28,14 +28,18 @@ import java.util.Date;
  */
 @SuppressWarnings("CheckStyle")
 @Service
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 
+	/** User的数据库操作类. */
     @Autowired
     private UserRepository userRepository;
+    /** comment的数据库操作类. */
     @Autowired
     private CommentRepository commentRepository;
+    /** commentChild的数据库操作类. */
     @Autowired
     private CommentChildReponsitory commentChildReponsitory;
+    /** Article的数据库操作类 .*/
     @Autowired
     private TouristRepository touristRepository;
 
@@ -95,19 +99,19 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public boolean contactArticle(Integer userId, Integer articleId, String comment_text) {
+    public boolean contactArticle(Integer userId, Integer articleId, String commentText) {
         boolean ok = false;
         User user = null;
         Article article = null;
-        String comment_date = null;
+        String commentDate = null;
         Comment comment = new Comment();
         user = userRepository.getUserById(userId);
         article = userRepository.getArticleById(articleId);
-        comment_date = getDate.getDate();
+		commentDate = getDate.getDate();
         comment.setArticle(article);
         comment.setUser(user);
-        comment.setCommentText(comment_text);
-        comment.setCommentDate(comment_date);
+        comment.setCommentText(commentText);
+        comment.setCommentDate(commentDate);
         Comment commentTest = commentRepository.save(comment);
         if (commentTest != null) {
             ok = true;
@@ -116,18 +120,18 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public boolean contactComment(Integer userId, Integer comment_id, String comment_text) {
+    public boolean contactComment(Integer userId, Integer commentId, String commentText) {
         boolean ok = false;
         User user = null;
         Comment comment = null;
-        String commentChild_date = null;
+        String commentChildDate = null;
         CommentChild commentChild = new CommentChild();
         user = userRepository.getUserById(userId);
-        comment = commentRepository.getOne(comment_id);
-        commentChild_date = getDate.getDate();
-        commentChild.setCommentDate(commentChild_date);
+        comment = commentRepository.getOne(commentId);
+		commentChildDate = getDate.getDate();
+        commentChild.setCommentDate(commentChildDate);
         commentChild.setComment(comment);
-        commentChild.setCommentText(comment_text);
+        commentChild.setCommentText(commentText);
         commentChild.setUser(user);
         CommentChild commentChild1 = commentChildReponsitory.save(commentChild);
         if (commentChild1 != null) {
@@ -182,7 +186,7 @@ public class UserServiceImp implements UserService{
 			user.setImg(img);
 			userRepository.save(user);
 			ok = true;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -191,10 +195,11 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public Page<Comment> getNewComment(Integer userId) {
+    	final Integer pageSize = 10;
     	Page<Comment> comments = null;
 		//按评论日期倒序
 		Sort sort = new Sort(Sort.Direction.DESC, "commentDate");
-		Pageable pageable = new PageRequest(0, 10, sort);
+		Pageable pageable = new PageRequest(0, pageSize, sort);
 		comments = userRepository.getNewComments(userId, pageable);
 		return comments;
 	}

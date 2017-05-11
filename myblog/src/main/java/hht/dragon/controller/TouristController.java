@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Set;
 
 /**
- * 游客控制器
+ * 游客控制器.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-18
@@ -26,15 +26,16 @@ import java.util.Set;
  */
 @Controller
 public class TouristController {
-
+    /** 游客Service类. */
     @Autowired
     private TouristService touristService;
+    /** 用户Service类. */
     @Autowired
     private UserService userService;
 
     /**
-     * 访问首页
-     *
+     * 访问首页.
+     * @param model 用于返回数据
      * @return 首页页面
      */
     @RequestMapping("/index")
@@ -53,10 +54,10 @@ public class TouristController {
 
 
     /**
-     * 浏览文章
+     * 浏览文章.
      *
      * @param articleId 文章编号
-     * @param model
+     * @param model 用于返回数据
      *
      * @return 文章展示页面
      */
@@ -65,7 +66,7 @@ public class TouristController {
         Article article = null;
         Page<Article> hotArticles = null;
         Set<Comment> comments = null;
-        int commentCount = 0,supportcount = 0;
+        int commentCount = 0, supportcount = 0;
         article = touristService.getArticleById(articleId);
         if (article != null) {
             if (article.getComments() != null) {
@@ -85,9 +86,10 @@ public class TouristController {
     }
 
     /**
-     * 访问博客列表页面
-     *
-     * @return
+     * 访问博客列表页面.
+     * @param model 用于返回数据
+     * @param page_num 页数
+     * @return 博客列表页面
      */
     @RequestMapping("/articles/{page_num}")
     public String articles(Model model, @PathVariable("page_num") Integer page_num) {
@@ -109,14 +111,15 @@ public class TouristController {
     }
 
     /**
-     * 跳转作者界面
+     * 跳转作者界面.
      *
      * @param userId 作者编号
-     * @param model
+     * @param nowpage 当前页面
+     * @param model 用于返回数据
      * @return 作者首页
      */
     @RequestMapping("/visituser/{userId}/{nowpage}")
-    public String visituser(@PathVariable("userId") Integer userId,@PathVariable("nowpage") Integer nowpage, Model model) {
+    public String visituser(@PathVariable("userId") Integer userId, @PathVariable("nowpage") Integer nowpage, Model model) {
         User user = null;
         Page<Article> articles = null;
         Page<Comment> comments = null;
@@ -141,8 +144,10 @@ public class TouristController {
     }
 
     /**
-     * 搜索
+     * 搜索.
      * @param searchText 搜索的关键字
+     * @param nowpage 当前页面
+     * @param model 用于返回数据
      * @return 结果页面
      */
     @GetMapping("/search/{nowpage}")
@@ -165,8 +170,9 @@ public class TouristController {
     }
 
     /**
-     * 用户注册
+     * 用户注册.
      * @param user 用户信息
+     * @param model 用于返回数据
      * @return 结果页面
      */
     @PostMapping("/regist")
@@ -178,7 +184,8 @@ public class TouristController {
     }
 
     /**
-     * 访问留言页面
+     * 访问留言页面.
+     * @param model 用于返回数据
      * @return 留言页面
      */
     @RequestMapping("/contact")

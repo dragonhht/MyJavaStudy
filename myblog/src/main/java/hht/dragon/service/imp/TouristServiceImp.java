@@ -5,76 +5,36 @@ import hht.dragon.entity.Comment;
 import hht.dragon.entity.User;
 import hht.dragon.repository.TouristRepository;
 import hht.dragon.service.TouristService;
-import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import javax.jws.soap.SOAPBinding;
-import java.util.List;
 import java.util.Set;
 
 /**
- * 游客service实现类
+ * 游客service实现类.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-18
  * Time : 下午7:17
  */
 @Service
-public class TouristServiceImp implements TouristService{
+public class TouristServiceImp implements TouristService {
+    /** 每页显示的数量. */
     static final Integer PAGE_SIZE = 20;
+    /** 首页文章信息显示的数量. */
+    static final Integer INDEX_ARTICLE_NUM = 10;
 
+    /** Article的数据库操作类. */
     @Autowired
     private TouristRepository touristRepository;
-    private Pageable pageable = new Pageable() {
-        @Override
-        public int getPageNumber() {
-            return 0;
-        }
-
-        @Override
-        public int getPageSize() {
-            return 10;
-        }
-
-        @Override
-        public int getOffset() {
-            return 0;
-        }
-
-        @Override
-        public Sort getSort() {
-            return null;
-        }
-
-        @Override
-        public Pageable next() {
-            return null;
-        }
-
-        @Override
-        public Pageable previousOrFirst() {
-            return null;
-        }
-
-        @Override
-        public Pageable first() {
-            return null;
-        }
-
-        @Override
-        public boolean hasPrevious() {
-            return false;
-        }
-    };
 
     @Override
     public Page<Article> getHotArticle() {
         Page<Article> hotArticles = null;
+        Pageable pageable = new PageRequest(0, INDEX_ARTICLE_NUM);
         hotArticles = touristRepository.getHostArticle(pageable);
         return hotArticles;
     }
@@ -82,6 +42,7 @@ public class TouristServiceImp implements TouristService{
     @Override
     public Page<Article> getLatstArticle() {
         Page<Article> latstArticles = null;
+        Pageable pageable = new PageRequest(0, INDEX_ARTICLE_NUM);
         latstArticles = touristRepository.getLatstArticle(pageable);
         return latstArticles;
     }
@@ -108,7 +69,7 @@ public class TouristServiceImp implements TouristService{
     }
 
     /**
-     * 计算分页页数
+     * 计算分页页数.
      *
      * @param num 信息总数
      * @return 分页数目
@@ -169,7 +130,7 @@ public class TouristServiceImp implements TouristService{
         int num = 0;
         int pageNum = 0;
         searchText = "%" + searchText + "%";
-        num = touristRepository.getSearchArticleCount(searchText, searchText,searchText);
+        num = touristRepository.getSearchArticleCount(searchText, searchText, searchText);
         pageNum = getPageCount(num);
         return pageNum;
     }
@@ -181,13 +142,12 @@ public class TouristServiceImp implements TouristService{
         //按文章上传日期倒序
         Sort sort = new Sort(Sort.Direction.DESC, "articleDate");
         Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
-        articles = touristRepository.getSearchArticles(searchText, searchText,searchText, pageable1);
+        articles = touristRepository.getSearchArticles(searchText, searchText, searchText, pageable1);
         return articles;
     }
 
 	@Override
 	public Set<Comment> getArticleComments(Integer articleId) {
-		final Integer COMMENT_PAGE_SIZE = 10;
 		Set<Comment> comments = null;
 		comments = touristRepository.getArticleComment(articleId);
 		return comments;

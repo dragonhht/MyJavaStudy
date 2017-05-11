@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * 用户操作
+ * 用户操作.
  * <p>
  * User : Dragon_hht
  * Date : 17-4-13
@@ -28,12 +28,14 @@ import java.io.PrintWriter;
 @RequestMapping("/user")
 public class UserController {
 
+	/** 用户Service类. */
     @Autowired
     private UserService service;
 
     /**
-     * 用户登录
+     * 用户登录.
      * @param user 用户信息
+	 * @param session session
      * @return 登录结果页面
      */
     @PostMapping("/login")
@@ -46,16 +48,16 @@ public class UserController {
             String name = user1.getUserName();
             session.setAttribute("userId", id);
             session.setAttribute("userName", name);
-            returnString = "redirect:/visituser/"+ id +"/0";
+            returnString = "redirect:/visituser/" + id + "/0";
         }
 
         return returnString;
     }
 
     /**
-     * 用户注销
-     * @param session
-     * @return
+     * 用户注销.
+     * @param session session
+     * @return 首页
      */
     @RequestMapping("/loginout")
     public String loginout(HttpSession session) {
@@ -64,19 +66,19 @@ public class UserController {
     }
 
     /**
-     * 点赞
-     * @param articleId
-     * @param response
-     * @param session
+     * 点赞.
+     * @param articleId 文章编号
+     * @param response response
+     * @param session session
      */
     @RequestMapping("/supportItem/{articleId}")
     public void supportItem(@PathVariable("articleId") Integer articleId, HttpServletResponse response, HttpSession session) {
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = null;
-        Integer userId = 0,supportcount;
+        Integer userId = 0, supportcount;
         userId = (Integer) session.getAttribute("userId");
 
-        supportcount = service.supportArticle(userId,articleId);
+        supportcount = service.supportArticle(userId, articleId);
 
         try {
             out = response.getWriter();
@@ -88,40 +90,42 @@ public class UserController {
 
 
     /**
-     * 评论文章
+     * 评论文章.
      * @param articleId 文章编号
      * @param commentText 评论内容
-     * @param session
-     * @return
+     * @param session session
+     * @return 文章展示页面
      */
     @GetMapping("/contactarticle")
     public String contactArticle(Integer articleId, String commentText, HttpSession session) {
         Integer userId;
         userId = (Integer) session.getAttribute("userId");
         service.contactArticle(userId, articleId, commentText);
-        return "redirect:/single/"+articleId;
+        return "redirect:/single/" + articleId;
     }
 
 
     /**
-     * 评论他人评论
+     * 评论他人评论.
      * @param articleId 文章编号
      * @param comment_id 被评论的评论编号
      * @param commentChile_text 评论内容
-     * @param session
-     * @return
+     * @param session session
+     * @return 文章展示页面
      */
     @GetMapping("/contactcomment")
     public String contactComment(Integer articleId, Integer comment_id, String commentChile_text, HttpSession session) {
         Integer userId;
         userId = (Integer) session.getAttribute("userId");
         service.contactComment(userId, comment_id, commentChile_text);
-        return "redirect:/single/"+articleId;
+        return "redirect:/single/" + articleId;
     }
 
     /**
-     * 跳转博客书写界面
-     * @return
+     * 跳转博客书写界面.
+	 * @param model 用于返回数据
+	 * @param session session
+     * @return 在线写文章页面
      */
     @RequestMapping("/writeblog")
     public String writeBlog(Model model, HttpSession session) {
@@ -133,8 +137,9 @@ public class UserController {
     }
 
     /**
-     * 保存文章
+     * 保存文章.
      * @param article 文章信息
+	 * @param session session
      * @return 结果展示页面
      */
     @GetMapping("/saveblog")
@@ -146,17 +151,20 @@ public class UserController {
         if (article != null) {
             Integer articleId = 0;
             articleId = article1.getArticleId();
-            return "redirect:/single/"+articleId;
+            return "redirect:/single/" + articleId;
         }
         return null;
     }
 
     /**
-     * 跳转至用户信息修改页面
+     * 跳转至用户信息修改页面.
+	 * @param model 用于返回数据
+	 * @param flage 是否修改完成
+	 * @param session session
      * @return 用户信息修改页面
      */
     @RequestMapping("/toupdatemsg")
-    public String toUpdateMsg(Model model,boolean flage, HttpSession session) {
+    public String toUpdateMsg(Model model, boolean flage, HttpSession session) {
     	User user = null;
     	String stutas = "普通用户";
 		Page<Comment> comments = null;
@@ -174,7 +182,7 @@ public class UserController {
     }
 
 	/**
-	 * 修改用户信息
+	 * 修改用户信息.
 	 * @param user 用户信息
 	 * @return 显示页面
 	 */
@@ -186,9 +194,15 @@ public class UserController {
 		if (userTest != null) {
 			ok = true;
 		}
-		return "redirect:/user/toupdatemsg?flage="+ok;
+		return "redirect:/user/toupdatemsg?flage=" + ok;
  	}
 
+	/**
+	 * 上传用户头像.
+	 * @param file 头像文件
+	 * @param session session
+	 * @return 上传结果
+	 */
  	@RequestMapping("/upload")
 	public String uploadImg(MultipartFile file, HttpSession session) {
 		if (file.isEmpty()) {
@@ -212,7 +226,7 @@ public class UserController {
 			file.transferTo(newFile);
 			service.saveImg(getImg, userId);
 			return "redirect:/user/toupdatemsg";
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return "上传失败";
 		}
 	}
