@@ -2,6 +2,7 @@ package hht.dragon.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,67 +16,67 @@ import java.util.Set;
 @Entity
 @Table(name = "article")
 public class Article {
-    //文章编号
+    /** 文章编号 */
     @Id
     @GeneratedValue
-    private Integer article_id;
-    //文章标题
-    private String article_title;
-    //文章发表时间
-    private String article_date;
-    //文章内容
-    private String article_text;
-    //浏览次数
+    private Integer articleId;
+	/**文章标题 */
+    private String articleTitle;
+    /** 文章发表时间 */
+    private String articleDate;
+    /** 文章内容 */
+    private String articleText;
+    /** 浏览次数 */
     private Integer lookCount=0;
-    //点赞次数
-    private Integer suppot_count=0;
-    //作者编号
+    /** 点赞次数 */
+    private Integer suppotCount =0;
+    /** 作者编号 */
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     @JsonBackReference
     private User user;
 
-    //一对多
+    /** 文章的评论 */
     @OneToMany
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "articleId")
     private Set<Comment> comments;
 
-    //多对多
+    /** 文章的点赞用户 */
     @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
-    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "article_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private Set<User> support_user;
+    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "articleId")}, inverseJoinColumns = {@JoinColumn(name = "userId")})
+    private Set<User> supportUser;
 
 
-    public Integer getArticle_id() {
-        return article_id;
+    public Integer getArticleId() {
+        return articleId;
     }
 
-    public void setArticle_id(Integer article_id) {
-        this.article_id = article_id;
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
     }
 
-    public String getArticle_title() {
-        return article_title;
+    public String getArticleTitle() {
+        return articleTitle;
     }
 
-    public void setArticle_title(String article_title) {
-        this.article_title = article_title;
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
     }
 
-    public String getArticle_date() {
-        return article_date;
+    public String getArticleDate() {
+        return articleDate;
     }
 
-    public void setArticle_date(String article_date) {
-        this.article_date = article_date;
+    public void setArticleDate(String articleDate) {
+        this.articleDate = articleDate;
     }
 
-    public String getArticle_text() {
-        return article_text;
+    public String getArticleText() {
+        return articleText;
     }
 
-    public void setArticle_text(String article_text) {
-        this.article_text = article_text;
+    public void setArticleText(String articleText) {
+        this.articleText = articleText;
     }
 
     public User getUser() {
@@ -102,19 +103,19 @@ public class Article {
         this.lookCount = lookCount;
     }
 
-    public Integer getSuppot_count() {
-        return suppot_count;
+    public Integer getSuppotCount() {
+        return suppotCount;
     }
 
-    public void setSuppot_count(Integer suppot_count) {
-        this.suppot_count = suppot_count;
+    public void setSuppotCount(Integer suppotCount) {
+        this.suppotCount = suppotCount;
     }
 
-    public Set<User> getSupport_user() {
-        return support_user;
+    public Set<User> getSupportUser() {
+        return supportUser;
     }
 
-    public void setSupport_user(Set<User> support_user) {
-        this.support_user = support_user;
+    public void setSupportUser(Set<User> supportUser) {
+        this.supportUser = supportUser;
     }
 }

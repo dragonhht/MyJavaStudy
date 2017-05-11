@@ -1,7 +1,5 @@
 package hht.dragon.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -17,22 +15,22 @@ import java.util.Set;
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer role_id;
+    private Integer roleId;
 
     private String role;
 
     //多对多
     @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
-    @JoinTable(name = "userrole", joinColumns = {@JoinColumn(name = "role_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @JoinTable(name = "userrole", joinColumns = {@JoinColumn(name = "roleId")},
+            inverseJoinColumns = {@JoinColumn(name = "userId")})
     private Set<User> users;
 
-    public Integer getRole_id() {
-        return role_id;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(Integer role_id) {
-        this.role_id = role_id;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getRole() {

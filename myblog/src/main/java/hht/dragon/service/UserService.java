@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
  * Date : 17-4-13
  * Time : 下午6:46
  */
+@SuppressWarnings("CheckStyle")
 public interface UserService {
 
     /**
@@ -28,18 +29,18 @@ public interface UserService {
 
     /**
      * 点赞
-     * @param user_id 用户编号
-     * @param article_id 文章编号
+     * @param userId 用户编号
+     * @param articleId 文章编号
      * @return 点赞总数
      */
-    public Integer supportArticle(Integer user_id, Integer article_id);
+    public Integer supportArticle(Integer userId, Integer articleId);
 
     /**
      * 通过用户编号查询用户
-     * @param user_id 用户编号
+     * @param userId 用户编号
      * @return 用户信息
      */
-    public User getUserById(Integer user_id);
+    public User getUserById(Integer userId);
 
 	/**
 	 * 通过姓名查询用户
@@ -50,44 +51,44 @@ public interface UserService {
 
     /**
      * 通过文章编号查询文章
-     * @param article_id 文章编号
+     * @param articleId 文章编号
      * @return 文章信息
      */
-    public Article getArticleById(Integer article_id);
+    public Article getArticleById(Integer articleId);
 
     /**
      * 查询是否该用户已经点赞
-     * @param user_id 用户编号
-     * @param article_id 文章编号
+     * @param userId 用户编号
+     * @param articleId 文章编号
      * @return 结果
      */
-    public boolean isSupport(Integer user_id, Integer article_id);
+    public boolean isSupport(Integer userId, Integer articleId);
 
     /**
      * 评论文章
-     * @param user_id 评论的用户编号
-     * @param article_id 文章编号
+     * @param userId 评论的用户编号
+     * @param articleId 文章编号
      * @param comment_text 评论内容
      * @return 保存结果
      */
-    public boolean contactArticle(Integer user_id, Integer article_id, String comment_text);
+    public boolean contactArticle(Integer userId, Integer articleId, String comment_text);
 
     /**
      * 评论评论
-     * @param user_id 用户编号
+     * @param userId 用户编号
      * @param comment_id 评论编号
      * @param comment_text 评论内容
      * @return
      */
-    public boolean contactComment(Integer user_id, Integer comment_id, String comment_text);
+    public boolean contactComment(Integer userId, Integer comment_id, String comment_text);
 
     /**
      * 保存文章
      * @param article 文章信息
-     * @param user_id 用户编号
+     * @param userId 用户编号
      * @return
      */
-    public Article saveArticle(Article article, Integer user_id);
+    public Article saveArticle(Article article, Integer userId);
 
 
     /**
@@ -107,16 +108,17 @@ public interface UserService {
 	/**
 	 * 保存图片
 	 * @param img 图片路径
-	 * @param user_id 用户编号
+	 * @param userId 用户编号
 	 * @return
 	 */
-	public boolean saveImg(String img, Integer user_id);
+	public boolean saveImg(String img, Integer userId);
 
 	/**
 	 * 获取最新关于作者的评论
-	 * @param user_id 作者编号
+	 * @param userId 作者编号
 	 * @return 评论信息
 	 */
-	public Page<Comment> getNewComment(Integer user_id);
+	@SuppressWarnings("CheckStyle")
+	public Page<Comment> getNewComment(Integer userId);
 
 }

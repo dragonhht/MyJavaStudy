@@ -33,13 +33,13 @@
 									<ul class="articles">
 										<li class="article-entry standard" th:each="hotarticle : ${hotarticles}">
 											<h4>
-												<a th:href="@{/single/{article_id}(article_id=${hotarticle.article_id})}"
-												   th:text="${hotarticle.article_title}">
+												<a th:href="@{/single/{articleId}(articleId=${hotarticle.articleId})}"
+												   th:text="${hotarticle.articleTitle}">
 												</a>
 											</h4>
 											<span class="article-meta" >
-												<span th:text="${hotarticle.article_date+' by '}"></span>
-												<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${hotarticle.user.user_id}, nowpage = 0)}"
+												<span th:text="${hotarticle.articleDate+' by '}"></span>
+												<a th:href="@{/visituser/{userId}/{nowpage}(userId=${hotarticle.user.userId}, nowpage = 0)}"
 												   th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}"
 												   target="_blank">
 												</a>
@@ -53,11 +53,11 @@
 									<h3>最新博文</h3>
 									<ul class="articles">
 										<li class="article-entry standard" th:each="latstarticle : ${latstarticles}">
-											<h4><a th:href="@{/single/{article_id}(article_id=${latstarticle.article_id})}"
-												   th:text="${latstarticle.article_title}"></a></h4>
+											<h4><a th:href="@{/single/{articleId}(articleId=${latstarticle.articleId})}"
+												   th:text="${latstarticle.articleTitle}"></a></h4>
 											<span class="article-meta" >
-												<span th:text="${latstarticle.article_date+' by '}"></span>
-												<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${latstarticle.user.user_id}, nowpage = 0)}"
+												<span th:text="${latstarticle.articleDate+' by '}"></span>
+												<a th:href="@{/visituser/{userId}/{nowpage}(userId=${latstarticle.user.userId}, nowpage = 0)}"
 												   th:title="${latstarticle.user.userName}" th:text="${latstarticle.user.userName}"
 												   target="_blank">
 												</a>
@@ -87,7 +87,7 @@
 
 										<li th:if="${session.userName eq null}"><a th:href="@{/tologin}">登录</a> </li>
 										<li th:unless="${session.userName eq null}">
-											<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${session.userId}, nowpage = 0)}" th:text="我的个人首页"></a>
+											<a th:href="@{/visituser/{userId}/{nowpage}(userId=${session.userId}, nowpage = 0)}" th:text="我的个人首页"></a>
 										</li>
 									</ul>
 								</div>

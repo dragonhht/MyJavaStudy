@@ -5,6 +5,7 @@ import hht.dragon.entity.Comment;
 import hht.dragon.entity.CommentChild;
 import hht.dragon.entity.User;
 import hht.dragon.repository.CommentChildReponsitory;
+import hht.dragon.repository.CommentRepository;
 import hht.dragon.repository.TouristRepository;
 import hht.dragon.repository.UserRepository;
 import hht.dragon.service.UserService;
@@ -25,6 +26,7 @@ import java.util.Date;
  * Date : 17-4-24
  * Time : 下午4:48
  */
+@SuppressWarnings("CheckStyle")
 @Service
 public class UserServiceImp implements UserService{
 
@@ -40,30 +42,30 @@ public class UserServiceImp implements UserService{
     @Override
     public User login(User user) {
         User user1 = null;
-        user1 = userRepository.getByidAndPassword(user.getUser_id(), user.getPassword());
+        user1 = userRepository.getByidAndPassword(user.getUserId(), user.getPassword());
         return user1;
     }
 
     @Override
-    public Integer supportArticle(Integer user_id, Integer article_id) {
+    public Integer supportArticle(Integer userId, Integer articleId) {
         Integer num = 0;
         boolean ok = false;
-        ok = isSupport(user_id, article_id);
+        ok = isSupport(userId, articleId);
         if (ok) {
-            User user = getUserById(user_id);
-            Article article = getArticleById(article_id);
-            num = article.getSupport_user().size();
+            User user = getUserById(userId);
+            Article article = getArticleById(articleId);
+            num = article.getSupportUser().size();
             num = ++num;
-            user.getSupport_article().add(article);
+            user.getSupportArticle().add(article);
             userRepository.save(user);
         }
         return num;
     }
 
     @Override
-    public User getUserById(Integer user_id) {
+    public User getUserById(Integer userId) {
         User user = null;
-        user = userRepository.getUserById(user_id);
+        user = userRepository.getUserById(userId);
         return user;
     }
 
@@ -75,17 +77,17 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public Article getArticleById(Integer article_id) {
+    public Article getArticleById(Integer articleId) {
         Article article = null;
-        article = userRepository.getArticleById(article_id);
+        article = userRepository.getArticleById(articleId);
         return article;
     }
 
     @Override
-    public boolean isSupport(Integer user_id, Integer article_id) {
+    public boolean isSupport(Integer userId, Integer articleId) {
         Article article = null;
         boolean ok = false;
-        article = userRepository.isSupport(user_id, article_id);
+        article = userRepository.isSupport(userId, articleId);
         if (article == null) {
             ok = true;
         }
@@ -93,19 +95,19 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public boolean contactArticle(Integer user_id, Integer article_id, String comment_text) {
+    public boolean contactArticle(Integer userId, Integer articleId, String comment_text) {
         boolean ok = false;
         User user = null;
         Article article = null;
         String comment_date = null;
         Comment comment = new Comment();
-        user = userRepository.getUserById(user_id);
-        article = userRepository.getArticleById(article_id);
+        user = userRepository.getUserById(userId);
+        article = userRepository.getArticleById(articleId);
         comment_date = getDate.getDate();
         comment.setArticle(article);
         comment.setUser(user);
-        comment.setComment_text(comment_text);
-        comment.setComment_date(comment_date);
+        comment.setCommentText(comment_text);
+        comment.setCommentDate(comment_date);
         Comment commentTest = commentRepository.save(comment);
         if (commentTest != null) {
             ok = true;
@@ -114,18 +116,18 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public boolean contactComment(Integer user_id, Integer comment_id, String comment_text) {
+    public boolean contactComment(Integer userId, Integer comment_id, String comment_text) {
         boolean ok = false;
         User user = null;
         Comment comment = null;
         String commentChild_date = null;
         CommentChild commentChild = new CommentChild();
-        user = userRepository.getUserById(user_id);
+        user = userRepository.getUserById(userId);
         comment = commentRepository.getOne(comment_id);
         commentChild_date = getDate.getDate();
-        commentChild.setComment_date(commentChild_date);
+        commentChild.setCommentDate(commentChild_date);
         commentChild.setComment(comment);
-        commentChild.setComment_text(comment_text);
+        commentChild.setCommentText(comment_text);
         commentChild.setUser(user);
         CommentChild commentChild1 = commentChildReponsitory.save(commentChild);
         if (commentChild1 != null) {
@@ -135,14 +137,14 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public Article saveArticle(Article article, Integer user_id) {
+    public Article saveArticle(Article article, Integer userId) {
         User user = null;
-        String article_date = null;
+        String articleDate = null;
         Article articleResult = null;
-        article_date = getDate.getDate();
-        user = userRepository.getUserById(user_id);
+        articleDate = getDate.getDate();
+        user = userRepository.getUserById(userId);
         article.setUser(user);
-        article.setArticle_date(article_date);
+        article.setArticleDate(articleDate);
         articleResult = touristRepository.save(article);
         return articleResult;
     }
@@ -152,17 +154,18 @@ public class UserServiceImp implements UserService{
         User user1 = null;
         user.setRegistDate(new Date());
         user1 = userRepository.save(user);
-        return user1.getUser_id();
+        return user1.getUserId();
     }
 
+	@SuppressWarnings("CheckStyle")
 	@Override
 	public User updateUser(User user) {
     	User user1 = null;
 		//数据库中的用户信息
 		User dbUser = null;
-		dbUser = userRepository.getUserById(user.getUser_id());
+		dbUser = userRepository.getUserById(user.getUserId());
 		user.setRoles(dbUser.getRoles());
-		user.setSupport_article(dbUser.getSupport_article());
+		user.setSupportArticle(dbUser.getSupportArticle());
 		user.setArticles(dbUser.getArticles());
 		user.setPassword(dbUser.getPassword());
 		user.setImg(dbUser.getImg());
@@ -171,11 +174,11 @@ public class UserServiceImp implements UserService{
 	}
 
     @Override
-    public boolean saveImg(String img, Integer user_id) {
+    public boolean saveImg(String img, Integer userId) {
     	boolean ok = false;
     	User user = null;
     	try {
-			user = userRepository.getUserById(user_id);
+			user = userRepository.getUserById(userId);
 			user.setImg(img);
 			userRepository.save(user);
 			ok = true;
@@ -187,12 +190,12 @@ public class UserServiceImp implements UserService{
     }
 
 	@Override
-	public Page<Comment> getNewComment(Integer user_id) {
+	public Page<Comment> getNewComment(Integer userId) {
     	Page<Comment> comments = null;
 		//按评论日期倒序
-		Sort sort = new Sort(Sort.Direction.DESC, "comment_date");
+		Sort sort = new Sort(Sort.Direction.DESC, "commentDate");
 		Pageable pageable = new PageRequest(0, 10, sort);
-		comments = userRepository.getNewComments(user_id, pageable);
+		comments = userRepository.getNewComments(userId, pageable);
 		return comments;
 	}
 }

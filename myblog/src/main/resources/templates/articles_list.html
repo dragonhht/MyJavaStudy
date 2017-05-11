@@ -26,28 +26,28 @@
 									   th:each="article : ${articlelist}">
                                     <header class="clearfix">
                                             <h3 class="post-title">
-                                                 <a th:href="@{/single/{article_id}(article_id=${article.article_id})}"
-													th:text="${article.article_title}">
+                                                 <a th:href="@{/single/{articleId}(articleId=${article.articleId})}"
+													th:text="${article.articleTitle}">
 												 </a>
 											</h3>
                                             <div class="post-meta clearfix">
-												<span class="date" th:text="${article.article_date}"></span>
+												<span class="date" th:text="${article.articleDate}"></span>
 												<span class="category">
-													<a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}"
+													<a th:href="@{/visituser/{userId}/{nowpage}(userId=${article.user.userId}, nowpage = 0)}"
 																		  th:title="${article.user.userName}" th:text="${article.user.userName}">
 													</a>
 												</span>
 												<span class="comments">
 													<a href="#" th:text="${article.lookCount+' 次浏览'}"></a>
 												</span>
-												<span class="like-count" th:text="${'被赞 ' +article.suppot_count+' 次'}"></span>
+												<span class="like-count" th:text="${'被赞 ' +article.suppotCount+' 次'}"></span>
 											</div>
 										<!-- end of post meta -->
 
 									</header>
 								  	<p>
-										<span class="article-text" th:text="${article.article_text}"></span>
-										<a class="readmore-link" th:href="@{/single/{article_id}(article_id=${article.article_id})}">
+										<span class="article-text" th:text="${article.articleText}"></span>
+										<a class="readmore-link" th:href="@{/single/{articleId}(articleId=${article.articleId})}">
 											Read more
 										</a>
 									</p>
@@ -154,13 +154,13 @@
 							  <ul class="articles">
 								  <li class="article-entry standard" th:each="hotarticle : ${hotarticles}">
 									  <h4>
-										  <a th:href="@{/single/{article_id}(article_id=${hotarticle.article_id})}"
-											 th:text="${hotarticle.article_title}">
+										  <a th:href="@{/single/{articleId}(articleId=${hotarticle.articleId})}"
+											 th:text="${hotarticle.articleTitle}">
 										  </a>
 									  </h4>
 									  <span class="article-meta">
-										  <span th:text="${hotarticle.article_date+' by '}"></span>
-										  <a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${hotarticle.user.user_id}, nowpage = 0)}"
+										  <span th:text="${hotarticle.articleDate+' by '}"></span>
+										  <a th:href="@{/visituser/{userId}/{nowpage}(userId=${hotarticle.user.userId}, nowpage = 0)}"
 											 th:title="${hotarticle.user.userName}" th:text="${hotarticle.user.userName}" target="_blank">
 										  </a>
 									  </span>

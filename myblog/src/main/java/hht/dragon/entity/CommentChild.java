@@ -18,12 +18,12 @@ public class CommentChild {
     private Integer id;
     //评论者编号
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
     //评论时间
-    private String comment_date;
+    private String commentDate;
     //评论内容
-    private String comment_text;
+    private String commentText;
     //单向多对一
     @ManyToOne
     @JoinColumn(name = "comment_id")
@@ -45,20 +45,20 @@ public class CommentChild {
         this.user = user;
     }
 
-    public String getComment_date() {
-        return comment_date;
+    public String getCommentDate() {
+        return commentDate;
     }
 
-    public void setComment_date(String comment_date) {
-        this.comment_date = comment_date;
+    public void setCommentDate(String commentDate) {
+        this.commentDate = commentDate;
     }
 
-    public String getComment_text() {
-        return comment_text;
+    public String getCommentText() {
+        return commentText;
     }
 
-    public void setComment_text(String comment_text) {
-        this.comment_text = comment_text;
+    public void setCommentText(String commentText) {
+        this.commentText = commentText;
     }
 
     public Comment getComment() {

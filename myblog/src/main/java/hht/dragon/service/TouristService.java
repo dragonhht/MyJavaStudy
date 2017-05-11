@@ -36,11 +36,11 @@ public interface TouristService {
     /**
      * 通过文章编号获取文章详细信息
      *
-     * @param article_id 文章编号
+     * @param articleId 文章编号
      *
      * @return 文章信息
      */
-     public Article getArticleById(Integer article_id);
+     public Article getArticleById(Integer articleId);
 
 
     /**
@@ -60,25 +60,25 @@ public interface TouristService {
     /**
      * 通过用户编号查询用户
      *
-     * @param user_id 用户编号
+     * @param userId 用户编号
      *
      * @return 用户信息
      */
-    public User getUserById(Integer user_id);
+    public User getUserById(Integer userId);
 
     /**
      * 计算作者首页文章页数
-     * @param user_id 作者编号
+     * @param userId 作者编号
      * @return
      */
-    public int getUsetArticlePageCount(Integer user_id);
+    public int getUsetArticlePageCount(Integer userId);
 
     /**
      * 通过用户编号查询文章
-     * @param user_id 用户编号
+     * @param userId 用户编号
      * @return
      */
-    public Page<Article> getUserArticles(Integer user_id, Integer pageNum);
+    public Page<Article> getUserArticles(Integer userId, Integer pageNum);
 
     /**
      * 计算搜索结果的页数
@@ -96,8 +96,8 @@ public interface TouristService {
 
     /**
      * 查询文章评论
-     * @param article_id 文章编号
+     * @param articleId 文章编号
      * @return 查询到的文章
      */
-    public Set<Comment> getArticleComments(Integer article_id);
+    public Set<Comment> getArticleComments(Integer articleId);
 }

@@ -20,28 +20,28 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
     //登录
-    @Query("select u from User u where u.user_id = ?1 and u.password = ?2")
-    public User getByidAndPassword(Integer user_id, String password);
+    @Query("select u from User u where u.userId = ?1 and u.password = ?2")
+    public User getByidAndPassword(Integer userId, String password);
 
     //通过用户编号查询用户
-    @Query("select u from User u where u.user_id = ?1")
-    public User getUserById(Integer user_id);
+    @Query("select u from User u where u.userId = ?1")
+    public User getUserById(Integer userId);
 
     //通过用户姓名查询用户
     @Query("select u from User u where u.userName = ?1")
     public User getUserByUserName(String userName);
 
     //通过文章编号查询文章
-    @Query("select a from Article a where a.article_id = ?1")
-    public Article getArticleById(Integer article_id);
+    @Query("select a from Article a where a.articleId = ?1")
+    public Article getArticleById(Integer articleId);
 
 
     //查询是否已经点赞
-    @Query("select a from Article a join a.support_user u where u.user_id = ?1 and a.article_id = ?2")
-    public Article isSupport(Integer user_id, Integer article_id);
+    @Query("select a from Article a join a.supportUser u where u.userId = ?1 and a.articleId = ?2")
+    public Article isSupport(Integer userId, Integer articleId);
 
 	//查询我的文章最新的十条评论
-	@Query("select c from Comment c where c.article.user.user_id = ?1")
-	public Page<Comment> getNewComments(Integer user_id, Pageable pageable);
+	@Query("select c from Comment c where c.article.user.userId = ?1")
+	public Page<Comment> getNewComments(Integer userId, Pageable pageable);
 
 }

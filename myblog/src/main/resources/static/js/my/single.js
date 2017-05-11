@@ -6,7 +6,7 @@
 var xmlhttprequest;
 var s;
 function supportItem() {
-    var article_id = document.getElementById("article_id").value;
+    var articleId = document.getElementById("articleId").value;
     xmlhttprequest = new XMLHttpRequest();
     s = document.getElementById('supportcount').innerHTML;
     s = '被赞 ' +s.substr(2,3)+ ' 次';
@@ -15,7 +15,7 @@ function supportItem() {
     }
     xmlhttprequest.onreadystatechange = callback;
     //get请求
-    xmlhttprequest.open("GET", "../user/supportItem/"+article_id, true);
+    xmlhttprequest.open("GET", "../user/supportItem/"+articleId, true);
     xmlhttprequest.send(null);
 }
 

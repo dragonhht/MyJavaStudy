@@ -87,10 +87,10 @@ public class TouristServiceImp implements TouristService{
     }
 
     @Override
-    public Article getArticleById(Integer article_id) {
+    public Article getArticleById(Integer articleId) {
         Article article = null;
         Integer lookCount = 0;
-        article = touristRepository.findOne(article_id);
+        article = touristRepository.findOne(articleId);
         lookCount = article.getLookCount();
         lookCount++;
         article.setLookCount(lookCount);
@@ -101,7 +101,7 @@ public class TouristServiceImp implements TouristService{
     @Override
     public Page<Article> getArticleList(Integer pageNum) {
         //按文章上传日期倒序
-        Sort sort = new Sort(Sort.Direction.DESC, "article_date");
+        Sort sort = new Sort(Sort.Direction.DESC, "articleDate");
         Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
         Page<Article> articlePage = touristRepository.getArticleList(pageable1);
         return articlePage;
@@ -133,20 +133,20 @@ public class TouristServiceImp implements TouristService{
     }
 
     @Override
-    public User getUserById(Integer user_id) {
+    public User getUserById(Integer userId) {
         User user = null;
-        user = touristRepository.getUserById(user_id);
+        user = touristRepository.getUserById(userId);
         return user;
     }
 
 
 
     @Override
-    public int getUsetArticlePageCount(Integer user_id) {
+    public int getUsetArticlePageCount(Integer userId) {
         int pagNum = 0;
         int num = 0;
         User user = null;
-        user = touristRepository.getUserById(user_id);
+        user = touristRepository.getUserById(userId);
         if (user != null) {
             num = user.getArticles().size();
         }
@@ -155,12 +155,12 @@ public class TouristServiceImp implements TouristService{
     }
 
     @Override
-    public Page<Article> getUserArticles(Integer user_id, Integer pageNum) {
+    public Page<Article> getUserArticles(Integer userId, Integer pageNum) {
         Page<Article> articles = null;
         //按文章上传日期倒序
-        Sort sort = new Sort(Sort.Direction.DESC, "article_date");
+        Sort sort = new Sort(Sort.Direction.DESC, "articleDate");
         Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
-        articles = touristRepository.getArticleByUserId(user_id, pageable1);
+        articles = touristRepository.getArticleByUserId(userId, pageable1);
         return articles;
     }
 
@@ -179,17 +179,17 @@ public class TouristServiceImp implements TouristService{
         Page<Article> articles = null;
         searchText = "%" + searchText + "%";
         //按文章上传日期倒序
-        Sort sort = new Sort(Sort.Direction.DESC, "article_date");
+        Sort sort = new Sort(Sort.Direction.DESC, "articleDate");
         Pageable pageable1 = new PageRequest(pageNum, PAGE_SIZE, sort);
         articles = touristRepository.getSearchArticles(searchText, searchText,searchText, pageable1);
         return articles;
     }
 
 	@Override
-	public Set<Comment> getArticleComments(Integer article_id) {
+	public Set<Comment> getArticleComments(Integer articleId) {
 		final Integer COMMENT_PAGE_SIZE = 10;
 		Set<Comment> comments = null;
-		comments = touristRepository.getArticleComment(article_id);
+		comments = touristRepository.getArticleComment(articleId);
 		return comments;
 	}
 }

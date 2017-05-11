@@ -21,7 +21,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue
-    private Integer user_id;
+    private Integer userId;
     //用户名
     @Length(min = 1, max = 10)
     private String userName;
@@ -46,28 +46,28 @@ public class User {
     private String password;
     //上传的文章
     @OneToMany
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     @JsonBackReference
     private Set<Article> articles;
 
     //多对多
     @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
-    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "article_id")})
-    private Set<Article> support_article;
+    @JoinTable(name = "support", joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "articleId")})
+    private Set<Article> supportArticle;
 
     //多对多
     @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
-    @JoinTable(name = "userrole", joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    @JoinTable(name = "userrole", joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "roleId")})
     private Set<UserRole> roles;
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -150,12 +150,12 @@ public class User {
         this.articles = articles;
     }
 
-    public Set<Article> getSupport_article() {
-        return support_article;
+    public Set<Article> getSupportArticle() {
+        return supportArticle;
     }
 
-    public void setSupport_article(Set<Article> support_article) {
-        this.support_article = support_article;
+    public void setSupportArticle(Set<Article> supportArticle) {
+        this.supportArticle = supportArticle;
     }
 
     public Set<UserRole> getRoles() {

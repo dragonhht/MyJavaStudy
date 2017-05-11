@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -57,26 +55,26 @@ public class TouristController {
     /**
      * 浏览文章
      *
-     * @param article_id 文章编号
+     * @param articleId 文章编号
      * @param model
      *
      * @return 文章展示页面
      */
-    @RequestMapping("/single/{article_id}")
-    public String single(@PathVariable("article_id") Integer article_id, Model model) {
+    @RequestMapping("/single/{articleId}")
+    public String single(@PathVariable("articleId") Integer articleId, Model model) {
         Article article = null;
         Page<Article> hotArticles = null;
         Set<Comment> comments = null;
         int commentCount = 0,supportcount = 0;
-        article = touristService.getArticleById(article_id);
+        article = touristService.getArticleById(articleId);
         if (article != null) {
             if (article.getComments() != null) {
                 commentCount = article.getComments().size();
             }
-            supportcount = article.getSupport_user().size();
+            supportcount = article.getSupportUser().size();
             hotArticles = touristService.getHotArticle();
         }
-		comments = touristService.getArticleComments(article_id);
+		comments = touristService.getArticleComments(articleId);
         article.setComments(comments);
         model.addAttribute("article", article);
         model.addAttribute("commentcount", commentCount);
@@ -113,27 +111,27 @@ public class TouristController {
     /**
      * 跳转作者界面
      *
-     * @param user_id 作者编号
+     * @param userId 作者编号
      * @param model
      * @return 作者首页
      */
-    @RequestMapping("/visituser/{user_id}/{nowpage}")
-    public String visituser(@PathVariable("user_id") Integer user_id,@PathVariable("nowpage") Integer nowpage, Model model) {
+    @RequestMapping("/visituser/{userId}/{nowpage}")
+    public String visituser(@PathVariable("userId") Integer userId,@PathVariable("nowpage") Integer nowpage, Model model) {
         User user = null;
         Page<Article> articles = null;
         Page<Comment> comments = null;
         int pageNum = 0;
-        user = touristService.getUserById(user_id);
+        user = touristService.getUserById(userId);
         if (user == null) {
             return "";
         }
-        pageNum = touristService.getUsetArticlePageCount(user_id);
+        pageNum = touristService.getUsetArticlePageCount(userId);
         if (pageNum == 0) {
             pageNum = 1;
         }
-        articles = touristService.getUserArticles(user_id, nowpage);
-        comments = userService.getNewComment(user_id);
-        model.addAttribute("userId", user_id);
+        articles = touristService.getUserArticles(userId, nowpage);
+        comments = userService.getNewComment(userId);
+        model.addAttribute("userId", userId);
         model.addAttribute("nowpage", nowpage);
         model.addAttribute("pagecount", pageNum);
         model.addAttribute("userarticles", articles);
@@ -173,9 +171,9 @@ public class TouristController {
      */
     @PostMapping("/regist")
     public String regist(User user, Model model) {
-        Integer user_id;
-        user_id = userService.regist(user);
-        model.addAttribute("registId", user_id);
+        Integer userId;
+        userId = userService.regist(user);
+        model.addAttribute("registId", userId);
         return "msg";
     }
 

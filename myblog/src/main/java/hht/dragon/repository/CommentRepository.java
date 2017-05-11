@@ -1,4 +1,4 @@
-package hht.dragon.service.imp;
+package hht.dragon.repository;
 
 import hht.dragon.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;

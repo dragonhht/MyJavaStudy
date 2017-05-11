@@ -41,21 +41,21 @@
                     <header class="clearfix">
 
                         <h3 class="post-title">
-                            <a th:href="@{/single/{article_id}(article_id=${article.article_id})}" th:text="${article.article_title}"></a>
+                            <a th:href="@{/single/{articleId}(articleId=${article.articleId})}" th:text="${article.articleTitle}"></a>
                         </h3>
 
                         <div class="post-meta clearfix">
-                            <span class="date" th:text="${article.article_date}"></span>
-                            <span class="category"><a th:href="@{/visituser/{user_id}/{nowpage}(user_id=${article.user.user_id}, nowpage = 0)}" th:title="${article.user.userName}" th:text="${article.user.userName}"></a></span>
+                            <span class="date" th:text="${article.articleDate}"></span>
+                            <span class="category"><a th:href="@{/visituser/{userId}/{nowpage}(userId=${article.user.userId}, nowpage = 0)}" th:title="${article.user.userName}" th:text="${article.user.userName}"></a></span>
                             <span class="comments"><a href="#" th:text="${article.lookCount+' 次浏览'}"></a></span>
-                            <span class="like-count" th:text="${'被赞 ' +article.suppot_count+' 次'}"></span>
+                            <span class="like-count" th:text="${'被赞 ' +article.suppotCount+' 次'}"></span>
                         </div><!-- end of post meta -->
 
                     </header>
 
                     <p>
-                        <span class="article-text" th:text="${article.article_text}"></span>
-                        <a class="readmore-link" th:href="@{/single/{article_id}(article_id=${article.article_id})}">Read more</a>
+                        <span class="article-text" th:text="${article.articleText}"></span>
+                        <a class="readmore-link" th:href="@{/single/{articleId}(articleId=${article.articleId})}">Read more</a>
                     </p>
 
                 </article>
@@ -65,11 +65,11 @@
                 <div id="pagination">
                     <!--第一页-->
                     <span th:unless="${1 eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = 0)}">First</a>
+                        <a class="btn" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = 0)}">First</a>
                     </span>
                     <!--上一页-->
                     <span th:unless="${1 eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${nowpage-1})}">Previous</a>
+                        <a class="btn" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${nowpage-1})}">Previous</a>
                     </span>
 
 					<span th:unless="${nowpage+1 lt 10}">...</span>
@@ -77,10 +77,10 @@
                     <span  th:each="num : ${#numbers.sequence(1, pagecount)}">
                         <span th:if="${pagecount le 10}">
                             <span th:if="${num eq (nowpage+1)}">
-                                <a  class="btn active" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
+                                <a  class="btn active" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
                             </span>
                             <span th:unless="${num eq (nowpage+1)}">
-                                <a  class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
+                                <a  class="btn" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
                             </span>
                         </span>
 						<span th:if="${num eq 11 and nowpage+1 lt 10}">...</span>
@@ -88,10 +88,10 @@
                             <span th:if="${nowpage+1 lt 10}">
                                 <span th:if="${num le 10}">
                                     <span th:if="${num eq (nowpage+1)}">
-                                     <a  class="btn active" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
+                                     <a  class="btn active" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
                                     </span>
                                     <span th:unless="${num eq (nowpage+1)}">
-                                     <a  class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
+                                     <a  class="btn" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${num-1})}" th:text="${num}"></a>
                                     </span>
                                 </span>
                             </span>
@@ -101,11 +101,11 @@
 
                                 <span th:if="${num gt nowpage-5 and num lt nowpage+7}">
                                     <span th:if="${num eq (nowpage+1)}">
-                                        <a  class="btn active" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}"
+                                        <a  class="btn active" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${num-1})}"
                                             th:text="${num}"></a>
                                     </span>
                                     <span th:unless="${num eq (nowpage+1)}">
-                                        <a  class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${num-1})}"
+                                        <a  class="btn" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${num-1})}"
                                             th:text="${num}"></a>
                                     </span>
                                 </span>
@@ -119,11 +119,11 @@
 
                     <!--下一页-->
                     <span th:unless="${pagecount eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${nowpage+1})}">Next</a>
+                        <a class="btn" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${nowpage+1})}">Next</a>
                     </span>
                     <!--最后一页-->
                     <span th:unless="${pagecount eq (nowpage+1)}">
-                        <a class="btn" th:href="@{/visituser/{user_id}/{nowpage}(user_id=${userId}, nowpage = ${pagecount-1})}">Last</a>
+                        <a class="btn" th:href="@{/visituser/{userId}/{nowpage}(userId=${userId}, nowpage = ${pagecount-1})}">Last</a>
                     </span>
 					<span th:text="${'共 '+ pagecount +'页'}"></span>
                 </div>
