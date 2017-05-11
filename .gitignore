@@ -14,3 +14,8 @@ myblog/target
 http:
 home
 .idea
+将删除 .idea/dataSources.local.xml
+将删除 .idea/dataSources/594e69f5-1dcf-4578-87f0-2a80d4ecd82f/_src_/
+将删除 .idea/dataSources/594e69f5-1dcf-4578-87f0-2a80d4ecd82f/_staging_/
+将删除 .idea/workspace.xml
+将删除 SummaryLibrary/src/test/
