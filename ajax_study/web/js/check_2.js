@@ -7,7 +7,7 @@
 
 var xmlhttprequest;
 
-function check(){
+function check() {
 
     //1，获取文本框内容
         //使用dom
@@ -31,7 +31,7 @@ function check(){
                     xmlhttprequest=new ActiveXObject(actionxName[i]);
                     break;
                 }catch(e) {
-
+                    //异常
                 }
             }
         }
@@ -40,8 +40,8 @@ function check(){
         xmlhttprequest.onreadystatechange=callback;
 
         //3，设置连接信息（参数 1，http请求方式; 2,url地址; 3,采用异步还是同步（true为异步））
-        /*//get方式请求
-        xmlhttprequest.open("GET","AJAXServlet?name="+username,true);*/
+        //get方式请求
+        //xmlhttprequest.open("GET","AJAXServlet?name="+username,true);
         //post方式请求
         xmlhttprequest.open("POST","AJAXServlet",true);
         //POST方式需设置http请求头
@@ -49,8 +49,8 @@ function check(){
 
 
         //4，发送数据
-        /*//get请求方式
-        xmlhttprequest.send(null);*/
+        //get请求方式
+    /*xmlhttprequest.send(null);*/
         //post请求方式
         xmlhttprequest.send("name="+username);
 }
