@@ -7,13 +7,11 @@ a{
 }
 
 .bg{
-    //border: 1px solid red;
     width: 1200px;
     margin: 0 auto;
 }
 
 .top_menu{
-    //border: 1px solid gray;
     width: 1200px;
     height: 40px;
 }
@@ -30,7 +28,6 @@ a{
 }
 
 .center_search{
-    //border: 1px solid green;
     margin-top: 80px;
     width: 1200px;
 }

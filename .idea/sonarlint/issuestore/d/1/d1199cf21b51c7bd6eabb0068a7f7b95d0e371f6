@@ -1,0 +1,13 @@
+
+_'javascript:FunctionDefinitionInsideLoop"'Define this function outside of a loop.(–ώ8σφ‚¶Ώ+
+d'javascript:FunctionDefinitionInsideLoop"'Define this function outside of a loop.(ψΨ“ώÿÿÿÿ8σφ‚¶Ώ+
+y(javascript:VariableDeclarationAfterUsage"@Move the declaration of "formatValidatorName" before this usage.(Φ”Γ­8σφ‚¶Ώ+
+s(javascript:VariableDeclarationAfterUsage"5Move the declaration of "getValue" before this usage.(ό¤„Òϋÿÿÿÿ8σφ‚¶Ώ+
+Hjavascript:CommentedCode"Remove this commented out code.(νΖ»α8σφ‚¶Ώ+
+f!javascript:UnusedFunctionArgument"4Remove the unused function parameter "includeEmpty".(ΡΉµό8σφ‚¶Ώ+
+a!javascript:UnusedFunctionArgument"*Remove the unused function parameter "el".(­δΗΊÿÿÿÿÿ8σφ‚¶Ώ+
+_!javascript:UnusedFunctionArgument"-Remove the unused function parameter "$this".(±ΊΥέ8σφ‚¶Ώ+
+^!javascript:UnusedFunctionArgument",Remove the unused function parameter "name".(±ΊΥέ8σφ‚¶Ώ+
+vjavascript:S3776"URefactor this function to reduce its Cognitive Complexity from 154 to the 15 allowed.(‚•¤Ε8σφ‚¶Ώ+
+`javascript:S1854":Remove this useless assignment to local variable "message"(Γ§·νψÿÿÿÿ8σφ‚¶Ώ+
+€javascript:S1067"ZReduce the number of conditional operators (6) used in the expression (maximum allowed 3).(ίηÿÿÿÿÿ8σφ‚¶Ώ+

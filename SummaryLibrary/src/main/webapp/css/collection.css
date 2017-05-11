@@ -7,20 +7,17 @@ a{
 }
 
 .bg{
-//border: 1px solid red;
     width: 1200px;
     margin: 0 auto;
 }
 
 .center_message{
-//border: 1px solid red;
     width: 1000px;
     margin: 10px auto;
     min-height: 300px;
 }
 
 .book_title{
-    //border:1px solid green;
     min-width: 100px;
     margin: 20px auto;
     font-size: 30px;
@@ -41,7 +38,6 @@ a{
 }
 
 .book_message{
-    //border:1px solid red;
     max-width: 870px;
     min-height: 35px;
     margin-left: 20px;

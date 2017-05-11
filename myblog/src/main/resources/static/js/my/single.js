@@ -104,3 +104,34 @@ function showChild(e) {
 		}
 	}
 }
+
+//提交博客
+function saveArticle() {
+	var title = $('#articleTitle').val();
+	var text = $('#comment').val();
+	var s = 0;
+	var size = 0;
+	var textLen = text.length;
+	if (textLen % 200 != 0) {
+		s = 0;
+	}
+	size = parseInt(textLen / 200) + size;
+	var start = 0;
+	var textStr = [];
+	var len = 200;
+	for (var i = 0; i < size; i++) {
+		if (start + len > textLen) {
+			len = textLen - start;
+		}
+		textStr[i] = text.substr(start, len);
+		console.log(textStr[i]);
+		start = start + 200;
+	}
+
+	$.get("../user/saveblog?text=" + textStr + "&articleTitle=" + title,null,saveBlogCallback);
+}
+
+//回调函数
+function saveBlogCallback(data){
+
+}

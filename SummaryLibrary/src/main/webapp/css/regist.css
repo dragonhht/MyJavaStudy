@@ -25,7 +25,6 @@ a{
 }
 
 .center_form{
-    //border: 1px solid red;
     width: 760px;
     height: 510px;
     padding-top: 60px;
@@ -34,7 +33,6 @@ a{
 
 
 .form_div{
-    //border: 1px solid green;
     margin-top: 25px;
     position: relative;
 }

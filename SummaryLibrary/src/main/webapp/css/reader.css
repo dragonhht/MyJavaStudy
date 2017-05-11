@@ -7,7 +7,6 @@ a{
 }
 
 .bg{
-//border: 1px solid red;
     width: 1200px;
     margin: 0 auto;
 }
@@ -60,7 +59,6 @@ a{
 }
 
 .center_button{
-    //border:1px solid red;
     height: 30px;
     width: 200px;
     margin-left: 300px;
@@ -88,7 +86,6 @@ a{
 
 .select_label{
     position: absolute;
-    //border:1px solid red;
     width: 300px;
     height: 200px;
     right:30px;

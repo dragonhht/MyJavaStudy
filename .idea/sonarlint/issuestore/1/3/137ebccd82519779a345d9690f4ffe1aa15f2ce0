@@ -1,0 +1,9 @@
+
+bsquid:S1132"HMove the "ON" string literal on the left side of this string comparison.(Ì¢ý·ýÿÿÿÿ
+?squid:S1166"%Either log or rethrow this exception.(±Ÿ—±ÿÿÿÿÿ
+Tsquid:S1118":Add a private constructor to hide the implicit public one.(äØé™ùÿÿÿÿ
+O
+squid:S106";Replace this usage of System.out or System.err by a logger.(è·û•
+T
+squid:S106";Replace this usage of System.out or System.err by a logger.(ªùš˜øÿÿÿÿ
+csquid:S1132"IMove the "OFF" string literal on the left side of this string comparison.(ñÒÐ‚ÿÿÿÿÿ

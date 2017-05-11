@@ -1,0 +1,6 @@
+
+Vsquid:S2259"ANullPointerException might be thrown as 'sketch' is nullable here(ç´‰£
+Dsquid:S1066"/Merge this if statement with the enclosing one.(ÙÓú
+O
+squid:S106";Replace this usage of System.out or System.err by a logger.(ã´¡†
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ñ­Ÿàúÿÿÿÿ

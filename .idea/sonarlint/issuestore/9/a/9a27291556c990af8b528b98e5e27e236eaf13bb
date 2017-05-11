@@ -1,0 +1,15 @@
+
+psquid:S1450"VRemove the "mirrors" field and declare it as a local variable in the relevant methods.(şŸÌªşÿÿÿÿ
+Dsquid:S1068"*Remove this unused "wheels" private field.(Êı¬µıÿÿÿÿ
+lsquid:S1450"WRemove the "interior" field and declare it as a local variable in the relevant methods.(¿¾ÅŒ
+msquid:S1450"SRemove the "roof" field and declare it as a local variable in the relevant methods.(ÙÑû…ıÿÿÿÿ
+Dsquid:S1068"*Remove this unused "lights" private field.(ä€Ü¦üÿÿÿÿ
+Bsquid:S1068"(Remove this unused "base" private field.(™È›ãûÿÿÿÿ
+msquid:S1450"SRemove the "base" field and declare it as a local variable in the relevant methods.(™È›ãûÿÿÿÿ
+osquid:S1450"URemove the "engine" field and declare it as a local variable in the relevant methods.(ï“„ıÿÿÿÿ
+Bsquid:S1068"(Remove this unused "roof" private field.(ÙÑû…ıÿÿÿÿ
+Esquid:S1068"+Remove this unused "mirrors" private field.(şŸÌªşÿÿÿÿ
+osquid:S1450"URemove the "lights" field and declare it as a local variable in the relevant methods.(ä€Ü¦üÿÿÿÿ
+Asquid:S1068",Remove this unused "interior" private field.(¿¾ÅŒ
+Dsquid:S1068"*Remove this unused "engine" private field.(ï“„ıÿÿÿÿ
+osquid:S1450"URemove the "wheels" field and declare it as a local variable in the relevant methods.(Êı¬µıÿÿÿÿ
