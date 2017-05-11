@@ -4,8 +4,7 @@ import com.dragon.entity.BookExtend;
 import com.dragon.entity.BorrowExtend;
 import com.dragon.entity.ReaderExtend;
 import com.dragon.service.AdminService;
-import com.dragon.utils.getDate;
-import com.sun.deploy.net.HttpResponse;
+import com.dragon.utils.GetDate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,10 +54,10 @@ public class AdminAction {
         boolean ok = false;
 
         //借阅日期
-        String borrowDate = getDate.getDateDay();
+        String borrowDate = GetDate.getDateDay();
         borrow.setBorrowDate(borrowDate);
         //应还日期
-        String returnDay = getDate.addDateDay(30);
+        String returnDay = GetDate.addDateDay(30);
         borrow.setReturnDate(returnDay);
 
 System.out.println(borrow);

@@ -7,7 +7,7 @@ package singleton;
  * Date : 17-3-29
  * Time : 下午9:09
  */
-public class test {
+public class Test {
     public static void main(String[] arg) {
         //主动实例化
         Singleton s1 = Singleton.getInstance();

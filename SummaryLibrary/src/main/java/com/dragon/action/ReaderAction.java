@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dragon.entity.BorrowExtend;
 import com.dragon.entity.MessageExtend;
-import com.dragon.utils.getDate;
+import com.dragon.utils.GetDate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -203,7 +203,7 @@ System.out.println(reader);
             readerId = Integer.parseInt(readerIdString);
         }
         message.setReaderId(readerId);
-        String date = getDate.getDate();
+        String date = GetDate.getDate();
         message.setMessageDate(date);
 
         try {

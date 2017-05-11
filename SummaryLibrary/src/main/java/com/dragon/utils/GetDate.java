@@ -11,7 +11,7 @@ import java.util.Date;
  * Date : 17-3-17
  * Time : 下午9:38
  */
-public class getDate {
+public class GetDate {
 
     /**
      * 获得当前时间(精确到秒)

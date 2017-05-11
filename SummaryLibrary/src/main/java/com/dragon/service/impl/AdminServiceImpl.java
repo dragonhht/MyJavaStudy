@@ -5,7 +5,7 @@ import com.dragon.entity.BorrowExtend;
 import com.dragon.entity.ReaderExtend;
 import com.dragon.mapper.AdminMapper;
 import com.dragon.service.AdminService;
-import com.dragon.utils.getDate;
+import com.dragon.utils.GetDate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,7 +31,7 @@ public class AdminServiceImpl implements AdminService{
     public boolean addBook(BookExtend book) {
         boolean ok = false;
 
-        String buyDate = getDate.getDateDay();
+        String buyDate = GetDate.getDateDay();
         book.setBuyDate(buyDate);
         long bookId = getNewBookId();
         book.setBookId(bookId);
