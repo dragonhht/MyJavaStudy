@@ -5,16 +5,16 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * ClassDescription
+ * 获取时间.
  * <p>
  * User : Dragon_hht
  * Date : 17-3-17
  * Time : 下午9:38
  */
-public class getDate {
+public class GetDate {
 
     /**
-     * 获得当前时间(精确到秒)
+     * 获得当前时间(精确到秒).
      *
      * @return 当前时间
      */
@@ -28,7 +28,7 @@ public class getDate {
     }
 
     /**
-     * 获得当前时间(精确到天)
+     * 获得当前时间(精确到天).
      *
      * @return 当前时间
      */
@@ -42,7 +42,7 @@ public class getDate {
     }
 
     /**
-     * 日期的延后和提前
+     * 日期的延后和提前.
      *
      * @param num 天数
      *

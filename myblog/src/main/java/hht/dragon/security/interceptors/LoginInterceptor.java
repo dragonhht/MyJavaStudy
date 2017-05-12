@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 用户登录验证拦截器
+ * 用户登录验证拦截器.
  * <p>
  * User : Dragon_hht
  * Date : 17-5-12
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginInterceptor implements HandlerInterceptor {
 	/**
-	 * 用于验证用户是否登录
+	 * 用于验证用户是否登录.
 	 * @param httpServletRequest httpServletRequest
 	 * @param httpServletResponse httpServletResponse
 	 * @param o 0
@@ -28,7 +28,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		HttpSession session = httpServletRequest.getSession();
 		Integer userId = (Integer) session.getAttribute("userId");
 		System.out.println(userId);
-		if ( userId != null) {
+		if (userId != null) {
 			return true;
 		}
 		httpServletRequest.getRequestDispatcher("/tologin").forward(httpServletRequest, httpServletResponse);
@@ -36,12 +36,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 	}
 
 	@Override
-	public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+	public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+						   Object o, ModelAndView modelAndView) throws Exception {
 
 	}
 
 	@Override
-	public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
+	public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+								Object o, Exception e) throws Exception {
 
 	}
 }

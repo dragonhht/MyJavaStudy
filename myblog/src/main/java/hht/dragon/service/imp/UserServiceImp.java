@@ -9,7 +9,7 @@ import hht.dragon.repository.CommentRepository;
 import hht.dragon.repository.TouristRepository;
 import hht.dragon.repository.UserRepository;
 import hht.dragon.service.UserService;
-import hht.dragon.utils.getDate;
+import hht.dragon.utils.GetDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -107,7 +107,7 @@ public class UserServiceImp implements UserService {
         Comment comment = new Comment();
         user = userRepository.getUserById(userId);
         article = userRepository.getArticleById(articleId);
-		commentDate = getDate.getDate();
+		commentDate = GetDate.getDate();
         comment.setArticle(article);
         comment.setUser(user);
         comment.setCommentText(commentText);
@@ -128,7 +128,7 @@ public class UserServiceImp implements UserService {
         CommentChild commentChild = new CommentChild();
         user = userRepository.getUserById(userId);
         comment = commentRepository.getOne(commentId);
-		commentChildDate = getDate.getDate();
+		commentChildDate = GetDate.getDate();
         commentChild.setCommentDate(commentChildDate);
         commentChild.setComment(comment);
         commentChild.setCommentText(commentText);
@@ -145,7 +145,7 @@ public class UserServiceImp implements UserService {
         User user = null;
         String articleDate = null;
         Article articleResult = null;
-        articleDate = getDate.getDate();
+        articleDate = GetDate.getDate();
         user = userRepository.getUserById(userId);
         article.setUser(user);
         article.setArticleDate(articleDate);

@@ -32,6 +32,16 @@ public class UserController {
     @Autowired
     private UserService service;
 
+	/**
+	 * 用户注销.
+	 * @param session session
+	 * @return 首页
+	 */
+	@RequestMapping("/loginout")
+	public String loginout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/index";
+	}
 
     /**
      * 点赞.
