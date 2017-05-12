@@ -32,7 +32,7 @@
                     <li class="active" >在线写博客</li>
                 </ul>
 
-                <form th:action="@{/user/saveblog}" method="get">
+                <form th:action="@{/user/saveblog}" method="post">
                 <article class=" type-post format-standard hentry clearfix">
 
                     <h1 class="post-title"><a href="#" >在线写博客</a></h1>
@@ -49,7 +49,7 @@
                                 <textarea class="span8" name="articleText" id="comment" cols="58" rows="70"></textarea>
                             </div>
                             <div>
-                                <input class="btn"  name="submit" type="submit"  id="submit"  value="上传文章" />
+                                <input class="btn"  name="submit" type="submit"   id="submit"  value="上传文章" />
                             </div>
 
                     </div>

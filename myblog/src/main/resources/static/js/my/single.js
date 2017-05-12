@@ -112,20 +112,20 @@ function saveArticle() {
 	var s = 0;
 	var size = 0;
 	var textLen = text.length;
-	if (textLen % 200 != 0) {
-		s = 0;
+	if (textLen % 400 != 0) {
+		s = 1;
 	}
-	size = parseInt(textLen / 200) + size;
+	size = parseInt(textLen / 400) + s;
 	var start = 0;
 	var textStr = [];
-	var len = 200;
+	var len = 400;
 	for (var i = 0; i < size; i++) {
 		if (start + len > textLen) {
 			len = textLen - start;
 		}
 		textStr[i] = text.substr(start, len);
 		console.log(textStr[i]);
-		start = start + 200;
+		start = start + len;
 	}
 
 	$.get("../user/saveblog?text=" + textStr + "&articleTitle=" + title,null,saveBlogCallback);
@@ -133,5 +133,5 @@ function saveArticle() {
 
 //回调函数
 function saveBlogCallback(data){
-
+		console.log(data);
 }

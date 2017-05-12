@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Set;
 
 /**
@@ -194,5 +195,39 @@ public class TouristController {
         latstArticles = touristService.getLatstArticle();
         model.addAttribute("latstarticles", latstArticles);
         return "contact";
+    }
+
+
+    /**
+     * 用户登录.
+     * @param user 用户信息
+     * @param session session
+     * @return 登录结果页面
+     */
+    @PostMapping("/login")
+    public String login(User user, HttpSession session) {
+        User user1 = null;
+        String returnString = "redirect:/tologin";
+        user1 = userService.login(user);
+        if (user1 != null) {
+            Integer id = user.getUserId();
+            String name = user1.getUserName();
+            session.setAttribute("userId", id);
+            session.setAttribute("userName", name);
+            returnString = "redirect:/visituser/" + id + "/0";
+        }
+
+        return returnString;
+    }
+
+    /**
+     * 用户注销.
+     * @param session session
+     * @return 首页
+     */
+    @RequestMapping("/loginout")
+    public String loginout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/index";
     }
 }
