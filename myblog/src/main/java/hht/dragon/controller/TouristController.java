@@ -8,6 +8,7 @@ import hht.dragon.service.TouristService;
 import hht.dragon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -179,6 +180,12 @@ public class TouristController {
     @PostMapping("/regist")
     public String regist(User user, Model model) {
         Integer userId;
+        String passwprd = null;
+        passwprd = user.getPassword();
+        // 将密码加密
+        BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+        user.setPassword(bpe.encode(passwprd));
+
         userId = userService.regist(user);
         model.addAttribute("registId", userId);
         return "msg";
@@ -204,20 +211,20 @@ public class TouristController {
      * @param session session
      * @return 登录结果页面
      */
-    @PostMapping("/login")
-    public String login(User user, HttpSession session) {
-        User user1 = null;
-        String returnString = "redirect:/tologin";
-        user1 = userService.login(user);
-        if (user1 != null) {
-            Integer id = user.getUserId();
-            String name = user1.getUserName();
-            session.setAttribute("userId", id);
-            session.setAttribute("userName", name);
-            returnString = "redirect:/visituser/" + id + "/0";
-        }
-
-        return returnString;
-    }
+//    @PostMapping("/login")
+//    public String login(User user, HttpSession session) {
+//        User user1 = null;
+//        String returnString = "redirect:/tologin";
+//        user1 = userService.login(user);
+//        if (user1 != null) {
+//            Integer id = user.getUserId();
+//            String name = user1.getUserName();
+//            session.setAttribute("userId", id);
+//            session.setAttribute("userName", name);
+//            returnString = "redirect:/visituser/" + id + "/0";
+//        }
+//
+//        return returnString;
+//    }
 
 }

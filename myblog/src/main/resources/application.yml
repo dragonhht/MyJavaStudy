@@ -45,9 +45,24 @@ spring:
         ddl-auto: update
       show-sql: true
 
+
+  output:
+    ansi:
+      enabled: detect
+
+# 将日志输出的最高级别置成debug
+debug: true
+
+logging:
+  # 设置日志输出文件
+  file: logs/MyBlog.log
+  # 设置日志文件输出格式
+  pattern:
+      file: .%d{HH:mm:ss.SSS}  [%thread] %-5level %logger{36} - %msg %n
+
+
   #配置Mybatis
 #  mybatis:
 #    mapperLocations: classpath:mapper/*.xml
 #    typeAliasesPackage: hht.dragon.entity
-
 

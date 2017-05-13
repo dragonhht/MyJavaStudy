@@ -69,4 +69,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select c from Comment c where c.article.user.userId = ?1")
 	Page<Comment> getNewComments(Integer userId, Pageable pageable);
 
+
 }

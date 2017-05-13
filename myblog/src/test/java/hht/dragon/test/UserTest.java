@@ -2,6 +2,8 @@ package hht.dragon.test;
 
 import hht.dragon.MyblogApplication;
 import hht.dragon.entity.Article;
+import hht.dragon.entity.User;
+import hht.dragon.repository.UserRepository;
 import hht.dragon.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +29,7 @@ public class UserTest {
 	/**用户的service类. */
 	@Autowired
 	private UserService userService;
+
 
 	/**
 	 * 添加文章.
@@ -69,4 +72,5 @@ public class UserTest {
 			userService.contactComment(userId, commentId, text);
 		}
 	}
+
 }

@@ -43,7 +43,7 @@ public class User {
     /**  家庭住址. */
     private String address;
     /** 登录密码. */
-    @Length(min = 1, max = 11)
+    @Length(min = 1)
     private String password;
     /**  上传的文章. */
     @OneToMany

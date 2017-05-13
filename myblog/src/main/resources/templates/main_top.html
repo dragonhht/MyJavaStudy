@@ -60,7 +60,10 @@
                             <a th:href="@{/visituser/{userId}/{nowpage}(userId=${session.userId}, nowpage = 0)}" th:text="${session.userName}"></a>
                         </li>
                         <li onclick="changeStyle(this)" th:unless="${session.userName eq null}">
-                            <a th:href="@{/user/loginout}">注销</a>
+							<form th:action="@{/user/loginout}" method="post">
+								<button type="submit" style="background-color: #3B4348;border: none;color: #9BB9BF">注销</button>
+							</form>
+                            <!--<a th:href="@{/user/loginout}">注销</a>-->
                         </li>
                     </ul>
                 </div>
