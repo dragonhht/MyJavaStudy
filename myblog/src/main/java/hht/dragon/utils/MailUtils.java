@@ -136,6 +136,7 @@ public final class MailUtils {
 			//发送郵件Transport
 			Transport.send(message);
 			ok = true;
+			System.out.println("发送成功");
 		} catch (Exception e) {
 			logger.info(e);
 		}

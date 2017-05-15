@@ -1,20 +1,17 @@
 package hht.dragon.service.imp;
 
-import hht.dragon.entity.Article;
-import hht.dragon.entity.Comment;
-import hht.dragon.entity.CommentChild;
-import hht.dragon.entity.User;
-import hht.dragon.repository.CommentChildReponsitory;
-import hht.dragon.repository.CommentRepository;
-import hht.dragon.repository.TouristRepository;
-import hht.dragon.repository.UserRepository;
+import hht.dragon.entity.*;
+import hht.dragon.repository.*;
 import hht.dragon.service.UserService;
 import hht.dragon.utils.GetDate;
+import hht.dragon.utils.MailUtils;
+import hht.dragon.utils.Uuid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -42,6 +39,9 @@ public class UserServiceImp implements UserService {
     /** Article的数据库操作类 .*/
     @Autowired
     private TouristRepository touristRepository;
+    /** 用于发送者邮箱. */
+    @Autowired
+    private EmailRepository emailRepository;
 
     @Override
     public User login(User user) {
@@ -202,5 +202,46 @@ public class UserServiceImp implements UserService {
 		Pageable pageable = new PageRequest(0, pageSize, sort);
 		comments = userRepository.getNewComments(userId, pageable);
 		return comments;
+	}
+
+	/**
+	 * 修改密码
+	 *
+	 * @param userId   用户编号
+	 * @param password 新密码
+	 */
+	@Override
+	public void updatePassword(Integer userId, String password) {
+		User user = userRepository.getUserById(userId);
+		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+		user.setPassword(bpe.encode(password));
+		user.setUuid("0");
+		userRepository.save(user);
+	}
+
+	/**
+	 * 判断用户身份
+	 *
+	 * @param userId 用户编号
+	 * @return 邮件是否发送成功
+	 */
+	@Override
+	public boolean checkUser(Integer userId) {
+		boolean ok = false;
+		User user = null;
+		Email email = null;
+		String uuid = Uuid.getUuid();
+		user = userRepository.getUserById(userId);
+		user.setUuid(uuid);
+		userRepository.save(user);
+		email = emailRepository.getOne(1);
+		String context = "您的博客用户账号: " + user.getUserName() + " 请求更改密码, 如是本人操作请点击 下方链接,完成密码更改<br/>"
+				+ "<a href='http://127.0.0.1/MyBlog/updatepassword?userId=" + user.getUserId() + "&uuid=" +
+				uuid + "'>更改密码</a>";
+		String title = "请求修改密码";
+		MailUtils mailUtils = MailUtils.getMailUtils();
+		mailUtils.setSession(email.getEmail(), email.getPassword());
+		ok = mailUtils.sendMailByQQ(user.getEmail(), title, context);
+		return ok;
 	}
 }

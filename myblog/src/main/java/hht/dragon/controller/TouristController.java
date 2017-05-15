@@ -188,6 +188,7 @@ public class TouristController {
 
         userId = userService.regist(user);
         model.addAttribute("registId", userId);
+        model.addAttribute("message", "regist");
         return "msg";
     }
 
@@ -204,6 +205,71 @@ public class TouristController {
         return "contact";
     }
 
+
+	/**
+	 * 跳转值忘记密码页面.
+	 * @return 忘记密码页面
+	 */
+	@RequestMapping("/forgetPassword")
+	public String forgetPassword() {
+    	return "check_user";
+	}
+
+	/**
+	 * 验证用户.
+	 * @param userId 用户编号
+	 * @param model 用于返回数据
+	 * @return 相关结果页面
+	 */
+	@PostMapping("/checkuser")
+	public String checkUser(Integer userId, Model model) {
+		boolean ok = false;
+		ok = userService.checkUser(userId);
+		if (ok) {
+			model.addAttribute("message", "checkuser");
+			return "msg";
+		}
+		return "redirect:/forgetPassword";
+	}
+
+	/**
+	 * 跳转修改密码页面
+	 * @param userId 用户编号
+	 * @param uuid 验证用户身份的uuid
+	 * @param model 用于返回数据
+	 * @return 相关结果页面
+	 */
+	@GetMapping("/updatepassword")
+	public String updatePassword(Integer userId, String uuid, Model model) {
+		User user = null;
+		user = userService.getUserById(userId);
+		String userUuid = user.getUuid();
+		if (userUuid.equals(uuid)) {
+			model.addAttribute("userId", userId);
+			return "set_password";
+		}
+		model.addAttribute("message", "checkerror");
+		return "msg";
+	}
+
+	/**
+	 * 设置密码
+	 * @param password 新密码
+	 * @param repassword 确认密码
+	 * @param userId 用户编号
+	 * @param model 用于返回数据
+	 * @return 结果显示页面
+	 */
+	@PostMapping("/setpassword")
+	public String setPassword(String password, String repassword, Integer userId, Model model) {
+		if (password.equals(repassword)) {
+			userService.updatePassword(userId, password);
+			model.addAttribute("message", "setok");
+			return "msg";
+		}
+		model.addAttribute("message", "seterror");
+		return "msg";
+	}
 
     /**
      * 用户登录.

@@ -152,4 +152,5 @@ public class TouristServiceImp implements TouristService {
 		comments = touristRepository.getArticleComment(articleId);
 		return comments;
 	}
+
 }

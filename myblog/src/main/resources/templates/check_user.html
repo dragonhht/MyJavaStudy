@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>注册页面</title>
+	<link th:href="@{css/register.css}" rel="stylesheet" type="text/css" />
+	<!--引入样式文件-->
+	<header th:include="main_top::mainheader"></header>
+</head>
+<body>
+<!--从main_top.html中引入名字为maintop的fragment-->
+<div th:include="main_top::maintop"></div>
+
+<div class="bg">
+
+	<div class="regist_center">
+
+		<div class="center_form">
+            <span th:each="error : ${registErrors}">
+                <span th:text="${error.defaultMessage}"></span>
+            </span>
+
+			<form th:action="@{/checkuser}" method="post">
+
+				<div class="form_div first_div">
+					<span>用户编号:</span>
+					<input type="text" name="userId" class="form_text form_text_first" placeholder="请输入您的账号" />
+
+				</div>
+
+				<div class="form_div">
+					<p>我们将通过您账号设置的电子邮箱来判断您的身份</p>
+				</div>
+
+
+				<div class="form_bottom">
+					<input type="submit" class="form_button" value="注册" />
+					<input type="reset" class="form_button" value="重置" />
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
+
+</body>
+</html>

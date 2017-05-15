@@ -16,8 +16,17 @@
 
             <div class="right_image"></div>
 
-            <span class="center_message">注册成功,您的账号为: <span th:text="${registId}"></span>  </span>
-            <span class="center_to_login"><a th:href="@{/tologin}"> 前去登录</a></span>
+            <span class="center_message" th:if="${message eq 'regist'}">注册成功,您的账号为: <span th:text="${registId}"></span>  </span>
+            <span class="center_to_login" th:if="${message eq 'regist'}"><a th:href="@{/tologin}"> 前去登录</a></span>
+
+            <span class="center_message" th:if="${message eq 'checkuser'}">请前往邮箱验证</span>
+
+
+            <span class="center_message" th:if="${message eq 'checkerror'}">请求失败</span>
+
+            <span class="center_message" th:if="${message eq 'setok'}">修改成功</span>
+			<span class="center_to_login" th:if="${message eq 'setok'}"><a th:href="@{/tologin}"> 前去登录</a></span>
+            <span class="center_message" th:if="${message eq 'seterror'}">修改失败</span>
 
         </div>
 

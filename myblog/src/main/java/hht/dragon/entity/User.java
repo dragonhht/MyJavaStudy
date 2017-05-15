@@ -45,6 +45,8 @@ public class User {
     /** 登录密码. */
     @Length(min = 1)
     private String password;
+    /** 用户验证密码修改. */
+    private String uuid = "0";
     /**  上传的文章. */
     @OneToMany
     @JoinColumn(name = "userId")
@@ -295,5 +297,23 @@ public class User {
 	 */
 	public void setRoles(Set<UserRole> roles) {
 		this.roles = roles;
+	}
+
+	/**
+	 * Gets uuid.
+	 *
+	 * @return the uuid
+	 */
+	public String getUuid() {
+		return uuid;
+	}
+
+	/**
+	 * Sets uuid.
+	 *
+	 * @param uuid the uuid
+	 */
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 }

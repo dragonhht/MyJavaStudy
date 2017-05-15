@@ -116,4 +116,18 @@ public interface UserService {
 	 */
 	Page<Comment> getNewComment(Integer userId);
 
+	/**
+	 * 修改密码
+	 * @param userId 用户编号
+	 * @param password 新密码
+	 */
+	void updatePassword(Integer userId, String password);
+
+	/**
+	 * 判断用户身份
+	 * @param userId 用户编号
+	 * @return 邮件是否发送成功
+	 */
+	public boolean checkUser(Integer userId);
+
 }

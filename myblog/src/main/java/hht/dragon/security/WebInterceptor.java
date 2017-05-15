@@ -21,7 +21,7 @@ public class WebInterceptor extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		//拦截用户模块下的所有请求
-		//registry.addInterceptor(getLoginInterceptor()).addPathPatterns("/user/**");
+		registry.addInterceptor(getLoginInterceptor()).addPathPatterns("/user/**");
 	}
 
 	/**
