@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<body>
+    <dog id="1">
+        <name>哈士奇</name>
+        <weight>100</weight>
+        <age>3</age>
+    </dog>
+    <dog id="2">
+        <name>哈哈</name>
+        <weight>98</weight>
+        <age>4</age>
+    </dog>
+</body>
