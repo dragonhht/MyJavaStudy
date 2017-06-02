@@ -12,7 +12,7 @@ import java.io.IOException;
  * Created by huang on 17-6-2.
  * 通过DOM解析xml
  */
-public class ByDOM {
+public class ReadByDOM {
 
 
     public static void main(String[] args) {

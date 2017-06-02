@@ -1,4 +1,4 @@
-package xml.study.SAXtest;
+package xml.study.SAXtest.read;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

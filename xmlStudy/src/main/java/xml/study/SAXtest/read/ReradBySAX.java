@@ -1,6 +1,7 @@
-package xml.study.SAXtest;
+package xml.study.SAXtest.read;
 
 import org.xml.sax.SAXException;
+import xml.study.SAXtest.read.ParserHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -11,7 +12,7 @@ import java.io.IOException;
  * Created by huang on 17-6-2.
  * 通过SAX解析xml
  */
-public class BySAX {
+public class ReradBySAX {
 
     public static void main(String[] args) {
 

@@ -16,7 +16,7 @@ import java.util.List;
  * Created by huang on 17-6-2.
  * 通过jDOM解析xml
  */
-public class ByJDOM {
+public class ReadByJDOM {
 
     public static void main(String[] args) {
 

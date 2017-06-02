@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Created by huang on 17-6-2.
  * 通过dom4j解析xml
  */
-public class ByDOM4J {
+public class ReadByDOM4J {
 
     public static void main(String[] args) {
 
