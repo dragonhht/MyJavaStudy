@@ -11,3 +11,10 @@ base64的相关编码与解码
 -   HmacRipeMdTest **_HmacRipeMD系列加密_**
 -   CRC32Test **_CRC32加密校验_**
 -   FileCheck **_文件的校验_**
+
+# Symmetric
+对称加密
+
+-   DESTest **_DES算法加密和解密_**
+-   DESedeTest **_3重DES的加密和解密_**
+> ADS,IDEA的使用方法大致与DES,3重DES类似
