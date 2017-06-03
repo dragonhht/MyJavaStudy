@@ -1,3 +1,4 @@
+
 SummaryLibrary/target
 SummaryLibrary/SummaryLibrary.iml
 SummaryLibrary/.rebel.xml.bak
@@ -8,7 +9,7 @@ Spring_source
 TestHtml
 设计模式/设计模式.iml
 springbootstudy/target
-springbootstudy/SummaryLibrary.iml
+springbootstudy/springbootstudy.iml
 ExtJsStudy
 myblog/target
 http:
