@@ -1,6 +1,5 @@
-
 SummaryLibrary/target
-SummaryLibrary/SummaryLibrary.iml
+SummaryLibrary/Summary-Library.iml
 SummaryLibrary/.rebel.xml.bak
 SummaryLibrary/.rebel-remote.xml.bak
 SummaryLibrary/src/main/resources/rebel.xml
@@ -18,4 +17,9 @@ xmlStudy/xmlStudy.iml
 xmlStudy/target
 EncryptionDecryption/EncryptionDecryption.iml
 EncryptionDecryption/target
-
+JavaFXStudy/JavaFXStudy.iml
+JavaFXStudy/target
+out
+Eight/Eight.iml
+Eight/target
+logs
