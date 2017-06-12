@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				//无需权限访问的URL 使用permitAll()
 				.antMatchers("/index", "/login", "/tologin", "/toregister", "/single/**",
 						"/articles/**", "/visituser/**", "/search/**", "/regist", "/contact", "/forgetPassword",
-						"/checkuser", "/updatepassword", "/setpassword")
+						"/checkuser", "/updatepassword", "/setpassword", "/test", "/image")
 				.permitAll()
 				.antMatchers("/css/**", "/js/**", "/img/**")
 				.permitAll()
