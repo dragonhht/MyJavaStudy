@@ -213,19 +213,5 @@ public class Image {
         return code.toLowerCase();
     }
 
-    //使用方法
- /*public void getCode3(HttpServletRequest req, HttpServletResponse response,HttpSession session) throws IOException{
-        // 设置响应的类型格式为图片格式
-            response.setContentType("image/jpeg");
-            //禁止图像缓存。
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setDateHeader("Expires", 0);
-
-
-            CreateImageCode vCode = new CreateImageCode(100,30,5,10);
-            session.setAttribute("code", vCode.getCode());
-            vCode.write(response.getOutputStream());
-     }*/
 
 }
