@@ -19,9 +19,12 @@ EncryptionDecryption/EncryptionDecryption.iml
 EncryptionDecryption/target
 JavaFXStudy/JavaFXStudy.iml
 JavaFXStudy/target
-out
+JDKDynamicProxy/out
 Eight/Eight.iml
 Eight/target
 logs
 ExcelStudy/ExcelStudy.iml
 ExcelStudy/target
+.idea/
+*.iml
+out/
