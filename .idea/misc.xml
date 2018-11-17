@@ -12,8 +12,9 @@
         <option value="$PROJECT_DIR$/java-python/pom.xml" />
         <option value="$PROJECT_DIR$/customize-annotate/pom.xml" />
         <option value="$PROJECT_DIR$/codec-study/pom.xml" />
+        <option value="$PROJECT_DIR$/okhttp-study/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="10" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

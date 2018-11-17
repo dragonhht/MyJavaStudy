@@ -12,18 +12,20 @@
         <module name="java-python" />
         <module name="myblog" />
         <module name="myblog (1)" />
+        <module name="okhttp-study" />
         <module name="springbootstudy" />
         <module name="Summary-Library" />
         <module name="SummaryLibrary" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="codec-study" target="1.5" />
-      <module name="customize-annotate" target="1.5" />
-      <module name="java-python" target="1.5" />
+      <module name="codec-study" target="8" />
+      <module name="customize-annotate" target="8" />
+      <module name="java-python" target="8" />
       <module name="myblog" target="1.5" />
+      <module name="okhttp-study" target="8" />
       <module name="springbootstudy" target="1.5" />
-      <module name="Summary-Library" target="1.5" />
+      <module name="Summary-Library" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
