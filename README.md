@@ -4,19 +4,30 @@
 
 # MyJavaStudy
 我的java学习
+
 ## ajax_study
-ajax相关学习
-## myblog
-springboot小项目
+[ajax相关学习](./ajax_study)
+
 ## springbootstudy
-springboot相关学习
+
+[springboot相关学习](./springbootstudy)
+
 ## xmlStudy
-xml相关学习
+
+[xml相关学习](./xmlStudy)
+
 ## EncryptionDecryption
-加密和解密
+
+[加密和解密](./EncryptionDecryption/src/test/java/encryption/decryption)
+
 ## Eight
-Java 8 的一些新特性
+
+[Java 8 的一些新特性](./Eight)
+
 ## ExcelStudy
-excel的相关操作
+
+[excel的相关操作](./ExcelStudy)
+
 ## JDKDynamicProxy
-动态代理
+
+[动态代理](./JDKDynamicProxy)
