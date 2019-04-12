@@ -13,6 +13,7 @@
         <module name="myblog" />
         <module name="myblog (1)" />
         <module name="okhttp-study" />
+        <module name="spring-batch-study" />
         <module name="spring-boot-2" />
         <module name="springbootstudy" />
         <module name="Summary-Library" />
@@ -25,6 +26,7 @@
       <module name="java-python" target="1.5" />
       <module name="myblog" target="1.5" />
       <module name="okhttp-study" target="1.8" />
+      <module name="spring-batch-study" target="1.8" />
       <module name="spring-boot-2" target="1.8" />
       <module name="springbootstudy" target="1.8" />
       <module name="Summary-Library" target="1.5" />
@@ -32,6 +34,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-batch-study" options="-parameters" />
       <module name="spring-boot-2" options="-parameters" />
       <module name="springbootstudy" options="" />
     </option>

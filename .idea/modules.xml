@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/java-python/java-python.iml" filepath="$PROJECT_DIR$/java-python/java-python.iml" />
       <module fileurl="file://$PROJECT_DIR$/myblog/myblog.iml" filepath="$PROJECT_DIR$/myblog/myblog.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttp-study/okhttp-study.iml" filepath="$PROJECT_DIR$/okhttp-study/okhttp-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-batch-study/spring-batch-study.iml" filepath="$PROJECT_DIR$/spring-batch-study/spring-batch-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-2/spring-boot-2.iml" filepath="$PROJECT_DIR$/spring-boot-2/spring-boot-2.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootstudy/springbootstudy.iml" filepath="$PROJECT_DIR$/springbootstudy/springbootstudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/设计模式/设计模式.iml" filepath="$PROJECT_DIR$/设计模式/设计模式.iml" />

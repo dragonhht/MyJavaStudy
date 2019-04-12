@@ -1,7 +1,5 @@
 # Spring Boot 2
 
-> 只记录Java 8 lambda 风格的函数式开发模式
-
 ## WebFlux的函数式开发模式
 
 -   Spring MVC模式的开发示例(WebFlux的函数式开发模式由此示例修改)
@@ -73,10 +71,10 @@ public class IndexController {
         
         > 以上的实现主要使用了`HandlerFunction`和`RouterFunction`接口,下面具体来看下这两个接口
         
-            -   `HandlerFunction`接口: 该接口相当于之前在`Controller`中具体的处理方法(如第一个示例中的`hello`方法)，该接口有方法`Mono<T> handle(ServerRequest var1);`
-            
-            -   `RouterFunction`接口: 该接口为路由，相当于第一个示例中的`@GetMapping("/hello")`, 该接口有方法`Mono<HandlerFunction<T>> route(ServerRequest var1);`
-            
+        -   `HandlerFunction`接口: 该接口相当于之前在`Controller`中具体的处理方法(如第一个示例中的`hello`方法)，该接口有方法`Mono<T> handle(ServerRequest var1);`
+        
+        -   `RouterFunction`接口: 该接口为路由，相当于第一个示例中的`@GetMapping("/hello")`, 该接口有方法`Mono<HandlerFunction<T>> route(ServerRequest var1);`
+        
 ## 服务器主动推送数据
 
 ### 使用函数式方式
