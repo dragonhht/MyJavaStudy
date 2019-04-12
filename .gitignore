@@ -30,3 +30,7 @@ ExcelStudy/target
 out/
 java-python/java-python.iml
 */target/
+
+*/mvnw
+*/mvnw.cmd
+*/.mvn
