@@ -5,10 +5,12 @@ import com.github.dragonhht.batch.line.mapper.UserLineMapper;
 import com.github.dragonhht.batch.listener.UserItemReaderListener;
 import com.github.dragonhht.batch.listener.UserWriterListener;
 import com.github.dragonhht.batch.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ import java.io.Writer;
  * @author: huang
  * @Date: 2019-4-12
  */
+@Slf4j
 public class SaveUserJobConfig {
 
     @Autowired
@@ -55,13 +58,14 @@ public class SaveUserJobConfig {
                 .<User, User>chunk(10)
                 .reader(jsonUserReader).faultTolerant().skip(JsonParseException.class).skipLimit(1)
                 .listener(new UserItemReaderListener())
+                .processor(saveUserProcessor())
                 .writer(userItemWriter).faultTolerant().skip(Exception.class).skipLimit(1)
                 .listener(new UserWriterListener())
                 .build();
     }
 
     /**
-     * 用于从文件中读取User数据.
+     * 用于从文件中读取User数据(除了从文件中获取数据外，也可以从数据库中).
      * @return
      */
     @Bean
@@ -71,6 +75,18 @@ public class SaveUserJobConfig {
         reader.setResource(new FileSystemResource(new File(filePath)));
         reader.setLineMapper(new UserLineMapper());
         return reader;
+    }
+
+    /**
+     * 处理数据
+     * @return
+     */
+    @Bean
+    public ItemProcessor<User, User> saveUserProcessor() {
+        return user -> {
+            log.info("processor data : " + user.toString());
+            return user;
+        };
     }
 
     /**
