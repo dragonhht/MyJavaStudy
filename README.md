@@ -5,29 +5,22 @@
 # MyJavaStudy
 我的java学习
 
-## ajax_study
-[ajax相关学习](./ajax_study)
+-   [ajax相关学习](./ajax_study)
 
-## springbootstudy
+-   [springboot相关学习](./springbootstudy)
 
-[springboot相关学习](./springbootstudy)
+-   [xml相关学习](./xmlStudy)
 
-## xmlStudy
+-   [加密和解密](./EncryptionDecryption/src/test/java/encryption/decryption)
 
-[xml相关学习](./xmlStudy)
+-   [Java 8 的一些新特性](./Eight)
 
-## EncryptionDecryption
+-   [excel的相关操作](./ExcelStudy)
 
-[加密和解密](./EncryptionDecryption/src/test/java/encryption/decryption)
+-   [动态代理](./JDKDynamicProxy)
 
-## Eight
+-   [WebFlux](./spring-boot-2)
 
-[Java 8 的一些新特性](./Eight)
+-   [Spring Batch](./spring-batch-study)
 
-## ExcelStudy
-
-[excel的相关操作](./ExcelStudy)
-
-## JDKDynamicProxy
-
-[动态代理](./JDKDynamicProxy)
+-   [Spring Shell](./spring-shell-study)
