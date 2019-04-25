@@ -13,6 +13,7 @@
         <module name="myblog" />
         <module name="myblog (1)" />
         <module name="okhttp-study" />
+        <module name="serialization-study" />
         <module name="spring-batch-study" />
         <module name="spring-boot-2" />
         <module name="spring-shell-study" />
@@ -28,6 +29,7 @@
       <module name="java-python" target="1.5" />
       <module name="myblog" target="1.5" />
       <module name="okhttp-study" target="1.8" />
+      <module name="serialization-study" target="1.5" />
       <module name="spring-batch-study" target="1.8" />
       <module name="spring-boot-2" target="1.8" />
       <module name="spring-shell-study" target="1.8" />
