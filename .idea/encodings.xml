@@ -10,5 +10,9 @@
     <file url="file://$PROJECT_DIR$/spring-shell-study" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-websocket-study" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springbootstudy" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ws-study" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ws-study/ws-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ws-study/ws-client/src/main/java/com/github/dragonhht/ws/SayHello.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ws-study/ws-service" charset="UTF-8" />
   </component>
 </project>

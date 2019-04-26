@@ -14,12 +14,14 @@
       <module fileurl="file://$PROJECT_DIR$/java-python/java-python.iml" filepath="$PROJECT_DIR$/java-python/java-python.iml" />
       <module fileurl="file://$PROJECT_DIR$/myblog/myblog.iml" filepath="$PROJECT_DIR$/myblog/myblog.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttp-study/okhttp-study.iml" filepath="$PROJECT_DIR$/okhttp-study/okhttp-study.iml" />
-      <module fileurl="file://$PROJECT_DIR$/serialization-study/serialization-study.iml" filepath="$PROJECT_DIR$/serialization-study/serialization-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-batch-study/spring-batch-study.iml" filepath="$PROJECT_DIR$/spring-batch-study/spring-batch-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-2/spring-boot-2.iml" filepath="$PROJECT_DIR$/spring-boot-2/spring-boot-2.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-shell-study/spring-shell-study.iml" filepath="$PROJECT_DIR$/spring-shell-study/spring-shell-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-websocket-study/spring-websocket-study.iml" filepath="$PROJECT_DIR$/spring-websocket-study/spring-websocket-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootstudy/springbootstudy.iml" filepath="$PROJECT_DIR$/springbootstudy/springbootstudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws-study/ws-client/ws-client.iml" filepath="$PROJECT_DIR$/ws-study/ws-client/ws-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws-study/ws-study.iml" filepath="$PROJECT_DIR$/ws-study/ws-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ws-study/ws-service/wsservice.iml" filepath="$PROJECT_DIR$/ws-study/ws-service/wsservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/设计模式/设计模式.iml" filepath="$PROJECT_DIR$/设计模式/设计模式.iml" />
     </modules>
   </component>

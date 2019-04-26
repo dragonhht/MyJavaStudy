@@ -13,7 +13,6 @@
         <module name="myblog" />
         <module name="myblog (1)" />
         <module name="okhttp-study" />
-        <module name="serialization-study" />
         <module name="spring-batch-study" />
         <module name="spring-boot-2" />
         <module name="spring-shell-study" />
@@ -21,6 +20,8 @@
         <module name="springbootstudy" />
         <module name="Summary-Library" />
         <module name="SummaryLibrary" />
+        <module name="ws-client" />
+        <module name="wsservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -36,6 +37,9 @@
       <module name="spring-websocket-study" target="1.8" />
       <module name="springbootstudy" target="1.8" />
       <module name="Summary-Library" target="1.5" />
+      <module name="ws-client" target="1.8" />
+      <module name="ws-study" target="1.8" />
+      <module name="wsservice" target="6" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
