@@ -1,13 +1,9 @@
 package com.github.dragonhht.rmi.server;
 
-import com.github.dragonhht.rmi.server.model.CallObject;
+import com.github.dragonhht.rmi.server.process.Process;
 
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.*;
 
 /**
  * .
@@ -17,35 +13,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Server {
 
-    private Map<String, Object> serviceMap = new ConcurrentHashMap<>();
+    private static final int threadSize = 100;
+    private static Map<String, Object> serviceMap = new ConcurrentHashMap<>();
+    private static ExecutorService executorService = new ThreadPoolExecutor(threadSize, threadSize, 0L,
+            TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>());
 
-    public static void registry(int port) {
-
-    };
-
-    public void start(int port, String url, Object service) {
+    public static void start(int port, String url, Object service) {
         serviceMap.put(url, service);
-        new Thread(() -> {
-            try {
-                ServerSocket server = new ServerSocket(port);
-                while (true) {
-                    Socket socket = server.accept();
-                    try (InputStream socketIs = socket.getInputStream();
-                         ObjectInputStream ois = new ObjectInputStream(socketIs);
-                         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                         ObjectOutputStream oos = new ObjectOutputStream(bos);){
-                        CallObject callObject = (CallObject)ois.readObject();
-                        Object target = this.serviceMap.get(callObject.getUrl());
-
-                        oos.writeObject(service);
-                    } catch (IOException | ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
+        executorService.execute(new Process(serviceMap, 9999));
     }
 
 }

@@ -8,6 +8,9 @@ package com.github.dragonhht.rmi.server;
  */
 public class Main {
 
-
+    public static void main(String[] args) {
+        HelloService helloService = new HelloServiceImpl();
+        Server.start(9999, "rmi://localhost:9999/hello", helloService);
+    }
 
 }

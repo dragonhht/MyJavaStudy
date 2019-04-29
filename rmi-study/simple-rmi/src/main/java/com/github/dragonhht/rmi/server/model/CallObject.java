@@ -7,7 +7,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * .
+ * 用于处理传输主要调用信息.
  *
  * @author: huang
  * @Date: 2019-4-28
@@ -21,5 +21,7 @@ public class CallObject implements Serializable {
     private String url;
     private String method;
     private Object[] params;
+
+    private boolean callMethod = true;
 
 }
