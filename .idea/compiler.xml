@@ -10,6 +10,7 @@
         <module name="codec-study" />
         <module name="customize-annotate" />
         <module name="java-python" />
+        <module name="JavaFX-Study" />
         <module name="myblog" />
         <module name="myblog (1)" />
         <module name="okhttp-study" />
@@ -17,6 +18,7 @@
         <module name="simple-rmi" />
         <module name="spring-batch-study" />
         <module name="spring-boot-2" />
+        <module name="spring-data-redis-study" />
         <module name="spring-shell-study" />
         <module name="spring-websocket-study" />
         <module name="springbootstudy" />
@@ -29,7 +31,11 @@
     <bytecodeTargetLevel>
       <module name="codec-study" target="1.5" />
       <module name="customize-annotate" target="1.5" />
+      <module name="embedded-browser" target="1.8" />
+      <module name="guava-study" target="1.8" />
       <module name="java-python" target="1.5" />
+      <module name="JavaFX-Study" target="1.8" />
+      <module name="javafx-study" target="1.5" />
       <module name="myblog" target="1.5" />
       <module name="okhttp-study" target="1.8" />
       <module name="rmi-demo" target="1.8" />
@@ -38,6 +44,7 @@
       <module name="simple-rmi" target="1.8" />
       <module name="spring-batch-study" target="1.8" />
       <module name="spring-boot-2" target="1.8" />
+      <module name="spring-data-redis-study" target="1.8" />
       <module name="spring-shell-study" target="1.8" />
       <module name="spring-websocket-study" target="1.8" />
       <module name="springbootstudy" target="1.8" />
@@ -51,6 +58,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-batch-study" options="-parameters" />
       <module name="spring-boot-2" options="-parameters" />
+      <module name="spring-data-redis-study" options="-parameters" />
       <module name="spring-shell-study" options="-parameters" />
       <module name="spring-websocket-study" options="-parameters" />
       <module name="springbootstudy" options="" />

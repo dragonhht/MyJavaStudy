@@ -20,6 +20,8 @@
         <option value="$PROJECT_DIR$/jsonstudy/pom.xml" />
         <option value="$PROJECT_DIR$/ws-study/pom.xml" />
         <option value="$PROJECT_DIR$/rmi-study/pom.xml" />
+        <option value="$PROJECT_DIR$/JavaFXStudy/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-data-redis-study/pom.xml" />
       </list>
     </option>
   </component>

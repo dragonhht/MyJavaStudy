@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ExtJsStudy/ExtJsStudy.iml" filepath="$PROJECT_DIR$/ExtJsStudy/ExtJsStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/JDKDynamicProxy/JDKDynamicProxy.iml" filepath="$PROJECT_DIR$/JDKDynamicProxy/JDKDynamicProxy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaFXStudy/JavaFX-Study.iml" filepath="$PROJECT_DIR$/JavaFXStudy/JavaFX-Study.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MyJavaStudy.iml" filepath="$PROJECT_DIR$/.idea/MyJavaStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring_source/Spring_source.iml" filepath="$PROJECT_DIR$/Spring_source/Spring_source.iml" />
       <module fileurl="file://$PROJECT_DIR$/SummaryLibrary/Summary-Library.iml" filepath="$PROJECT_DIR$/SummaryLibrary/Summary-Library.iml" />
@@ -19,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/rmi-study/simple-rmi/simple-rmi.iml" filepath="$PROJECT_DIR$/rmi-study/simple-rmi/simple-rmi.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-batch-study/spring-batch-study.iml" filepath="$PROJECT_DIR$/spring-batch-study/spring-batch-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-2/spring-boot-2.iml" filepath="$PROJECT_DIR$/spring-boot-2/spring-boot-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-data-redis-study/spring-data-redis-study.iml" filepath="$PROJECT_DIR$/spring-data-redis-study/spring-data-redis-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-shell-study/spring-shell-study.iml" filepath="$PROJECT_DIR$/spring-shell-study/spring-shell-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-websocket-study/spring-websocket-study.iml" filepath="$PROJECT_DIR$/spring-websocket-study/spring-websocket-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/springbootstudy/springbootstudy.iml" filepath="$PROJECT_DIR$/springbootstudy/springbootstudy.iml" />
