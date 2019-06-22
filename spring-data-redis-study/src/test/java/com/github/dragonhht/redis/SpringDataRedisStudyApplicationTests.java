@@ -18,6 +18,7 @@ import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -80,6 +81,35 @@ public class SpringDataRedisStudyApplicationTests {
         Map<byte[], byte[]> hash = hashOperations.entries("spring:data:hash");
         User u = (User) (mapper).fromHash(hash);
         System.out.println(u);
+    }
+
+    /**
+     * pub/sub
+     */
+    @Test
+    public void publish() {
+        // 通过连接发送消息
+        /*redisTemplate.execute(new RedisCallback<Object>() {
+            @Override
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                byte[] msg = "publish send message".getBytes();
+                byte[] channel = "spring:data:pub:sub".getBytes();
+                redisConnection.publish(msg, channel);
+                return null;
+            }
+        });*/
+
+        // 使用RedisTemplate发送消息
+        for (int i = 0; i < 10; i++) {
+            stringRedisTemplate.convertAndSend("spring:data:pub:template", "redis send message: " + i);
+        }
+    }
+
+    @Test
+    public void subscribe() throws InterruptedException {
+        while (true) {
+            TimeUnit.MINUTES.sleep(3);
+        }
     }
 
 }
