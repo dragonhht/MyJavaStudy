@@ -1,5 +1,6 @@
 package com.github.dragonhht.redis;
 
+import com.github.dragonhht.redis.lock.RedisLock;
 import com.github.dragonhht.redis.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
