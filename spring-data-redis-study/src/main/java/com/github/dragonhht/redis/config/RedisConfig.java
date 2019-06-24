@@ -17,6 +17,7 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Redis配置(使用Java类配置).
@@ -76,5 +77,9 @@ public class RedisConfig {
         container.addMessageListener(messagelistener, topic);
 
         return container;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Date());
     }
 }

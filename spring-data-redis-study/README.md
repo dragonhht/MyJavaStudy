@@ -150,3 +150,75 @@ public class SpringDataRedisStudyApplicationTests {
         System.out.println(u);
     }
 ```
+
+## 发布/订阅模式
+
+-   发布者
+
+    -   通过使用`convertAndSend`方法发布信息
+
+    ```
+    stringRedisTemplate.convertAndSend("spring:data:pub:template", "message");
+    ```
+    
+    -   直接通过连接发布
+    
+    ```
+    redisTemplate.execute(new RedisCallback<Object>() {
+        @Override
+        public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+            byte[] msg = "publish send message".getBytes();
+            byte[] channel = "spring:data:pub:sub".getBytes();
+            redisConnection.publish(msg, channel);
+            return null;
+        }
+    });
+    ```
+    
+-   订阅者
+
+1.  创建监听器
+    
+    ```java
+    @Component
+    public class Messagelistener extends MessageListenerAdapter {
+        @Autowired
+        private RedisTemplate redisTemplate;
+    
+        @Override
+        public void onMessage(Message message, byte[] pattern) {
+            String msg = new String(message.getBody());
+            String channel = new String(pattern);
+            System.out.println("处理消息: " + channel + " :----: " + msg);
+        }
+    }
+    ```
+    
+2.  配置监听
+    
+    ```java
+    @Configuration
+    public class RedisConfig {
+    
+        @Autowired
+        private RedisConnectionFactory redisConnectionFactory;
+        @Autowired
+        private Messagelistener messagelistener;
+        /**
+         * 定义监听器
+         * @return
+         */
+        @Bean
+        public RedisMessageListenerContainer container() {
+            RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+            container.setConnectionFactory(redisConnectionFactory);
+            // 定义监听渠道
+            Topic topic = new ChannelTopic("spring:data:pub:template");
+    
+            // 添加消息监听
+            container.addMessageListener(messagelistener, topic);
+    
+            return container;
+        }
+    }
+    ```
