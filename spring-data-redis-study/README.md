@@ -222,3 +222,57 @@ public class SpringDataRedisStudyApplicationTests {
         }
     }
     ```
+
+## 事务
+
+-   redis的事务提供了`multi`、`exec`和`discard`等命令
+
+-   在Spring Data Redis中可使用`RedisTemplate`操作事务,但`RedisTemplate`不保证使用相同的连接执行所有事务操作
+
+-   Spring Data Redis提供了SessionCallback获取在需要执行多个操作时的`connection`
+
+```
+@Test
+public void testTransaction() {
+
+    List<Object> results = redisTemplate.execute(new SessionCallback<List<Object>>() {
+        @Override
+        public List<Object> execute(RedisOperations redisOperations) throws DataAccessException {
+            redisOperations.multi();
+            redisOperations.opsForValue().set("spring:data:transaction", "transaction");
+
+            return redisOperations.exec();
+        }
+    });
+
+    if (results != null) {
+        System.out.println("值已添加: " + results.get(0));
+    }
+}
+```
+
+-   使用`@Transactional`注解
+
+    -   要使用`@Transactional`注解启动事务，需使用`setEnableTransactionSupport(true)`开始事务支持
+    
+    ```java
+    @Configuration
+    public class RedisConfig {
+        @Bean
+        public RedisTemplate<String, Serializable> redisTemplate(LettuceConnectionFactory redisConnectionFactory) {
+            RedisTemplate<String, Serializable> template = new RedisTemplate<>();
+            template.setKeySerializer(new StringRedisSerializer());
+            template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+            template.setConnectionFactory(redisConnectionFactory);
+            // 事务支持
+            template.setEnableTransactionSupport(true);
+            return template;
+        }
+    }
+    ```
+
+## 管道
+
+-   当需要连续多次发送该操作命令时，使用管可提高性能
+
+

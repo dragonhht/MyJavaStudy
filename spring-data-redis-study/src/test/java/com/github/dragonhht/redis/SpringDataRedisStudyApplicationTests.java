@@ -113,4 +113,39 @@ public class SpringDataRedisStudyApplicationTests {
         }
     }
 
+    /**
+     * 事务
+     */
+    @Test
+    public void testTransaction() {
+
+        List<Object> results = redisTemplate.execute(new SessionCallback<List<Object>>() {
+            @Override
+            public List<Object> execute(RedisOperations redisOperations) throws DataAccessException {
+                redisOperations.multi();
+                redisOperations.opsForValue().set("spring:data:transaction", "transaction");
+
+                return redisOperations.exec();
+            }
+        });
+
+        if (results != null) {
+            System.out.println("值已添加: " + results.get(0));
+        }
+    }
+
+    /**
+     * 管道
+     */
+    @Test
+    public void testPip() {
+        stringRedisTemplate.executePipelined((RedisCallback) connection -> {
+           StringRedisConnection redisConnection = (StringRedisConnection) connection;
+           for (int i = 0; i < 30; i++) {
+               ((StringRedisConnection) connection).sAdd("spring:data:pipeline", "message: " + i);
+           }
+           return null;
+        });
+    }
+
 }
