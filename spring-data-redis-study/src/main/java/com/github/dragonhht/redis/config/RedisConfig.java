@@ -3,6 +3,7 @@ package com.github.dragonhht.redis.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -11,9 +12,10 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.Topic;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.redis.support.collections.DefaultRedisList;
+import org.springframework.data.redis.support.collections.RedisList;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Redis配置(使用Java类配置).
@@ -77,7 +79,10 @@ public class RedisConfig {
         return container;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new Date());
+    @Bean
+    public RedisCacheManager redisCacheManager(LettuceConnectionFactory redisConnectionFactory) {
+        return RedisCacheManager.create(redisConnectionFactory);
     }
+
+
 }

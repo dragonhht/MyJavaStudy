@@ -1,6 +1,5 @@
 package com.github.dragonhht.redis;
 
-import com.github.dragonhht.redis.lock.RedisLock;
 import com.github.dragonhht.redis.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.StringRedisConnection;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.hash.HashMapper;
@@ -147,5 +145,4 @@ public class SpringDataRedisStudyApplicationTests {
            return null;
         });
     }
-
 }

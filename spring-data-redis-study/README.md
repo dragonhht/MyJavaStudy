@@ -275,4 +275,18 @@ public void testTransaction() {
 
 -   当需要连续多次发送该操作命令时，使用管可提高性能
 
-
+```
+    /**
+     * 管道
+     */
+    @Test
+    public void testPip() {
+        stringRedisTemplate.executePipelined((RedisCallback) connection -> {
+           StringRedisConnection redisConnection = (StringRedisConnection) connection;
+           for (int i = 0; i < 30; i++) {
+               ((StringRedisConnection) connection).sAdd("spring:data:pipeline", "message: " + i);
+           }
+           return null;
+        });
+    }
+```
