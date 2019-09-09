@@ -1,3 +1,6 @@
+package simple;
+
+import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -25,7 +28,7 @@ public class ProxyHandler implements InvocationHandler {
         return result;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         UserService userService = new UserServiceImpl();
         InvocationHandler invocationHandler = new ProxyHandler(userService);
         UserService userServiceProxy = (UserService) Proxy.newProxyInstance(userService.getClass().getClassLoader(),
@@ -33,5 +36,15 @@ public class ProxyHandler implements InvocationHandler {
         userServiceProxy.getAge(3);
         userServiceProxy.getName(2);
         userServiceProxy.getRoom(2);
+
+        // 保存动态代理生成的class文件
+        /*byte[] bytes = ProxyGenerator.generateProxyClass("$proxy0", userService.getClass().getInterfaces());
+        File file = new File("$proxy.class");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        FileOutputStream out = new FileOutputStream(file);
+        out.write(bytes);
+        out.close();*/
     }
 }

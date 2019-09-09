@@ -35,3 +35,5 @@ java-python/java-python.iml
 */mvnw
 */mvnw.cmd
 */.mvn
+
+*.class

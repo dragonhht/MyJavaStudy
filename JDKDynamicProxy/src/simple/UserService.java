@@ -1,3 +1,5 @@
+package simple;
+
 /**
  * 服务接口.
  *

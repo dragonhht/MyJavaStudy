@@ -144,7 +144,7 @@ public class IndexController {
     }
     ```
     
-    -   Service层：Service层只是简单的调用DAO层的接口，[代码](./src/main/java/com/github/dragonhht/spring/service/UserService.java)
+    -   Service层：Service层只是简单的调用DAO层的接口，[代码](./src/main/java/com/github/dragonhht/spring/service/simple.UserService.java)
     
     -   Controller层:
     
@@ -154,7 +154,7 @@ public class IndexController {
     public class UserController {
     
         @Autowired
-        private UserService userService;
+        private simple.UserService userService;
     
         @PostMapping("")
         public Mono<User> save(User user) {
