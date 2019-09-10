@@ -14,4 +14,6 @@ public interface UserService {
 
     int getAge(int id);
 
+    void noReturnAndParam();
+
 }

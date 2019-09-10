@@ -15,7 +15,8 @@ public final class MyProxyGenerator {
 
     public static byte[] generateProxyClass(String className, Class<?>[] insterfaces) {
         StringBuffer sb = new StringBuffer();
-        sb.append(PACKAGE_NAME)
+        sb.append("package ")
+                .append(PACKAGE_NAME)
                 .append(";")
                 .append(WRAP)
                 .append("import java.lang.reflect.InvocationHandler;")
@@ -28,11 +29,12 @@ public final class MyProxyGenerator {
                 .append(WRAP);
         sb.append("public final class ")
                 .append(className)
+                .append(" ")
                 .append("extends MyProxy implements ");
         for (Class<?> ints : insterfaces) {
             sb.append(ints.getName());
         }
-        sb.append("{").append(WRAP);
+        sb.append(" {").append(WRAP);
 
         int methodIndex = 0;
         for (Class<?> ints : insterfaces) {
@@ -47,7 +49,7 @@ public final class MyProxyGenerator {
 
         sb.append("public ")
                 .append(className)
-                .append("(MyInvocationHandler h)")
+                .append("(MyInvocationHandler h) {")
                 .append(WRAP)
                 .append("super(h);")
                 .append(WRAP)
@@ -55,9 +57,21 @@ public final class MyProxyGenerator {
                 .append(WRAP);
 
         methodIndex = 0;
+        StringBuffer staticSb = new StringBuffer();
+        staticSb.append("static {")
+                .append(WRAP)
+                .append("try {")
+                .append(WRAP);
         for (Class<?> ints : insterfaces) {
             Method[] methods = ints.getDeclaredMethods();
             for (Method method : methods) {
+                staticSb.append("m")
+                        .append(methodIndex)
+                        .append(" = Class.forName(\"")
+                        .append(ints.getName())
+                        .append("\").getMethod(\"")
+                        .append(method.getName());
+
                 sb.append("public final ")
                         .append(method.getReturnType().getTypeName())
                         .append(" ")
@@ -79,12 +93,14 @@ public final class MyProxyGenerator {
                 sb.append(") {")
                         .append(WRAP)
                         .append("try {")
-                        .append(WRAP)
-                        .append("return ")
-                        .append("(")
-                        .append(method.getReturnType().getTypeName())
-                        .append(")")
-                        .append("super.h.invoke(this, ")
+                        .append(WRAP);
+                if (!method.getReturnType().getTypeName().equals("void")) {
+                    sb.append("return ")
+                            .append("(")
+                            .append(method.getReturnType().getTypeName())
+                            .append(")");
+                }
+                sb.append("super.h.invoke(this, ")
                         .append("m")
                         .append(methodIndex++)
                         .append(", new Object[]{");
@@ -99,7 +115,7 @@ public final class MyProxyGenerator {
                 }
                 sb.append("});")
                         .append("} catch (RuntimeException | Error var")
-                        .append(index++)
+                        .append(index)
                         .append(") {")
                         .append(WRAP)
                         .append("throw var")

@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
         System.out.println(18);
         return 0;
     }
+
+    @Override
+    public void noReturnAndParam() {
+        System.out.println("noReturnAndParam...");
+    }
 }
