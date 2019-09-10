@@ -40,7 +40,7 @@ public class MyProxy implements Serializable {
     }
 
     private static class MyProxyClassFactory {
-        private static int index = 0;
+        private static int index = 1;
         private static final String CLASS_NAME = "$Proxy";
 
         public Class<?> apply(ClassLoader loader, Class<?>[] interfaces) throws Exception {
