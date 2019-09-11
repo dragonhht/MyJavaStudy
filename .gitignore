@@ -37,3 +37,5 @@ java-python/java-python.iml
 */.mvn
 
 *.class
+
+/com

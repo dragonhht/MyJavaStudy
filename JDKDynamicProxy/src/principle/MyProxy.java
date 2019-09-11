@@ -1,6 +1,7 @@
 package principle;
 
 import java.io.Serializable;
+import java.lang.reflect.Constructor;
 import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -28,15 +29,17 @@ public class MyProxy implements Serializable {
         Class<?>[] insts = interfaces.clone();
 
         try {
-            return getProxyClass(loader, insts);
+            return getProxyClass(loader, insts, h);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private static final Class getProxyClass(ClassLoader classLoader, Class<?>[] insterfaces) throws Exception {
-        return new MyProxyClassFactory().apply(classLoader, insterfaces);
+    private static final Object getProxyClass(ClassLoader classLoader, Class<?>[] insterfaces, MyInvocationHandler h) throws Exception {
+        Class<?> clazz =  new MyProxyClassFactory().apply(classLoader, insterfaces);
+        Constructor constructor = clazz.getConstructor(MyInvocationHandler.class);
+        return constructor.newInstance(h);
     }
 
     private static class MyProxyClassFactory {
@@ -55,9 +58,7 @@ public class MyProxy implements Serializable {
                 }
             }
 
-            MyProxyGenerator.generateProxyClass(CLASS_NAME + index++, interfaces);
-
-            return null;
+            return MyProxyGenerator.generateProxyClass(CLASS_NAME + index++, interfaces);
         }
     }
 }

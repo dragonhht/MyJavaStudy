@@ -1,16 +1,13 @@
 package principle;
 
 import javax.tools.JavaCompiler;
-import javax.tools.JavaFileObject;
-import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * .
@@ -23,11 +20,11 @@ public final class MyProxyGenerator {
     private static final String PACKAGE_NAME = "com.github.dragonhht";
     private static final String WRAP = "\n";
 
-    public static byte[] generateProxyClass(String className, Class<?>[] insterfaces) throws IOException {
+    public static Class<?> generateProxyClass(String className, Class<?>[] insterfaces) throws IOException, ClassNotFoundException {
         String context = classContext(className, insterfaces);
         saveJavaFile(context, className);
         compile(className);
-        return context.getBytes();
+        return loadClass(className + ".class", className);
     }
 
     private static String classContext(String className, Class<?>[] insterfaces) {
@@ -36,7 +33,7 @@ public final class MyProxyGenerator {
                 .append(PACKAGE_NAME)
                 .append(";")
                 .append(WRAP)
-                .append("import java.lang.reflect.InvocationHandler;")
+                .append("import principle.MyInvocationHandler;")
                 .append(WRAP)
                 .append("import java.lang.reflect.Method;")
                 .append(WRAP)
@@ -140,7 +137,7 @@ public final class MyProxyGenerator {
                     }
                     sb.append("});");
                 } else {
-                    sb.append(", (Object[])null");
+                    sb.append(", (Object[])null);");
                 }
 
 
@@ -182,7 +179,6 @@ public final class MyProxyGenerator {
         sb.append(staticSb.toString());
         sb.append(WRAP)
                 .append("}");
-        System.out.println(sb.toString());
         return sb.toString();
     }
 
@@ -192,33 +188,39 @@ public final class MyProxyGenerator {
      * @param className
      */
     private static void saveJavaFile(String context, String className) throws IOException {
-        File file = new File(className + ".java");
+        String prefixPath = PACKAGE_NAME.replace('.', File.separatorChar);
+        File file = new File(prefixPath + File.separatorChar + className + ".java");
         if (!file.exists()) {
-            file.createNewFile();
+            createFile(file);
         }
         Path path = file.toPath();
         Files.write(path, context.getBytes());
     }
 
+    private static void createFile(File file) throws IOException {
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+        } else {
+            file.createNewFile();
+        }
+    }
+
     /**
      * 编译
      */
-    private static void compile(String path) {
+    private static void compile(String className) {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-        StandardJavaFileManager standardFileManager = compiler.getStandardFileManager(null, null, null);
-        Iterable<? extends JavaFileObject> iterable = standardFileManager.getJavaFileObjects(new File(path));
-        // 编译参数
-        List<String> options = Arrays.asList("-d", System.getProperty("user.dir"));
+        String prefixPath = PACKAGE_NAME.replace('.', File.separatorChar);
+        File file = new File(prefixPath + File.separatorChar + className + ".java");
+        int result = compiler.run(null, null, null, file.getAbsolutePath());
+        System.out.println(result);
+    }
 
-        // 创建一个编译任务
-        List<String> classes = null;
-        JavaCompiler.CompilationTask task = compiler.getTask(null, standardFileManager, null, options, classes, iterable);
-        boolean result = task.call();
-        if (result) {
-            System.out.println("类编译成功");
-        } else {
-            System.out.println("类编译失败");
-        }
+    private static Class<?> loadClass(String path, String name) throws MalformedURLException, ClassNotFoundException {
+        File file = new File("");
+        MyClassLoader classLoader = new MyClassLoader(file.getAbsolutePath());
+        return Class.forName(PACKAGE_NAME + "." + name, true, classLoader);
     }
 
 }
