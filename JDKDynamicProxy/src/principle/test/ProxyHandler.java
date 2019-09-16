@@ -36,6 +36,6 @@ public class ProxyHandler implements MyInvocationHandler {
         MyInvocationHandler invocationHandler = new ProxyHandler(userService);
         UserService userServiceProxy = (UserService) MyProxy.newProxyInstance(userService.getClass().getClassLoader(),
                 userService.getClass().getInterfaces(), invocationHandler);
-        System.out.println(userService.getName(123));
+        userServiceProxy.getName(123);
     }
 }

@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * .
+ * 没有加入hashCode、equals和toString方法.
  *
  * @author: huang
  * @Date: 2019-9-9
