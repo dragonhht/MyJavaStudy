@@ -1,7 +1,0 @@
-
-hsquid:S3008"NRename this field "ERR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨ø´øþÿÿÿÿ
-Csquid:S1444")Make this "public static ERR" field final(¨ø´øþÿÿÿÿ
-ksquid:S3008"QRename this field "NOTICE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÓÂñûÿÿÿÿ
-esquid:S3008"PRename this field "DEBUG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖÃžÚ
-Fsquid:S1444",Make this "public static NOTICE" field final(åÓÂñûÿÿÿÿ
-@squid:S1444"+Make this "public static DEBUG" field final(ÖÃžÚ

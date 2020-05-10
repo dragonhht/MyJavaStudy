@@ -1,5 +1,0 @@
-
-squid:S1488"cImmediately return this expression instead of assigning it to the temporary variable "articlePage".(ÇÓ»¿8ïùšµ¿+
-bsquid:S1226"GIntroduce a new variable instead of reusing the parameter "searchText".(åŠé58ïùšµ¿+
-msquid:S1192"LDefine a constant instead of duplicating this literal "articleDate" 3 times.(â¡ÙÏûÿÿÿÿ8ïùšµ¿+
-bsquid:S1226"GIntroduce a new variable instead of reusing the parameter "searchText".(åŠé58ïùšµ¿+

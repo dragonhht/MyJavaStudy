@@ -18,11 +18,3 @@
 -   [excel的相关操作](./ExcelStudy)
 
 -   [动态代理](./JDKDynamicProxy)
-
--   [WebFlux](./spring-boot-2)
-
--   [Spring Batch](./spring-batch-study)
-
--   [Spring Shell](./spring-shell-study)
-
--   [Spring WebSocket](./spring-websocket-study)

@@ -1,7 +1,0 @@
-# mongodb配置
-spring:
-  data:
-    mongodb:
-      database: spring
-      host: my.dragon.com
-      port: 27017

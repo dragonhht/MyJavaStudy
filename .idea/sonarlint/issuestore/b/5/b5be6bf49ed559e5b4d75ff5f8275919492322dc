@@ -1,20 +1,0 @@
-
-:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
-:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-T
-squid:S106";Replace this usage of System.out or System.err by a logger.(¬¯¹Ùþÿÿÿÿ
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-Osquid:S1191"5Use classes from the Java API instead of Sun classes.(¼Ý²çûÿÿÿÿ
-:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-Ssquid:S2259">NullPointerException might be thrown as 'out' is nullable here(åŽ¤á
-:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
-Xsquid:S2259">NullPointerException might be thrown as 'out' is nullable here(™£êüùÿÿÿÿ
-rsquid:S1192"XDefine a constant instead of duplicating this literal "text/html;charset=utf-8" 5 times.(ÔñØüûÿÿÿÿ
-T
-squid:S106";Replace this usage of System.out or System.err by a logger.(¬¯¹Ùþÿÿÿÿ
-Ssquid:S2259">NullPointerException might be thrown as 'out' is nullable here(ñ×åõ

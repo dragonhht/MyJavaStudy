@@ -1,31 +1,0 @@
-
-Ajavascript:S1442" Remove this usage of alert(...).(ïçó8ñö‚¶¿+
-|javascript:NestedIfDepth"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(¶ÎÄêùÿÿÿÿ8ñö‚¶¿+
-|javascript:NestedIfDepth"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(Æîğùÿÿÿÿ8ñö‚¶¿+
-|javascript:NestedIfDepth"NRefactor this code to not nest more than 3 if/for/while/switch/try statements.(ãæúæüÿÿÿÿ8ñö‚¶¿+
-k(javascript:VariableDeclarationAfterUsage"2Move the declaration of "toXml" before this usage.(ø¬€‚8ñö‚¶¿+
-s(javascript:VariableDeclarationAfterUsage"5Move the declaration of "httpData" before this usage.(¤õ§Èÿÿÿÿÿ8ñö‚¶¿+
-Hjavascript:CommentedCode"Remove this commented out code.(Ê€éÃ8ñö‚¶¿+
-Mjavascript:CommentedCode"Remove this commented out code.(äŸ‚ûÿÿÿÿ8ñö‚¶¿+
-Mjavascript:CommentedCode"Remove this commented out code.(ºÓ‹ïûÿÿÿÿ8ñö‚¶¿+
-š'javascript:TooManyBreakOrContinueInLoop"]Reduce the total number of "break" and "continue" statements in this loop to use one at most.(ª¶“óøÿÿÿÿ8ñö‚¶¿+
-javascript:S1488"[Immediately return this expression instead of assigning it to the temporary variable "doc".(í€ä¦şÿÿÿÿ8ñö‚¶¿+
-Bjavascript:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ8ñö‚¶¿+
-Bjavascript:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ8ñö‚¶¿+
-_"javascript:CollapsibleIfStatements",Merge this if statement with the nested one.(ğ‚àÚ8ñö‚¶¿+
-d"javascript:CollapsibleIfStatements",Merge this if statement with the nested one.(÷Ê‚×üÿÿÿÿ8ñö‚¶¿+
-Zjavascript:ForIn"9Restrict what this loop acts on by testing each property.(” İ»8ñö‚¶¿+
-Zjavascript:ForIn"9Restrict what this loop acts on by testing each property.(¼˜õÅ8ñö‚¶¿+
-{javascript:S3776"URefactor this function to reduce its Cognitive Complexity from 352 to the 15 allowed.(‘‰Äµÿÿÿÿÿ8ñö‚¶¿+
-tjavascript:S3776"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.( şœD8ñö‚¶¿+
-zjavascript:S3776"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(ÁÌøïùÿÿÿÿ8ñö‚¶¿+
-ujavascript:S3776"TRefactor this function to reduce its Cognitive Complexity from 35 to the 15 allowed.(™‹ğÃ8ñö‚¶¿+
-jjavascript:S3358"DExtract this nested ternary operation into an independent statement.(í€ä¦şÿÿÿÿ8ñö‚¶¿+
-\javascript:UnusedVariable"2Remove the declaration of the unused 'v' variable.(ğ„Ñó8ñö‚¶¿+
-\javascript:UnusedVariable"2Remove the declaration of the unused 'n' variable.(ğ„Ñó8ñö‚¶¿+
-jjavascript:OneStatementPerLine"6Reformat the code to have only one statement per line.(“òàùÿÿÿÿ8ñö‚¶¿+
-javascript:S1067"[Reduce the number of conditional operators (13) used in the expression (maximum allowed 3).(ûÑïáùÿÿÿÿ8ñö‚¶¿+
-zjavascript:S1186"ZAdd a nested comment explaining why this function is empty or complete the implementation.(¢Àx8ñö‚¶¿+
-{javascript:S1186"ZAdd a nested comment explaining why this function is empty or complete the implementation.(ÖæØ¸8ñö‚¶¿+
-{javascript:S1186"ZAdd a nested comment explaining why this function is empty or complete the implementation.(®„áÿ8ñö‚¶¿+
-€javascript:S1186"ZAdd a nested comment explaining why this function is empty or complete the implementation.(æ†¯Ìúÿÿÿÿ8ñö‚¶¿+

@@ -1,19 +1,0 @@
-
-=squid:S1148"#Use a logger to log this exception.(€ֹװ…‎ÿÿÿÿ
-=squid:S1148"#Use a logger to log this exception.(€ֹװ…‎ÿÿÿÿ
-Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ס­אתÿÿÿÿ
-gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ו›׃ף
-Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ס­אתÿÿÿÿ
-N
-squid:S106";Replace this usage of System.out or System.err by a logger.(ב׃÷u
-:squid:S1166"%Either log or rethrow this exception.(”‎¾
-:squid:S1166"%Either log or rethrow this exception.(”‎¾
-=squid:S1148"#Use a logger to log this exception.(€ֹװ…‎ÿÿÿÿ
-:squid:S1166"%Either log or rethrow this exception.(”‎¾
-=squid:S1148"#Use a logger to log this exception.(€ֹװ…‎ÿÿÿÿ
-:squid:S1166"%Either log or rethrow this exception.(”‎¾
-=squid:S1148"#Use a logger to log this exception.(€ֹװ…‎ÿÿÿÿ
-O
-squid:S106";Replace this usage of System.out or System.err by a logger.(עֶ
-Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ס­אתÿÿÿÿ
-:squid:S1166"%Either log or rethrow this exception.(”‎¾
