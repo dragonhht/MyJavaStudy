@@ -38,4 +38,9 @@ java-python/java-python.iml
 
 *.class
 
+*/.gradle
+*/gradle
+*/build
+
 /com
+/SPI-study/spi-impl/build/
