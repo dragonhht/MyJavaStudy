@@ -1,0 +1,5 @@
+rootProject.name = 'SPI-study'
+include 'spi-impl'
+include 'spi-caller'
+include 'spi-common-api'
+
