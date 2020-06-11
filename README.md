@@ -18,3 +18,5 @@
 -   [excel的相关操作](./ExcelStudy)
 
 -   [动态代理](./JDKDynamicProxy)
+
+-   [SPI](./SPI-study)
